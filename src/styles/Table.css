@@ -1,0 +1,37 @@
+/* Table.css */
+
+.table-component__container {
+    /* Container for the table - Tailwind classes applied in jsx */
+}
+
+.table-component {
+    /* Base styles for the table element itself - Tailwind classes applied in jsx */
+    border-collapse: collapse; /* Ensure borders collapse for cleaner look */
+    width: 100%; /* Make table take full width of container by default */
+}
+
+.table-component__header {
+    @apply bg-gray-50; /* Default header background color using Tailwind */
+}
+
+.table-component__header-row {
+    /* Styles for header row (<tr>) -  Tailwind classes for row are applied in jsx */
+}
+
+.table-component__header-cell {
+    @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider; /* Tailwind classes for header cell typography and padding */
+}
+
+.table-component__body {
+    @apply bg-white; /* Default body background color using Tailwind */
+}
+
+.table-component__row {
+    @apply hover:bg-gray-50 cursor-pointer; /* Hover effect and cursor style for clickable rows - Tailwind classes - conditional class in jsx */
+}
+
+.table-component__cell {
+    @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900; /* Tailwind classes for cell typography and padding */
+}
+
+/* Add any specific table styles beyond basic Tailwind utilities here if needed */

@@ -1,0 +1,204 @@
+/* KPICard.css */
+.kpi-card {
+  /* Base styles for the card container - mostly Tailwind utility classes applied in jsx */
+  --kpi-card-background-color: theme('colors.blue.50');
+  /* Default background color from Tailwind theme */
+  --kpi-card-border-color: theme('colors.blue.200');
+  /* Default border color from Tailwind theme */
+  --kpi-card-icon-color: theme('colors.blue.600');
+  /* Default icon color from Tailwind theme */
+
+  background-color: var(--kpi-card-background-color);
+  border-color: var(--kpi-card-border-color);
+  min-height: 15rem; /* Ajuste este valor conforme necessário, experimente 12rem, 15rem, etc. */
+  overflow: hidden; /* Garante que o conteúdo interno não vaze para fora */
+}
+
+/* Color variations based on props - using CSS variables */
+.kpi-card[style*="--kpi-card-color: blue"] {
+  --kpi-card-background-color: theme('colors.blue.50');
+  --kpi-card-border-color: theme('colors.blue.200');
+  --kpi-card-icon-color: theme('colors.blue.600');
+}
+
+.kpi-card[style*="--kpi-card-color: green"] {
+  --kpi-card-background-color: theme('colors.emerald.50');
+  --kpi-card-border-color: theme('colors.emerald.200');
+  --kpi-card-icon-color: theme('colors.emerald.600');
+}
+
+.kpi-card[style*="--kpi-card-color: yellow"] {
+  --kpi-card-background-color: theme('colors.amber.50');
+  --kpi-card-border-color: theme('colors.amber.200');
+  --kpi-card-icon-color: theme('colors.amber.600');
+}
+
+.kpi-card[style*="--kpi-card-color: red"] {
+  --kpi-card-background-color: theme('colors.rose.50');
+  --kpi-card-border-color: theme('colors.rose.200');
+  --kpi-card-icon-color: theme('colors.rose.600');
+}
+
+.kpi-card[style*="--kpi-card-color: purple"] {
+  --kpi-card-background-color: theme('colors.purple.50');
+  --kpi-card-border-color: theme('colors.purple.200');
+  --kpi-card-icon-color: theme('colors.purple.600');
+}
+
+.kpi-card[style*="--kpi-card-color: teal"] {
+  --kpi-card-background-color: theme('colors.teal.50');
+  --kpi-card-border-color: theme('colors.teal.200');
+  --kpi-card-icon-color: theme('colors.teal.600');
+}
+
+.kpi-card[style*="--kpi-card-color: orange"] {
+  --kpi-card-background-color: theme('colors.orange.50');
+  --kpi-card-border-color: theme('colors.orange.200');
+  --kpi-card-icon-color: theme('colors.orange.600');
+}
+
+.kpi-card[style*="--kpi-card-color: pink"] {
+  --kpi-card-background-color: theme('colors.pink.50');
+  --kpi-card-border-color: theme('colors.pink.200');
+  --kpi-card-icon-color: theme('colors.pink.600');
+}
+
+/* Styles for undefined card state */
+.kpi-card--undefined {
+  @apply bg-gray-100 border-gray-200;
+  /* Tailwind classes for undefined state */
+}
+
+/* Specific element styles within the card */
+.kpi-card__header {
+  /* Flex layout and margin already handled by Tailwind classes in jsx */
+}
+
+.kpi-card__title {
+  /* Typography already handled by Tailwind classes in jsx */
+}
+
+.kpi-card__icon {
+  color: var(--kpi-card-icon-color);
+  /* Icon color from CSS variable */
+}
+
+
+.kpi-card__value-container {
+  /* Container for value and percentage - no specific styles needed beyond layout in jsx */
+}
+
+.kpi-card__value {
+  /* Typography already handled by Tailwind classes in jsx */
+}
+
+.kpi-card__percentage {
+  /* Typography already handled by Tailwind classes in jsx */
+}
+
+.kpi-card__subtitle-container {
+  /* Container for subtitle and trend - no specific styles needed beyond layout in jsx */
+}
+
+.kpi-card__subtitle-text {
+  /* Typography already handled by Tailwind classes in jsx */
+}
+
+.kpi-card__trend {
+  /* Trend indicator styles - color will be dynamically set by classes in jsx */
+}
+
+.kpi-card__workflow-buttons {
+  /* Flex layout and border already handled by Tailwind classes in jsx */
+  overflow: hidden; /* Clip content during animation */
+}
+
+.kpi-card__workflow-button {
+  /* Base styles for workflow buttons */
+  color: var(--kpi-card-icon-color);
+  /* Icon color from CSS variable */
+}
+
+/* Workflow Buttons Animation Classes */
+.kpi-card__workflow-buttons--animated {
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Smooth transition for transform and opacity */
+}
+
+.kpi-card__workflow-buttons--animated.slide-out-right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.kpi-card__workflow-buttons--animated.slide-in-right {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+
+/* Summary Content Animation Classes */
+.kpi-card__summary-content--animated {
+  position: relative;
+  /* Needed for absolute positioning of back button */
+  overflow: hidden; /* Clip content during animation */
+}
+
+.kpi-card__summary-content--animated.slide-in-left {
+  animation: slideInLeft 0.3s ease-in-out forwards;
+}
+
+.kpi-card__summary-content--animated.slide-out-left {
+  animation: slideOutLeft 0.3s ease-in-out forwards;
+}
+
+/* Keyframes for animations */
+@keyframes slideInLeft {
+  from {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+      transform: translateX(0);
+      opacity: 1;
+  }
+  to {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+      transform: translateX(0);
+      opacity: 1;
+  }
+  to {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+}
+
+
+/* Optional: Styles for Summary Mode Card */
+.kpi-card--summary-mode {
+  /* Example: Change background color or border when in summary mode */
+  /* background-color: #f0f0f0; */
+  /* border-color: #ccc; */
+}

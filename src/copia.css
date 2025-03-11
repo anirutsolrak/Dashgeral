@@ -1,0 +1,503 @@
+/* Variáveis CSS para Cores e Espaçamentos */
+:root {
+    --primary-color: #333;
+    --secondary-color: #777;
+    --light-grey: #888;
+    --border-color: #ccc;
+    --lighter-border: #ddd;
+    --background-light-grey: #f0f0f0;
+    --background-grey: #f3f4f6;
+    --background-white-grey: #f8fafc;
+    --white: white;
+    --box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    --border-radius-medium: 8px;
+    --border-radius-small: 4px;
+    --padding-medium: 2rem;
+    --padding-small: 1rem;
+    --padding-xsmall: 10px;
+    --margin-bottom-medium: 15px;
+    --margin-bottom-small: 10px;
+    --font-size-base: 1rem;
+    --font-size-small: 0.875rem;
+    --font-size-xsmall: 0.85em;
+    --font-size-smaller: 0.8em;
+    --font-size-medium: 0.95em;
+    --font-size-large: 1em;
+    --font-size-larger: 1.1em;
+    --icon-purple: #4f46e5;
+    --icon-background-blue: #e0e7ff;
+    --link-blue: #007bff;
+    --link-blue-hover: #0056b3;
+    --manager-blue: #0d47a1;
+    --supervisor-blue: #1976d2;
+    --member-grey: #37474f;
+    --role-grey: #757575;
+    --input-cyan-bg: #e0f7fa;
+    --input-cyan-border: #26c6da;
+    --process-yellow-bg: #fffde7;
+    --process-yellow-border: #ffca28;
+    --output-lime-bg: #f0f4c3;
+    --output-lime-border: #c0ca33;
+    --decision-amber-bg: #ffecb3;
+    --decision-amber-border: #ffa000;
+    --connector-grey: #78909c;
+    --connector-green: #4caf50;
+    --connector-red: #e57373;
+  }
+  
+  /* Estilos Gerais e Layout */
+  #root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--padding-medium);
+    text-align: center;
+  }
+  
+  .card {
+    padding: 2em; /* Manter em 'em' se for relativo ao tamanho da fonte do componente */
+  }
+  
+  .card-centered {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .read-the-docs {
+    color: var(--light-grey);
+  }
+  
+  .doc-link {
+    color: var(--link-blue);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .doc-link:hover {
+    color: var(--link-blue-hover);
+  }
+  
+  .diagram-section {
+    padding: var(--padding-medium);
+    background-color: var(--background-white-grey);
+    border-radius: 0.5rem;
+    margin: var(--padding-small);
+  }
+  
+  
+  /* Estilos da Logo */
+  .logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+  }
+  
+  .logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa); /* Cor específica, manter ou variável se reutilizar */
+  }
+  
+  .logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa); /* Cor específica, manter ou variável se reutilizar */
+  }
+  
+  
+  /* Estilos do Indicador de Scroll */
+  .scroll-indicator {
+    position: absolute;
+    top: 30vw; /* Ajustar se necessário, vw pode ser mantido se for relativo à viewport */
+    left: 90%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.9;
+    text-align: center;
+    color: var(--secondary-color);
+    transition: opacity 0.9s ease-in-out;
+  }
+  
+  .scroll-indicator i {
+    font-size: 1.5em; /* Manter em 'em' se for relativo ao tamanho da fonte do componente */
+    color: black; /* Cor específica, manter ou variável se reutilizar */
+    margin-bottom: 4px; /* Unidade pequena, manter em px */
+  }
+  
+  .scroll-indicator p {
+    font-size: var(--font-size-smaller);
+    color: var(--secondary-color);
+  }
+  
+  
+  /* Estilos do Fluxograma */
+  .fluxograma-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; /* Manter em px se for um valor fixo */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-medium);
+    background-color: #f9f9f9; /* Cor específica, manter ou variável se reutilizar */
+  }
+  
+  .fluxograma-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--margin-bottom-medium);
+  }
+  
+  .fluxograma-step {
+    padding: 12px 24px; /* Manter em px se forem valores fixos */
+    border-radius: var(--border-radius-medium);
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary-color);
+    box-shadow: var(--box-shadow);
+    z-index: 1;
+  }
+  
+  .fluxograma-step.input {
+    background-color: var(--input-cyan-bg);
+    border: 2px solid var(--input-cyan-border);
+  }
+  
+  .fluxograma-step.process {
+    background-color: var(--process-yellow-bg);
+    border: 2px solid var(--process-yellow-border);
+  }
+  
+  .fluxograma-step.output {
+    background-color: var(--output-lime-bg);
+    border: 2px solid var(--output-lime-border);
+  }
+  
+  .fluxograma-step.decision {
+    background-color: var(--decision-amber-bg);
+    border: 2px solid var(--decision-amber-border);
+  }
+  
+  
+  .fluxograma-connector {
+    width: 2px;
+    height: 40px; /* Manter em px se for um valor fixo */
+    background-color: var(--connector-grey);
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  
+  .fluxograma-connector::after {
+    content: '';
+    position: absolute;
+    left: -5px; /* Ajustar se necessário, px pode ser mantido para ajuste fino */
+    right: -5px; /* Ajustar se necessário, px pode ser mantido para ajuste fino */
+    bottom: -10px; /* Ajustar se necessário, px pode ser mantido para ajuste fino */
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 10px solid var(--connector-grey);
+  }
+  
+  
+  /* Estilos do Fluxograma Detalhado */
+  .fluxograma-container.detailed .fluxograma-row {
+    justify-content: center;
+    position: relative;
+  }
+  
+  .fluxograma-container.detailed .fluxograma-step {
+    position: relative;
+  }
+  
+  .fluxograma-container.detailed .fluxograma-connector {
+    height: 50px; /* Aumentado, manter em px se valor fixo */
+  }
+  
+  .fluxograma-container.detailed .decision-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px; /* Manter em px se for um valor fixo */
+    margin-bottom: var(--margin-bottom-medium);
+  }
+  
+  .fluxograma-container.detailed .decision-row .fluxograma-step.decision {
+    /* Estilos já definidos em .fluxograma-step.decision */
+  }
+  
+  .fluxograma-container.detailed .decision-row .fluxograma-connector.horizontal.yes {
+    width: 40px; /* Manter em px se for um valor fixo */
+    height: 2px;
+    background-color: var(--connector-green);
+    margin: 0;
+    position: relative;
+  }
+  
+  .fluxograma-container.detailed .decision-row .fluxograma-connector.horizontal.yes::after {
+    content: 'Sim';
+    position: absolute;
+    top: -20px; /* Ajustar se necessário, px pode ser mantido para ajuste fino */
+    left: 0;
+    color: var(--connector-green);
+    font-weight: bold;
+  }
+  
+  .fluxograma-container.detailed .fluxograma-connector.vertical-from-decision.no {
+    width: 2px;
+    height: 30px; /* Diminuído, manter em px se valor fixo */
+    background-color: var(--connector-grey);
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  
+  .fluxograma-container.detailed .fluxograma-connector.vertical-from-decision.no::after {
+    content: 'Não';
+    position: absolute;
+    top: -30px; /* Ajustar se necessário, px pode ser mantido para ajuste fino */
+    right: -15px; /* Ajustar se necessário, px pode ser mantido para ajuste fino */
+    color: var(--connector-red);
+    font-weight: bold;
+  }
+  
+  
+  /* Estilos da Imagem do Fluxograma e Zoom */
+  .fluxograma-image-container {
+    max-width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-medium);
+    padding: var(--padding-xsmall);
+    background-color: var(--white);
+  }
+  
+  .fluxograma-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .fluxogram-zoom-controls {
+    display: flex;
+    justify-content: center;
+    gap: var(--margin-bottom-small);
+    margin-bottom: var(--margin-bottom-small);
+  }
+  
+  .zoom-button {
+    padding: 5px 10px; /* Manter em px se forem valores fixos */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    background-color: var(--background-light-grey);
+  }
+  
+  .zoom-button:hover {
+    background-color: #e0e0e0; /* Cor específica, manter ou variável se reutilizar */
+  }
+  
+  .fluxograma-image-container {
+    max-height: 600px; /* Manter em px ou ajustar para variável se reutilizar */
+    margin-bottom: var(--margin-bottom-small);
+    border: 1px solid var(--lighter-border);
+    border-radius: var(--border-radius-medium);
+    background-color: var(--white);
+  }
+  
+  .fluxograma-image.zoomable {
+    transition: transform 0.3s ease-out;
+    transform-origin: top left;
+  }
+  
+  .fluxograma-image.zoom-level-1 { transform: scale(1); }
+  .fluxograma-image.zoom-level-2 { transform: scale(1.3); }
+  
+  
+  /* Estilos do Organograma */
+  .organograma-container.specific ul.root-level {
+    padding-left: 0;
+  }
+  
+  .organograma-container.specific ul.level-2 {
+    padding-left: 20px; /* Manter em px se for um valor fixo */
+  }
+  
+  .organograma-container.specific ul.level-3 {
+    padding-left: 30px; /* Manter em px se for um valor fixo */
+  }
+  
+  .organograma-container.specific li {
+    margin-bottom: 8px; /* Manter em px se for um valor fixo */
+  }
+  
+  .organograma-container.specific span.role {
+    font-size: var(--font-size-xsmall);
+    color: var(--role-grey);
+    font-style: italic;
+  }
+  
+  .organograma-container.specific li.manager > span {
+    font-size: var(--font-size-larger);
+    color: var(--manager-blue);
+  }
+  
+  .organograma-container.specific li.supervisor > span {
+    font-size: var(--font-size-large);
+    color: var(--supervisor-blue);
+  }
+  
+  .organograma-container.specific li.member > span {
+    font-size: var(--font-size-medium);
+    color: var(--member-grey);
+  }
+  
+  
+  /* Estilos do Card de Pessoa no Organograma */
+  .person-card {
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease;
+    position: relative;
+    border: 1px solid #e5e7eb; /* Cor específica, manter ou variável se reutilizar */
+  }
+  
+  .person-card:hover {
+    transform: translateY(-2px);
+    border-color: #6366f1; /* Cor específica, manter ou variável se reutilizar */
+  }
+  
+  .person-icon {
+    color: var(--icon-purple);
+    background-color: var(--icon-background-blue);
+    border-radius: 50%;
+    width: 50px; /* Manter em px se for um valor fixo */
+    height: 50px; /* Manter em px se for um valor fixo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem; /* Ajustar se necessário, rem relativo ao font-size */
+    font-size: 1.2rem; /* Manter em rem se for relativo ao tamanho da fonte do componente */
+  }
+  
+  .person-info, .person-info i { /* Agrupando seletores com estilos em comum */
+    text-align: center;
+    padding: var(--padding-small);
+    color: var(--icon-purple);
+  }
+  
+  .person-role {
+    font-size: var(--font-size-small);
+    color: var(--secondary-color);
+    margin-top: 0.25rem; /* Ajustar se necessário, rem relativo ao font-size */
+  }
+  
+  .person-name {
+    font-weight: 500; /* Manter valor numérico se for específico */
+    color: #111827; /* Cor específica, manter ou variável se reutilizar */
+  }
+  
+  
+  /* Estilos de Nível do Organograma */
+  .organogram-level {
+    position: relative;
+    margin-bottom: 2rem; /* Manter em rem se for relativo ao espaçamento geral */
+    padding: var(--padding-small);
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Valor específico, manter ou variável se reutilizar */
+  }
+  
+  .organogram-level::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -1rem; /* Manter em rem se for relativo ao espaçamento geral */
+    width: 2px;
+    height: var(--padding-small);
+    background-color: #6366f1; /* Cor específica, manter ou variável se reutilizar */
+  }
+  
+  .organogram-level:last-child::after {
+    display: none;
+  }
+  
+  .level-title {
+    background-color: var(--background-grey);
+    padding: 0.5rem 1rem; /* Ajustar se necessário, rem relativo ao font-size */
+    border-radius: 0.375rem; /* Valor específico, manter ou variável se reutilizar */
+    margin-bottom: var(--margin-bottom-small);
+    text-align: center;
+    color: var(--icon-purple);
+    font-weight: 600; /* Manter valor numérico se for específico */
+    font-size: var(--font-size-small);
+    text-transform: uppercase;
+    letter-spacing: 0.05em; /* Manter valor numérico se for específico */
+  }
+  
+  
+  /* Estilos do Seletor de Departamento */
+  .department-selector {
+    transition: all 0.3s ease;
+    padding: 0.75rem 1.5rem; /* Ajustar se necessário, rem relativo ao font-size */
+    border-radius: 0.5rem;
+    font-weight: 500; /* Manter valor numérico se for específico */
+    font-size: var(--font-size-small);
+    letter-spacing: 0.025em; /* Manter valor numérico se for específico */
+  }
+  
+  .department-selector:hover {
+    background-color: var(--background-grey);
+  }
+  
+  .department-selector.active {
+    background-color: var(--icon-background-blue);
+    border-color: var(--icon-purple);
+    color: var(--icon-purple);
+  }
+  
+  .department-icon {
+    margin-right: 0.5rem; /* Ajustar se necessário, rem relativo ao font-size */
+    font-size: var(--font-size-base);
+  }
+  
+  
+  /* Estilos do Container do React-Orgchart */
+  .organograma-react-orgchart-container {
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-medium);
+    padding: var(--padding-xsmall);
+    background-color: var(--white);
+  }
+  
+  
+  /* Animações */
+  @keyframes fadeBounce {
+    0%, 100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-8px); /* Valor específico, manter em px */
+    }
+  }
+  
+  .animate-fade-bounce {
+    animation: fadeBounce 1.2s infinite ease-in-out; /* Tempo específico, manter em s */
+  }
+  
+  @keyframes logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(2) .logo {
+      animation: logo-spin infinite 20s linear; /* Tempo específico, manter em s */
+    }
+  }

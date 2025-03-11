@@ -1,0 +1,50 @@
+/* Modal.css */
+.modal-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50; /* Tailwind classes */
+}
+
+.modal-content {
+    @apply bg-white rounded-lg shadow-xl max-h-[90vh] overflow-y-auto relative p-6; /* Tailwind classes for base content */
+    max-width: 95%; /* Responsive max-width */
+    width: fit-content; /* Fit content width */
+    scrollbar-width: thin; /* Browser specific scrollbar styling */
+    scrollbar-color: #888 #f0f0f0;
+}
+
+.modal-header {
+    @apply flex justify-between items-center mb-6 border-b pb-4; /* Tailwind classes for header layout */
+}
+
+.modal-title {
+    @apply text-xl font-semibold text-gray-800; /* Tailwind classes for title typography */
+}
+
+.modal-close-button {
+    @apply text-gray-500 hover:text-gray-700 transition-colors; /* Tailwind classes for close button */
+}
+
+.modal-body {
+    /* Base styles for modal body - currently minimal */
+}
+
+.modal-scroll-indicator { /* Renamed class for clarity */
+    @apply absolute bottom-4 right-1/4 transform -translate-x-1/3 flex flex-col items-center opacity-90 animate-fade-bounce text-gray-700 transition-opacity duration-300 ease-in-out; /* Tailwind classes for scroll indicator */
+}
+
+
+/* --- Modal Variations --- */
+
+/* Variation for "detail" modals - narrower width */
+.modal-content--detail {
+    @apply max-w-xl; /* Tailwind class to narrow max-width */
+}
+
+/* Variation for "workflow" modals - wider width */
+.modal-content--workflow {
+    @apply max-w-3xl; /* Tailwind class to widen max-width */
+}
+
+/* Example Variation: "alert" modal header with red background */
+.modal-header--alert {
+    @apply bg-red-100 border-b-red-200; /* Tailwind classes for alert header */
+}

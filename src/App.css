@@ -1,0 +1,16 @@
+/* KPICard.css */
+.kpi-card {
+  /* We'll add CSS variables here for customization later if needed */
+}
+
+.kpi-card:hover {
+  /* Hover styles if any */
+}
+
+.kpi-icon {
+  /* Icon styles if needed */
+}
+
+.workflow-button {
+  /* Workflow button styles if needed - probably can be mostly Tailwind */
+}

@@ -1,0 +1,3 @@
+.chart-component {
+    @apply bg-white rounded-lg p-5 shadow-md my-5; 
+}
