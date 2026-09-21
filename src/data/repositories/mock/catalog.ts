@@ -33,5 +33,5 @@ const CATALOG: AgreementCatalog = {
 }
 
 export const mockCatalogRepository: CatalogRepository = {
-  getAgreementCatalog: () => simulate(() => CATALOG),
+  getAgreementCatalog: () => simulate(() => structuredClone(CATALOG)),
 }

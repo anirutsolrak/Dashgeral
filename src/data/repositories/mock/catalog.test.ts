@@ -10,4 +10,12 @@ describe('mockCatalogRepository', () => {
     expect(ids.length).toBeGreaterThanOrEqual(6)
     expect(new Set(ids).size).toBe(ids.length)
   })
+  it('returns an independent copy on each call', async () => {
+    const first = await mockCatalogRepository.getAgreementCatalog()
+    first.categories[0]!.label = 'ALTERADO'
+    first.categories.pop()
+    const second = await mockCatalogRepository.getAgreementCatalog()
+    expect(second.categories[0]!.label).toBe('Governo')
+    expect(second.categories).toHaveLength(3)
+  })
 })

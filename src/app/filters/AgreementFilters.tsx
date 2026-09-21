@@ -9,7 +9,7 @@ export function AgreementFilters() {
   const catalog = useAgreementCatalog()
 
   if (catalog.isError) {
-    return <p className="text-sm text-slate-500">Filtros de convênio indisponíveis</p>
+    return <p role="status" className="text-sm text-slate-500">Filtros de convênio indisponíveis</p>
   }
 
   const categories = catalog.data?.categories ?? []
