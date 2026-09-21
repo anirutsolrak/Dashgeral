@@ -1,16 +1,27 @@
 import { useQuery } from '@tanstack/react-query'
-import { useMemo } from 'react'
-import { useLocation } from 'react-router-dom'
-import { useGlobalFilters } from '@/app/filters/useGlobalFilters'
-import { readDevFlags } from '@/data/mock/simulate'
+import { useDevFlags, useDomainQuery } from '@/app/data/useDomainQuery'
 import { repositories } from '@/data/repositories'
+import type { WorkflowKpi } from '@/data/types/card-processing'
 
-export function useCardProcessingKpis() {
-  const { filters } = useGlobalFilters()
-  const { search } = useLocation()
-  const devFlags = useMemo(() => readDevFlags(search), [search])
+const repo = repositories.cardProcessing
+
+export const useCardProcessingKpis = () =>
+  useDomainQuery('card-processing', 'kpis', (f) => repo.getKpis(f))
+export const useOverview = () => useDomainQuery('card-processing', 'overview', (f) => repo.getOverview(f))
+export const useIntegrationTrend = () =>
+  useDomainQuery('card-processing', 'trend', (f) => repo.getIntegrationTrend(f))
+export const useIntegrationReasons = () =>
+  useDomainQuery('card-processing', 'integration-reasons', (f) => repo.getIntegrationReasons(f))
+export const useAccountReasons = () =>
+  useDomainQuery('card-processing', 'account-reasons', (f) => repo.getAccountReasons(f))
+export const useInsuranceBreakdown = () =>
+  useDomainQuery('card-processing', 'insurance', (f) => repo.getInsuranceBreakdown(f))
+
+export function useWorkflow(kpi: WorkflowKpi) {
+  const devFlags = useDevFlags()
   return useQuery({
-    queryKey: ['card-processing', 'kpis', filters, devFlags],
-    queryFn: () => repositories.cardProcessing.getKpis(filters),
+    queryKey: ['card-processing', 'workflow', kpi, devFlags],
+    queryFn: () => repo.getWorkflow(kpi),
+    staleTime: Infinity,
   })
 }
