@@ -1,3 +1,5 @@
+import { buildOverview } from '@/data/mock/overview'
+import { buildTrend } from '@/data/mock/trend'
 import { createRng } from '@/data/mock/random'
 import { simulate } from '@/data/mock/simulate'
 import type { CardProcessingRepository } from '@/data/repositories/card-processing'
@@ -27,4 +29,6 @@ export const mockCardProcessingRepository: CardProcessingRepository = {
         cardsSent: Math.round(digitized * (0.8 + rng.next() * 0.1)),
       }
     }),
+  getOverview: (filters) => simulate(() => buildOverview(filters)),
+  getIntegrationTrend: (filters) => simulate(() => buildTrend(filters)),
 }
