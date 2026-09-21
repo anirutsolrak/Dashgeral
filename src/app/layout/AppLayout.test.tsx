@@ -22,20 +22,20 @@ describe('AppLayout', () => {
   })
 
   it('keeps active filters in navigation links', async () => {
-    renderAt('/financial?period=30d')
+    renderAt('/gallery?period=30d')
     const link = await screen.findByRole('link', { name: /Processamento de Cartões/ })
     expect(link).toHaveAttribute('href', expect.stringContaining('period=30d'))
   })
 
   it('shows the placeholder for routes not built yet', async () => {
-    renderAt('/financial')
+    renderAt('/gallery')
     expect(
-      await screen.findByRole('heading', { name: 'Desempenho Financeiro' }),
+      await screen.findByRole('heading', { name: 'Galeria de Componentes' }),
     ).toBeInTheDocument()
   })
 
   it('toggles the dark theme class', async () => {
-    renderAt('/financial')
+    renderAt('/gallery')
     await userEvent.click(await screen.findByRole('button', { name: /tema/i }))
     expect(document.documentElement).toHaveClass('dark')
   })
@@ -58,7 +58,7 @@ describe('AppLayout', () => {
   })
 
   it('lets the user change the period filter', async () => {
-    renderAt('/financial')
+    renderAt('/gallery')
     await userEvent.selectOptions(await screen.findByLabelText('Período'), '30d')
     expect(screen.getByLabelText('Período')).toHaveValue('30d')
   })

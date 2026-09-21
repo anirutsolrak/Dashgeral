@@ -16,7 +16,12 @@ export const routes: RouteObject[] = [
             .CardProcessingPage,
         }),
       },
-      { path: 'financial', element: <ComingSoon title="Desempenho Financeiro" /> },
+      {
+        path: 'financial',
+        lazy: async () => ({
+          Component: (await import('@/features/financial/FinancialPage')).FinancialPage,
+        }),
+      },
       { path: 'inventory', element: <ComingSoon title="Gestão de Estoque" /> },
       { path: 'logistics', element: <ComingSoon title="Logística" /> },
       { path: 'gallery', element: <ComingSoon title="Galeria de Componentes" /> },
