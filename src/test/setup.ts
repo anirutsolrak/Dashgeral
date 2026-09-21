@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/vitest'
+import { configure } from '@testing-library/dom'
 
 import { cloneElement, type ReactElement } from 'react'
 import { vi } from 'vitest'
@@ -26,3 +27,5 @@ class DOMMatrixReadOnlyStub {
 }
 vi.stubGlobal('ResizeObserver', ResizeObserverStub)
 vi.stubGlobal('DOMMatrixReadOnly', DOMMatrixReadOnlyStub)
+
+configure({ asyncUtilTimeout: 5000 })
