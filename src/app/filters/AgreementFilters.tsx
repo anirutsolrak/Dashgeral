@@ -9,13 +9,18 @@ export function AgreementFilters() {
   const catalog = useAgreementCatalog()
 
   if (catalog.isError) {
-    return <p role="status" className="text-sm text-slate-500">Filtros de convênio indisponíveis</p>
+    return (
+      <p role="status" className="text-sm text-slate-500">
+        Filtros de convênio indisponíveis
+      </p>
+    )
   }
 
   const categories = catalog.data?.categories ?? []
-  const visible = filters.agreementCategory === 'all'
-    ? categories
-    : categories.filter((c) => c.id === filters.agreementCategory)
+  const visible =
+    filters.agreementCategory === 'all'
+      ? categories
+      : categories.filter((c) => c.id === filters.agreementCategory)
   const agreements = visible.flatMap((c) => c.agreements)
 
   return (
@@ -30,7 +35,9 @@ export function AgreementFilters() {
         >
           <option value="all">Todas</option>
           {categories.map((c) => (
-            <option key={c.id} value={c.id}>{c.label}</option>
+            <option key={c.id} value={c.id}>
+              {c.label}
+            </option>
           ))}
         </select>
       </label>
@@ -44,7 +51,9 @@ export function AgreementFilters() {
         >
           <option value="all">Todos</option>
           {agreements.map((a) => (
-            <option key={a.id} value={a.id}>{a.label}</option>
+            <option key={a.id} value={a.id}>
+              {a.label}
+            </option>
           ))}
         </select>
       </label>

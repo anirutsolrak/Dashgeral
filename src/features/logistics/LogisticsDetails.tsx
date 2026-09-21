@@ -12,7 +12,13 @@ function GroupDetails({ group }: { group: GroupStat }) {
   const columns = useMemo<DataColumn<StepCount>[]>(
     () => [
       { id: 'step', header: 'Etapa', cell: (s) => s.label, sortValue: (s) => s.label },
-      { id: 'count', header: 'Quantidade', cell: (s) => formatNumber(s.count), sortValue: (s) => s.count, align: 'right' },
+      {
+        id: 'count',
+        header: 'Quantidade',
+        cell: (s) => formatNumber(s.count),
+        sortValue: (s) => s.count,
+        align: 'right',
+      },
       {
         id: 'share',
         header: 'Percentual do grupo',
@@ -29,7 +35,10 @@ function GroupDetails({ group }: { group: GroupStat }) {
       <div className="grid gap-3 sm:grid-cols-3">
         <SummaryStat label="Total de objetos" value={formatNumber(group.count)} />
         <SummaryStat label="Participação" value={formatPercentage(group.percent, 1)} tone="green" />
-        <SummaryStat label="Etapas com registros" value={`${withRecords} de ${group.steps.length}`} />
+        <SummaryStat
+          label="Etapas com registros"
+          value={`${withRecords} de ${group.steps.length}`}
+        />
       </div>
       <PieChartCard
         title={`Distribuição de ${group.label}`}

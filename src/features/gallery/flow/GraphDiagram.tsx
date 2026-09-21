@@ -1,6 +1,14 @@
 import {
-  Background, Controls, Handle, MarkerType, MiniMap, Position, ReactFlow,
-  type Edge, type Node, type NodeProps,
+  Background,
+  Controls,
+  Handle,
+  MarkerType,
+  MiniMap,
+  Position,
+  ReactFlow,
+  type Edge,
+  type Node,
+  type NodeProps,
 } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { useMemo } from 'react'
@@ -40,7 +48,13 @@ interface GraphDiagramProps {
   minimap?: boolean
 }
 
-export function GraphDiagram({ graph, label, theme, interactive = false, minimap = false }: GraphDiagramProps) {
+export function GraphDiagram({
+  graph,
+  label,
+  theme,
+  interactive = false,
+  minimap = false,
+}: GraphDiagramProps) {
   const nodes = useMemo<StatusFlowNode[]>(
     () =>
       graph.nodes.map((n) => ({
@@ -66,7 +80,11 @@ export function GraphDiagram({ graph, label, theme, interactive = false, minimap
     [graph],
   )
   return (
-    <div role="figure" aria-label={label} className="h-80 w-full rounded-lg border border-slate-200 dark:border-slate-700">
+    <div
+      role="figure"
+      aria-label={label}
+      className="h-80 w-full rounded-lg border border-slate-200 dark:border-slate-700"
+    >
       <ReactFlow
         defaultNodes={nodes}
         defaultEdges={edges}

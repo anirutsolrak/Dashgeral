@@ -32,7 +32,9 @@ export function buildLogistics(f: GlobalFilters): LogisticsOverview {
   // A seed ignora tipo e etapa: eles só escalam ou recortam os mesmos números.
   const rng = createRng(seedFor(f, 'logistics'))
   const factor = volumeFactor(f) * (TYPE_FACTOR[f.logisticsType] ?? 1)
-  const knownStep = LOGISTICS_CATALOG.groups.some((g) => g.steps.some((s) => s.id === f.logisticsStep))
+  const knownStep = LOGISTICS_CATALOG.groups.some((g) =>
+    g.steps.some((s) => s.id === f.logisticsStep),
+  )
 
   const counted = LOGISTICS_CATALOG.groups.map((group) => {
     const perStep = GROUP_BASE[group.key] / group.steps.length

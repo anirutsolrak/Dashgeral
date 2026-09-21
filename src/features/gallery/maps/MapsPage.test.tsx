@@ -6,7 +6,9 @@ import { renderWithProviders } from '@/test/renderWithProviders'
 vi.mock('react-leaflet', () => ({
   MapContainer: ({ children }: { children: ReactNode }) => <div>{children}</div>,
   TileLayer: () => null,
-  CircleMarker: ({ children }: { children: ReactNode }) => <div data-testid="marker">{children}</div>,
+  CircleMarker: ({ children }: { children: ReactNode }) => (
+    <div data-testid="marker">{children}</div>
+  ),
   Polyline: () => <div data-testid="route" />,
   Circle: ({ children }: { children: ReactNode }) => <div data-testid="area">{children}</div>,
   Popup: ({ children }: { children: ReactNode }) => <div>{children}</div>,
@@ -21,9 +23,16 @@ describe('MapsPage', () => {
 
   it('renders the four examples with their maps', async () => {
     renderWithProviders(<MapsPage />, { url })
-    expect(screen.getByRole('heading', { level: 1, name: 'Mapas (react-leaflet)' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Mapas (react-leaflet)' }),
+    ).toBeInTheDocument()
     const titles = (await screen.findAllByRole('heading', { level: 2 })).map((h) => h.textContent)
-    expect(titles).toEqual(['Bolhas por região', 'Mapa temático por capital', 'Rotas entre centros', 'Áreas de cobertura'])
+    expect(titles).toEqual([
+      'Bolhas por região',
+      'Mapa temático por capital',
+      'Rotas entre centros',
+      'Áreas de cobertura',
+    ])
     expect(screen.getAllByRole('region', { name: /^Mapa:/ })).toHaveLength(4)
     expect(screen.getAllByTestId('route').length).toBeGreaterThan(0)
     expect(screen.getAllByTestId('area')).toHaveLength(5)
@@ -31,7 +40,9 @@ describe('MapsPage', () => {
 
   it('lists the values as text for assistive tech', async () => {
     renderWithProviders(<MapsPage />, { url })
-    expect(await screen.findByRole('list', { name: 'Valores: Índice de SLA por região' })).toBeInTheDocument()
+    expect(
+      await screen.findByRole('list', { name: 'Valores: Índice de SLA por região' }),
+    ).toBeInTheDocument()
     expect(screen.getByRole('list', { name: /^Rotas:/ })).toBeInTheDocument()
     expect(screen.getByRole('list', { name: /^Áreas:/ })).toBeInTheDocument()
   })

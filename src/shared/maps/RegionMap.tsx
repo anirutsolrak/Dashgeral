@@ -31,15 +31,29 @@ export function RegionMap({
   return (
     <section className={CHART_CARD_CLASS}>
       <h3 className="mb-2 text-base font-semibold">{title}</h3>
-      <div role="region" aria-label={`Mapa: ${title}`} style={{ height }} className="overflow-hidden rounded-lg">
-        <MapContainer center={BRAZIL_CENTER} zoom={4} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
+      <div
+        role="region"
+        aria-label={`Mapa: ${title}`}
+        style={{ height }}
+        className="overflow-hidden rounded-lg"
+      >
+        <MapContainer
+          center={BRAZIL_CENTER}
+          zoom={4}
+          scrollWheelZoom={false}
+          style={{ height: '100%', width: '100%' }}
+        >
           <TileLayer attribution={OSM_ATTRIBUTION} url={OSM_TILE_URL} />
           {points.map((p) => (
             <CircleMarker
               key={p.id}
               center={[p.lat, p.lng]}
               radius={10 + p.value / 10}
-              pathOptions={{ color: colorFor(p.value), fillColor: colorFor(p.value), fillOpacity: 0.6 }}
+              pathOptions={{
+                color: colorFor(p.value),
+                fillColor: colorFor(p.value),
+                fillOpacity: 0.6,
+              }}
             >
               <Popup>
                 <strong>{p.label}</strong>: {format(p.value)}
@@ -50,10 +64,17 @@ export function RegionMap({
           ))}
         </MapContainer>
       </div>
-      <ul aria-label={`Valores: ${title}`} className="mt-2 grid grid-cols-1 gap-1 text-xs sm:grid-cols-2">
+      <ul
+        aria-label={`Valores: ${title}`}
+        className="mt-2 grid grid-cols-1 gap-1 text-xs sm:grid-cols-2"
+      >
         {points.map((p) => (
           <li key={p.id} className="flex items-center gap-2">
-            <span aria-hidden className="size-3 shrink-0 rounded-full" style={{ backgroundColor: colorFor(p.value) }} />
+            <span
+              aria-hidden
+              className="size-3 shrink-0 rounded-full"
+              style={{ backgroundColor: colorFor(p.value) }}
+            />
             {`${p.label}: ${format(p.value)}`}
           </li>
         ))}

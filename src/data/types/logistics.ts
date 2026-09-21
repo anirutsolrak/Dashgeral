@@ -1,10 +1,5 @@
 export type LogisticsGroupKey =
-  | 'entregue'
-  | 'pendente'
-  | 'custodia'
-  | 'devolvido'
-  | 'reenviado'
-  | 'sinistrado'
+  'entregue' | 'pendente' | 'custodia' | 'devolvido' | 'reenviado' | 'sinistrado'
 
 export interface CatalogStep {
   id: string

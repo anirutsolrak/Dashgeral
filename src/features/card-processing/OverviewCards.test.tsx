@@ -12,13 +12,21 @@ describe('OverviewCards', () => {
   const o = buildOverview(DEFAULT_FILTERS)
 
   it('shows the four KPIs with their formatted values and summaries', async () => {
-    renderWithProviders(<OverviewCards onDetails={vi.fn()} onWorkflow={vi.fn()} />, { url: '/?delay=0' })
+    renderWithProviders(<OverviewCards onDetails={vi.fn()} onWorkflow={vi.fn()} />, {
+      url: '/?delay=0',
+    })
     const cards = await screen.findAllByRole('article')
     expect(cards).toHaveLength(4)
     expect(within(cards[0]!).getByText('Taxa de Integração')).toBeInTheDocument()
-    expect(within(cards[0]!).getByText(formatPercentage(o.integration.ratePercent))).toBeInTheDocument()
-    expect(within(cards[0]!).getByText(formatNumber(o.integration.notDigitized))).toBeInTheDocument()
-    expect(within(cards[1]!).getByText(formatPercentage(o.accounts.ratePercent))).toBeInTheDocument()
+    expect(
+      within(cards[0]!).getByText(formatPercentage(o.integration.ratePercent)),
+    ).toBeInTheDocument()
+    expect(
+      within(cards[0]!).getByText(formatNumber(o.integration.notDigitized)),
+    ).toBeInTheDocument()
+    expect(
+      within(cards[1]!).getByText(formatPercentage(o.accounts.ratePercent)),
+    ).toBeInTheDocument()
     expect(within(cards[2]!).getByText('Cartões Enviados')).toBeInTheDocument()
     expect(within(cards[3]!).getByText('Propostas com Seguro')).toBeInTheDocument()
   })
@@ -26,7 +34,9 @@ describe('OverviewCards', () => {
   it('reports details and workflow clicks with the right kpi and view', async () => {
     const onDetails = vi.fn()
     const onWorkflow = vi.fn()
-    renderWithProviders(<OverviewCards onDetails={onDetails} onWorkflow={onWorkflow} />, { url: '/?delay=0' })
+    renderWithProviders(<OverviewCards onDetails={onDetails} onWorkflow={onWorkflow} />, {
+      url: '/?delay=0',
+    })
     await screen.findAllByRole('article')
     await userEvent.click(screen.getByRole('button', { name: /^Contas Criadas/ }))
     expect(onDetails).toHaveBeenCalledWith('accounts')
@@ -38,7 +48,9 @@ describe('OverviewCards', () => {
 
   it('shows the error state with a retry button', async () => {
     window.history.replaceState({}, '', '/?delay=0&error=1')
-    renderWithProviders(<OverviewCards onDetails={vi.fn()} onWorkflow={vi.fn()} />, { url: '/?delay=0&error=1' })
+    renderWithProviders(<OverviewCards onDetails={vi.fn()} onWorkflow={vi.fn()} />, {
+      url: '/?delay=0&error=1',
+    })
     expect(await screen.findByRole('alert')).toHaveTextContent('Falha simulada')
   })
 })

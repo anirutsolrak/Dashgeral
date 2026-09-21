@@ -17,7 +17,12 @@ export function LogisticsPage() {
       <LogisticsKpis onSelect={setSelected} />
       <LogisticsCharts />
       <LogisticsTable />
-      <Modal open={selected !== null} title={selected ? LOG_KPI_META[selected].detailsTitle : ''} onClose={close} wide>
+      <Modal
+        open={selected !== null}
+        title={selected ? LOG_KPI_META[selected].detailsTitle : ''}
+        onClose={close}
+        wide
+      >
         {selected && <LogisticsDetails kpi={selected} />}
       </Modal>
     </section>

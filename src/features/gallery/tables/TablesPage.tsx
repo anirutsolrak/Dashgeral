@@ -10,7 +10,8 @@ import { getLibrary } from '../libraries'
 import { LibraryPage } from '../LibraryPage'
 import { BASIC_COLUMNS, RICH_COLUMNS } from './columns'
 
-const CARD = 'rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900'
+const CARD =
+  'rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900'
 
 function Examples({ shipments }: { shipments: Shipment[] }) {
   const [selected, setSelected] = useState<Shipment[]>([])
@@ -19,15 +20,31 @@ function Examples({ shipments }: { shipments: Shipment[] }) {
     <>
       <ExampleCard title="Ordenação" description="Clique no cabeçalho para ordenar por coluna.">
         <div className={CARD}>
-          <DataTable caption="Envios recentes" columns={BASIC_COLUMNS} data={shipments.slice(0, 8)} />
+          <DataTable
+            caption="Envios recentes"
+            columns={BASIC_COLUMNS}
+            data={shipments.slice(0, 8)}
+          />
         </div>
       </ExampleCard>
-      <ExampleCard title="Busca e paginação" description="Filtro de texto e páginas para listas longas.">
+      <ExampleCard
+        title="Busca e paginação"
+        description="Filtro de texto e páginas para listas longas."
+      >
         <div className={CARD}>
-          <DataTable caption="Todos os envios" columns={BASIC_COLUMNS} data={shipments} searchable pageSize={10} />
+          <DataTable
+            caption="Todos os envios"
+            columns={BASIC_COLUMNS}
+            data={shipments}
+            searchable
+            pageSize={10}
+          />
         </div>
       </ExampleCard>
-      <ExampleCard title="Seleção de linhas" description="Marque linhas para agir sobre um conjunto.">
+      <ExampleCard
+        title="Seleção de linhas"
+        description="Marque linhas para agir sobre um conjunto."
+      >
         <div className={CARD}>
           <DataTable
             caption="Envios para seleção"
@@ -39,7 +56,10 @@ function Examples({ shipments }: { shipments: Shipment[] }) {
           <p className="mt-2 text-sm">{`Valor selecionado: ${formatCurrency(selectedAmount)}`}</p>
         </div>
       </ExampleCard>
-      <ExampleCard title="Células ricas e linhas expansíveis" description="Badges, barras de progresso e detalhe por linha.">
+      <ExampleCard
+        title="Células ricas e linhas expansíveis"
+        description="Badges, barras de progresso e detalhe por linha."
+      >
         <div className={CARD}>
           <DataTable
             caption="Envios com detalhe"

@@ -4,7 +4,12 @@ import { LOGISTICS_CATALOG } from './logistics-catalog'
 describe('LOGISTICS_CATALOG', () => {
   it('has the six status groups in display order', () => {
     expect(LOGISTICS_CATALOG.groups.map((g) => g.key)).toEqual([
-      'entregue', 'pendente', 'custodia', 'devolvido', 'reenviado', 'sinistrado',
+      'entregue',
+      'pendente',
+      'custodia',
+      'devolvido',
+      'reenviado',
+      'sinistrado',
     ])
     expect(LOGISTICS_CATALOG.groups.every((g) => g.steps.length > 0)).toBe(true)
   })

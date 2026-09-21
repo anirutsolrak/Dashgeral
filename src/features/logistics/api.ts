@@ -4,9 +4,11 @@ import { repositories } from '@/data/repositories'
 
 const repo = repositories.logistics
 
-export const useLogistics = () => useDomainQuery('logistics', 'overview', (f) => repo.getOverview(f))
+export const useLogistics = () =>
+  useDomainQuery('logistics', 'overview', (f) => repo.getOverview(f))
 export const useLogisticsTrend = () => useDomainQuery('logistics', 'trend', (f) => repo.getTrend(f))
-export const useTypeComparison = () => useDomainQuery('logistics', 'by-type', (f) => repo.getTypeComparison(f))
+export const useTypeComparison = () =>
+  useDomainQuery('logistics', 'by-type', (f) => repo.getTypeComparison(f))
 
 export function useLogisticsCatalog() {
   const devFlags = useDevFlags()

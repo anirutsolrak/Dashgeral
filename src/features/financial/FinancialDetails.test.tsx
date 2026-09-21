@@ -29,7 +29,11 @@ describe('FinancialDetails', () => {
     renderWithProviders(<FinancialDetails kpi="total" />, { url })
     expect(await heading('Clientes por faixa de utilização')).toBeInTheDocument()
     const first = o.usageByRange[0]!
-    expect(screen.getByRole('img', { name: new RegExp(`${first.range}: ${formatNumber(first.customers)}`) })).toBeInTheDocument()
+    expect(
+      screen.getByRole('img', {
+        name: new RegExp(`${first.range}: ${formatNumber(first.customers)}`),
+      }),
+    ).toBeInTheDocument()
   })
 
   it('average: grouped bars of average and available usage', async () => {

@@ -17,7 +17,17 @@ const data = [
 
 describe.each([
   ['AreaChartCard', () => <AreaChartCard title="Volume" series={series} data={data} />],
-  ['ComposedChartCard', () => <ComposedChartCard title="Volume" barSeries={[series[0]!]} lineSeries={[series[1]!]} data={data} />],
+  [
+    'ComposedChartCard',
+    () => (
+      <ComposedChartCard
+        title="Volume"
+        barSeries={[series[0]!]}
+        lineSeries={[series[1]!]}
+        data={data}
+      />
+    ),
+  ],
   ['RadarChartCard', () => <RadarChartCard title="Volume" series={series} data={data} />],
 ])('%s', (_name, ui) => {
   it('renders a titled svg with an accessible summary and clean console', () => {

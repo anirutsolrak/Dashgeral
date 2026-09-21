@@ -14,11 +14,25 @@ describe('TablesPage', () => {
 
   it('renders the four examples with their tables', async () => {
     renderWithProviders(<TablesPage />, { url })
-    expect(screen.getByRole('heading', { level: 1, name: 'Tabelas (TanStack Table)' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Tabelas (TanStack Table)' }),
+    ).toBeInTheDocument()
     const titles = (await screen.findAllByRole('heading', { level: 2 })).map((h) => h.textContent)
-    expect(titles).toEqual(['Ordenação', 'Busca e paginação', 'Seleção de linhas', 'Células ricas e linhas expansíveis'])
-    const captions = screen.getAllByRole('table').map((t) => within(t).getByText(/./, { selector: 'caption' }).textContent)
-    expect(captions).toEqual(['Envios recentes', 'Todos os envios', 'Envios para seleção', 'Envios com detalhe'])
+    expect(titles).toEqual([
+      'Ordenação',
+      'Busca e paginação',
+      'Seleção de linhas',
+      'Células ricas e linhas expansíveis',
+    ])
+    const captions = screen
+      .getAllByRole('table')
+      .map((t) => within(t).getByText(/./, { selector: 'caption' }).textContent)
+    expect(captions).toEqual([
+      'Envios recentes',
+      'Todos os envios',
+      'Envios para seleção',
+      'Envios com detalhe',
+    ])
   })
 
   it('searches and paginates the full list', async () => {
@@ -30,7 +44,9 @@ describe('TablesPage', () => {
   it('sums the amount of the selected rows', async () => {
     renderWithProviders(<TablesPage />, { url })
     await userEvent.click(await screen.findByRole('checkbox', { name: 'Selecionar linha 1' }))
-    expect(screen.getByText(/Valor selecionado:/)).toHaveTextContent(formatCurrency(shipments[0]!.amount).replace(/\s/g, ' '))
+    expect(screen.getByText(/Valor selecionado:/)).toHaveTextContent(
+      formatCurrency(shipments[0]!.amount).replace(/\s/g, ' '),
+    )
   })
 
   it('expands a row to show its events', async () => {

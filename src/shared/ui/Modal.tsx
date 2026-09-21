@@ -2,8 +2,7 @@ import { X } from 'lucide-react'
 import { useEffect, useId, useRef, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 
-const FOCUSABLE =
-  'button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+const FOCUSABLE = 'button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
 
 interface ModalProps {
   open: boolean

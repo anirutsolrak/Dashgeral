@@ -4,18 +4,27 @@ import { layoutFlow, layoutOrg } from './layout'
 
 const leaf = (id: string): OrgNodeInput => ({ id, name: id, role: 'Equipe', children: [] })
 const tree: OrgNodeInput = {
-  id: 'r', name: 'r', role: 'Gestão',
-  children: [{ id: 's', name: 's', role: 'Supervisão', children: [leaf('a1'), leaf('a2'), leaf('a3')] }],
+  id: 'r',
+  name: 'r',
+  role: 'Gestão',
+  children: [
+    { id: 's', name: 's', role: 'Supervisão', children: [leaf('a1'), leaf('a2'), leaf('a3')] },
+  ],
 }
 
 describe('layoutFlow', () => {
   it('places steps left to right, chained by edges', () => {
     const { nodes, edges } = layoutFlow([
-      { id: 'a', label: 'A' }, { id: 'b', label: 'B' }, { id: 'c', label: 'C' },
+      { id: 'a', label: 'A' },
+      { id: 'b', label: 'B' },
+      { id: 'c', label: 'C' },
     ])
     expect(nodes.map((n) => n.x)).toEqual([0, 240, 480])
     expect(nodes.every((n) => n.y === 0)).toBe(true)
-    expect(edges.map((e) => [e.source, e.target])).toEqual([['a', 'b'], ['b', 'c']])
+    expect(edges.map((e) => [e.source, e.target])).toEqual([
+      ['a', 'b'],
+      ['b', 'c'],
+    ])
   })
   it('handles an empty list', () => {
     expect(layoutFlow([])).toEqual({ nodes: [], edges: [] })

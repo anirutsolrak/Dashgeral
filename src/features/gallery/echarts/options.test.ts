@@ -24,9 +24,13 @@ describe('ECharts option builders', () => {
   })
 
   it('pass the data through', () => {
-    expect(loose(heatmapOption(d.heatmap, light)).series[0]!.data).toHaveLength(d.heatmap.cells.length)
+    expect(loose(heatmapOption(d.heatmap, light)).series[0]!.data).toHaveLength(
+      d.heatmap.cells.length,
+    )
     expect(loose(funnelOption(d.funnel, light)).series[0]!.data).toHaveLength(d.funnel.length)
-    expect(loose(sankeyOption(d.sankey, light)).series[0]!.links).toHaveLength(d.sankey.links.length)
+    expect(loose(sankeyOption(d.sankey, light)).series[0]!.links).toHaveLength(
+      d.sankey.links.length,
+    )
     expect(loose(gaugeOption(d.gauge, light)).series[0]!.max).toBe(d.gauge.max)
   })
 

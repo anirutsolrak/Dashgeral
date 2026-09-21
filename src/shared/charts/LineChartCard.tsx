@@ -1,5 +1,20 @@
-import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
-import { ACCENT_HEX, AXIS_TICK, CHART_CARD_CLASS, GRID_STROKE, TOOLTIP_STYLE, describeData } from './chartTheme'
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
+import {
+  ACCENT_HEX,
+  AXIS_TICK,
+  CHART_CARD_CLASS,
+  GRID_STROKE,
+  TOOLTIP_STYLE,
+  describeData,
+} from './chartTheme'
 import type { ChartDatum } from './types'
 
 interface LineChartCardProps {
@@ -10,7 +25,13 @@ interface LineChartCardProps {
   height?: number
 }
 
-export function LineChartCard({ title, data, suffix = '', color = ACCENT_HEX.purple, height = 260 }: LineChartCardProps) {
+export function LineChartCard({
+  title,
+  data,
+  suffix = '',
+  color = ACCENT_HEX.purple,
+  height = 260,
+}: LineChartCardProps) {
   return (
     <section className={CHART_CARD_CLASS}>
       <h3 className="mb-2 text-base font-semibold">{title}</h3>

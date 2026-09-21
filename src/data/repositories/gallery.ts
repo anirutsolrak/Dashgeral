@@ -1,4 +1,10 @@
-import type { EchartsData, FlowData, MapsData, RechartsData, TablesData } from '@/data/types/gallery'
+import type {
+  EchartsData,
+  FlowData,
+  MapsData,
+  RechartsData,
+  TablesData,
+} from '@/data/types/gallery'
 
 export interface GalleryRepository {
   getRecharts(): Promise<RechartsData>

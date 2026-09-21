@@ -1,6 +1,21 @@
-import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
 import { formatNumber } from '@/shared/lib/formatters'
-import { AXIS_TICK, CHART_CARD_CLASS, GRID_STROKE, LEGEND_LABEL_STYLE, TOOLTIP_STYLE } from './chartTheme'
+import {
+  AXIS_TICK,
+  CHART_CARD_CLASS,
+  GRID_STROKE,
+  LEGEND_LABEL_STYLE,
+  TOOLTIP_STYLE,
+} from './chartTheme'
 
 export interface GroupedSeries {
   key: string
@@ -28,7 +43,12 @@ const describe = (series: GroupedSeries[], data: GroupedDatum[]): string =>
     })
     .join('; ')
 
-export function GroupedBarChartCard({ title, series, data, height = 280 }: GroupedBarChartCardProps) {
+export function GroupedBarChartCard({
+  title,
+  series,
+  data,
+  height = 280,
+}: GroupedBarChartCardProps) {
   return (
     <section className={CHART_CARD_CLASS}>
       {title && <h3 className="mb-2 text-base font-semibold">{title}</h3>}
@@ -38,10 +58,19 @@ export function GroupedBarChartCard({ title, series, data, height = 280 }: Group
             <CartesianGrid stroke={GRID_STROKE} strokeDasharray="3 3" vertical={false} />
             <XAxis dataKey="label" tick={AXIS_TICK} />
             <YAxis tick={AXIS_TICK} tickFormatter={(v) => formatNumber(Number(v))} />
-            <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(value) => formatNumber(Number(value))} />
+            <Tooltip
+              contentStyle={TOOLTIP_STYLE}
+              formatter={(value) => formatNumber(Number(value))}
+            />
             <Legend labelStyle={LEGEND_LABEL_STYLE} />
             {series.map((s) => (
-              <Bar key={s.key} dataKey={s.key} name={s.label} fill={s.color} radius={[4, 4, 0, 0]} />
+              <Bar
+                key={s.key}
+                dataKey={s.key}
+                name={s.label}
+                fill={s.color}
+                radius={[4, 4, 0, 0]}
+              />
             ))}
           </BarChart>
         </ResponsiveContainer>

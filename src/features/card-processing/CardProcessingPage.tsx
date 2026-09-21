@@ -13,8 +13,7 @@ const WorkflowContent = lazy(() =>
 )
 
 type Dialog =
-  | { type: 'details'; kpi: WorkflowKpi }
-  | { type: 'workflow'; kpi: WorkflowKpi; view: WorkflowView }
+  { type: 'details'; kpi: WorkflowKpi } | { type: 'workflow'; kpi: WorkflowKpi; view: WorkflowView }
 
 function dialogTitle(dialog: Dialog | null): string {
   if (dialog === null) return ''

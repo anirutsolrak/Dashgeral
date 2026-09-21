@@ -1,7 +1,21 @@
-import { Area, AreaChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
 import { formatNumber } from '@/shared/lib/formatters'
 import {
-  AXIS_TICK, CHART_CARD_CLASS, GRID_STROKE, LEGEND_LABEL_STYLE, TOOLTIP_STYLE, describeSeries,
+  AXIS_TICK,
+  CHART_CARD_CLASS,
+  GRID_STROKE,
+  LEGEND_LABEL_STYLE,
+  TOOLTIP_STYLE,
+  describeSeries,
 } from './chartTheme'
 import type { GroupedDatum, GroupedSeries } from './GroupedBarChartCard'
 
@@ -13,7 +27,13 @@ interface AreaChartCardProps {
   height?: number
 }
 
-export function AreaChartCard({ title, series, data, stacked = true, height = 280 }: AreaChartCardProps) {
+export function AreaChartCard({
+  title,
+  series,
+  data,
+  stacked = true,
+  height = 280,
+}: AreaChartCardProps) {
   return (
     <section className={CHART_CARD_CLASS}>
       {title && <h3 className="mb-2 text-base font-semibold">{title}</h3>}
@@ -23,7 +43,10 @@ export function AreaChartCard({ title, series, data, stacked = true, height = 28
             <CartesianGrid stroke={GRID_STROKE} strokeDasharray="3 3" vertical={false} />
             <XAxis dataKey="label" tick={AXIS_TICK} />
             <YAxis tick={AXIS_TICK} tickFormatter={(v) => formatNumber(Number(v))} />
-            <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(value) => formatNumber(Number(value))} />
+            <Tooltip
+              contentStyle={TOOLTIP_STYLE}
+              formatter={(value) => formatNumber(Number(value))}
+            />
             <Legend labelStyle={LEGEND_LABEL_STYLE} />
             {series.map((s) => (
               <Area

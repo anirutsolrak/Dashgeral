@@ -8,7 +8,11 @@ const TONES: Record<ShipmentStatus, string> = {
 }
 
 export function StatusBadge({ status }: { status: ShipmentStatus }) {
-  return <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${TONES[status]}`}>{status}</span>
+  return (
+    <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${TONES[status]}`}>
+      {status}
+    </span>
+  )
 }
 
 export function ProgressBar({ value }: { value: number }) {

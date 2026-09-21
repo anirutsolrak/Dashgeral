@@ -3,7 +3,13 @@ import { createRng, type Rng } from '../random'
 
 const DAYS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom']
 const HOURS = Array.from({ length: 13 }, (_, i) => `${String(i + 8).padStart(2, '0')}h`)
-const FUNNEL = ['Propostas recebidas', 'Digitadas', 'Contas criadas', 'Cartões enviados', 'Cartões entregues']
+const FUNNEL = [
+  'Propostas recebidas',
+  'Digitadas',
+  'Contas criadas',
+  'Cartões enviados',
+  'Cartões entregues',
+]
 
 const leaf = (rng: Rng, name: string): TreeNode => ({ name, value: rng.int(20, 200) })
 
@@ -28,12 +34,20 @@ export function buildEchartsData(): EchartsData {
     }),
     gauge: { label: 'SLA de entrega (%)', value: rng.int(90, 98), max: 100 },
     treemap: [
-      { name: 'Transporte', children: [leaf(rng, 'Flash'), leaf(rng, 'Terceiros A'), leaf(rng, 'Terceiros B')] },
+      {
+        name: 'Transporte',
+        children: [leaf(rng, 'Flash'), leaf(rng, 'Terceiros A'), leaf(rng, 'Terceiros B')],
+      },
       { name: 'Armazenagem', children: [leaf(rng, 'Estoque'), leaf(rng, 'Custódia')] },
-      { name: 'Materiais', children: [leaf(rng, 'Cartões'), leaf(rng, 'Envelopes'), leaf(rng, 'Cartas berço')] },
+      {
+        name: 'Materiais',
+        children: [leaf(rng, 'Cartões'), leaf(rng, 'Envelopes'), leaf(rng, 'Cartas berço')],
+      },
     ],
     sankey: {
-      nodes: ['Postado', 'Em trânsito', 'Entregue', 'Custódia', 'Devolvido', 'Reenviado'].map((name) => ({ name })),
+      nodes: ['Postado', 'Em trânsito', 'Entregue', 'Custódia', 'Devolvido', 'Reenviado'].map(
+        (name) => ({ name }),
+      ),
       links: [
         { source: 'Postado', target: 'Em trânsito', value: rng.int(900, 1000) },
         { source: 'Em trânsito', target: 'Entregue', value: rng.int(700, 800) },

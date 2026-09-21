@@ -20,7 +20,9 @@ describe('LogisticsKpis', () => {
     const delivered = overview.groups[0]!
     expect(within(cards[0]!).getByText('Entregues')).toBeInTheDocument()
     expect(within(cards[0]!).getByText(formatPercentage(delivered.percent, 1))).toBeInTheDocument()
-    expect(within(cards[0]!).getByText(`${formatNumber(delivered.count)} objetos`)).toBeInTheDocument()
+    expect(
+      within(cards[0]!).getByText(`${formatNumber(delivered.count)} objetos`),
+    ).toBeInTheDocument()
     expect(within(cards[1]!).getByText('Em Trânsito')).toBeInTheDocument()
     expect(within(cards[2]!).getByText('Custódia')).toBeInTheDocument()
     expect(within(cards[3]!).getByText('Em Processo de Devolução')).toBeInTheDocument()

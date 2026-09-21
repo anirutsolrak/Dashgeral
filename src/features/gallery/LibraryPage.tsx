@@ -3,7 +3,13 @@ import type { ReactNode } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import type { GalleryLibrary } from './libraries'
 
-export function LibraryPage({ library, children }: { library: GalleryLibrary; children: ReactNode }) {
+export function LibraryPage({
+  library,
+  children,
+}: {
+  library: GalleryLibrary
+  children: ReactNode
+}) {
   const { search } = useLocation()
   return (
     <div className="space-y-6">

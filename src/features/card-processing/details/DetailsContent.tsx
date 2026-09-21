@@ -5,7 +5,12 @@ import { PieChartCard } from '@/shared/charts/PieChartCard'
 import { formatNumber } from '@/shared/lib/formatters'
 import { QueryBoundary } from '@/shared/ui/QueryBoundary'
 import { SummaryStat } from '@/shared/ui/SummaryStat'
-import { useAccountReasons, useInsuranceBreakdown, useIntegrationReasons, useOverview } from '../api'
+import {
+  useAccountReasons,
+  useInsuranceBreakdown,
+  useIntegrationReasons,
+  useOverview,
+} from '../api'
 import { toChartData } from './toChartData'
 
 const GRID = 'grid gap-4 md:grid-cols-2'
@@ -27,8 +32,14 @@ function IntegrationDetails() {
           <QueryBoundary query={reasons}>
             {(r) => (
               <div className={GRID}>
-                <PieChartCard title="Motivos de parada das propostas digitadas" data={toChartData(r.stopReasons)} />
-                <PieChartCard title="Propostas não digitadas" data={toChartData(r.nonDigitizedBreakdown)} />
+                <PieChartCard
+                  title="Motivos de parada das propostas digitadas"
+                  data={toChartData(r.stopReasons)}
+                />
+                <PieChartCard
+                  title="Propostas não digitadas"
+                  data={toChartData(r.nonDigitizedBreakdown)}
+                />
               </div>
             )}
           </QueryBoundary>
@@ -56,7 +67,10 @@ function AccountsDetails() {
             {(r) => (
               <div className={GRID}>
                 <PieChartCard title="Motivos das contas criadas" data={toChartData(r.created)} />
-                <PieChartCard title="Motivos das contas não criadas" data={toChartData(r.notCreated)} />
+                <PieChartCard
+                  title="Motivos das contas não criadas"
+                  data={toChartData(r.notCreated)}
+                />
               </div>
             )}
           </QueryBoundary>
@@ -91,7 +105,10 @@ function InsuranceDetails() {
       {(b) => (
         <div className="space-y-4">
           <div className={GRID}>
-            <PieChartCard title="Distribuição total de propostas" data={toChartData(b.byCoverage)} />
+            <PieChartCard
+              title="Distribuição total de propostas"
+              data={toChartData(b.byCoverage)}
+            />
             <PieChartCard title="Distribuição por valor" data={toChartData(b.byValue)} />
           </div>
           <PieChartCard
@@ -102,8 +119,16 @@ function InsuranceDetails() {
           <QueryBoundary query={overview}>
             {(o) => (
               <div className="grid grid-cols-2 gap-4">
-                <SummaryStat label="Total de propostas" value={formatNumber(o.insurance.total)} tone="blue" />
-                <SummaryStat label="Propostas com seguro" value={formatNumber(o.insurance.withInsurance)} tone="green" />
+                <SummaryStat
+                  label="Total de propostas"
+                  value={formatNumber(o.insurance.total)}
+                  tone="blue"
+                />
+                <SummaryStat
+                  label="Propostas com seguro"
+                  value={formatNumber(o.insurance.withInsurance)}
+                  tone="green"
+                />
               </div>
             )}
           </QueryBoundary>

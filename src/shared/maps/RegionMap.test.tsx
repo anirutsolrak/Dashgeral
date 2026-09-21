@@ -7,7 +7,15 @@ import { RegionMap, type MapPoint } from './RegionMap'
 vi.mock('react-leaflet', () => ({
   MapContainer: ({ children }: { children: ReactNode }) => <div data-testid="map">{children}</div>,
   TileLayer: () => null,
-  CircleMarker: ({ children, center, radius }: { children: ReactNode; center: [number, number]; radius: number }) => (
+  CircleMarker: ({
+    children,
+    center,
+    radius,
+  }: {
+    children: ReactNode
+    center: [number, number]
+    radius: number
+  }) => (
     <div data-testid="marker" data-center={center.join(',')} data-radius={radius}>
       {children}
     </div>
@@ -35,7 +43,9 @@ describe('RegionMap', () => {
   it('scales the marker radius with the value', () => {
     render(<RegionMap title="Mapa" points={points} format={format} />)
     const [norte, sul] = screen.getAllByTestId('marker')
-    expect(Number(sul?.getAttribute('data-radius'))).toBeGreaterThan(Number(norte?.getAttribute('data-radius')))
+    expect(Number(sul?.getAttribute('data-radius'))).toBeGreaterThan(
+      Number(norte?.getAttribute('data-radius')),
+    )
   })
 
   it('offers a textual alternative with formatted values', () => {

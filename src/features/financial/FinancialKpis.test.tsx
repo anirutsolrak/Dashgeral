@@ -21,25 +21,41 @@ describe('FinancialKpis', () => {
     const cards = await screen.findAllByRole('article')
     expect(cards).toHaveLength(4)
     expect(within(cards[0]!).getByText(FIN_KPI_META.usage.title)).toBeInTheDocument()
-    expect(within(cards[0]!).getByText(norm(formatPercentage(o.limitUsage.ratePercent)))).toBeInTheDocument()
-    expect(within(cards[0]!).getByText(norm(formatCurrency(o.limitUsage.usedAmount)))).toBeInTheDocument()
+    expect(
+      within(cards[0]!).getByText(norm(formatPercentage(o.limitUsage.ratePercent))),
+    ).toBeInTheDocument()
+    expect(
+      within(cards[0]!).getByText(norm(formatCurrency(o.limitUsage.usedAmount))),
+    ).toBeInTheDocument()
     expect(within(cards[1]!).getByText(FIN_KPI_META.total.title)).toBeInTheDocument()
     const top = o.usageByRange.at(-1)!.customers
-    expect(within(cards[1]!).getByText(`${formatNumber(top)} clientes acima de 75%`)).toBeInTheDocument()
-    expect(within(cards[2]!).getByText(norm(formatCurrency(o.limitUsage.averageUsage)))).toBeInTheDocument()
+    expect(
+      within(cards[1]!).getByText(`${formatNumber(top)} clientes acima de 75%`),
+    ).toBeInTheDocument()
+    expect(
+      within(cards[2]!).getByText(norm(formatCurrency(o.limitUsage.averageUsage))),
+    ).toBeInTheDocument()
     expect(within(cards[2]!).getByText('Por cliente')).toBeInTheDocument()
-    expect(within(cards[3]!).getByText(norm(formatCurrency(o.logistics.totalAmount)))).toBeInTheDocument()
-    expect(within(cards[3]!).getByText(norm(`${formatCurrency(o.logistics.unitTotal)} por cartão`))).toBeInTheDocument()
+    expect(
+      within(cards[3]!).getByText(norm(formatCurrency(o.logistics.totalAmount))),
+    ).toBeInTheDocument()
+    expect(
+      within(cards[3]!).getByText(norm(`${formatCurrency(o.logistics.unitTotal)} por cartão`)),
+    ).toBeInTheDocument()
   })
 
   it('reports which KPI was selected', async () => {
     const onSelect = vi.fn()
     renderWithProviders(<FinancialKpis onSelect={onSelect} />, { url })
     await screen.findAllByRole('article')
-    const avgButton = screen.getByRole('button', { name: new RegExp(`^${FIN_KPI_META.average.title}`) })
+    const avgButton = screen.getByRole('button', {
+      name: new RegExp(`^${FIN_KPI_META.average.title}`),
+    })
     await userEvent.click(avgButton)
     expect(onSelect).toHaveBeenCalledWith('average')
-    const logButton = screen.getByRole('button', { name: new RegExp(`^${FIN_KPI_META.logistics.title}`) })
+    const logButton = screen.getByRole('button', {
+      name: new RegExp(`^${FIN_KPI_META.logistics.title}`),
+    })
     await userEvent.click(logButton)
     expect(onSelect).toHaveBeenCalledWith('logistics')
   })

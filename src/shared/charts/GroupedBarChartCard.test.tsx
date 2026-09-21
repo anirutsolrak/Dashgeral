@@ -17,7 +17,9 @@ describe('GroupedBarChartCard', () => {
   it('renders the title, an svg and an accessible summary of every series', () => {
     const error = vi.spyOn(console, 'error')
     const warn = vi.spyOn(console, 'warn')
-    const { container } = render(<GroupedBarChartCard title="Por região" series={series} data={data} />)
+    const { container } = render(
+      <GroupedBarChartCard title="Por região" series={series} data={data} />,
+    )
     expect(screen.getByRole('heading', { name: 'Por região' })).toBeInTheDocument()
     expect(container.querySelector('svg')).not.toBeNull()
     const summary = screen.getByRole('img')

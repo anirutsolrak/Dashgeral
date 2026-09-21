@@ -37,6 +37,8 @@ describe('LogisticsFilters', () => {
   it('shows a message when the catalog fails', async () => {
     window.history.replaceState({}, '', '/?delay=0&error=1')
     renderWithProviders(<LogisticsFilters />, { url: '/?delay=0&error=1' })
-    expect(await screen.findByRole('status')).toHaveTextContent('Filtros de logística indisponíveis')
+    expect(await screen.findByRole('status')).toHaveTextContent(
+      'Filtros de logística indisponíveis',
+    )
   })
 })

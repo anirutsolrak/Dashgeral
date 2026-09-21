@@ -24,7 +24,13 @@ interface RouteMapProps {
   height?: number
 }
 
-export function RouteMap({ title, hubs, routes, format = (value) => String(value), height = 320 }: RouteMapProps) {
+export function RouteMap({
+  title,
+  hubs,
+  routes,
+  format = (value) => String(value),
+  height = 320,
+}: RouteMapProps) {
   const byId = new Map(hubs.map((h) => [h.id, h]))
   const lines = routes.flatMap((r) => {
     const from = byId.get(r.from)
@@ -35,24 +41,45 @@ export function RouteMap({ title, hubs, routes, format = (value) => String(value
   return (
     <section className={CHART_CARD_CLASS}>
       <h3 className="mb-2 text-base font-semibold">{title}</h3>
-      <div role="region" aria-label={`Mapa: ${title}`} style={{ height }} className="overflow-hidden rounded-lg">
-        <MapContainer center={BRAZIL_CENTER} zoom={4} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
+      <div
+        role="region"
+        aria-label={`Mapa: ${title}`}
+        style={{ height }}
+        className="overflow-hidden rounded-lg"
+      >
+        <MapContainer
+          center={BRAZIL_CENTER}
+          zoom={4}
+          scrollWheelZoom={false}
+          style={{ height: '100%', width: '100%' }}
+        >
           <TileLayer attribution={OSM_ATTRIBUTION} url={OSM_TILE_URL} />
           {lines.map(({ route, from, to }) => (
             <Polyline
               key={route.id}
-              positions={[[from.lat, from.lng], [to.lat, to.lng]]}
+              positions={[
+                [from.lat, from.lng],
+                [to.lat, to.lng],
+              ]}
               pathOptions={{ color: '#3b82f6', weight: 2 + (route.volume / max) * 6, opacity: 0.7 }}
             />
           ))}
           {hubs.map((h) => (
-            <CircleMarker key={h.id} center={[h.lat, h.lng]} radius={7} pathOptions={{ color: '#a855f7', fillColor: '#a855f7', fillOpacity: 0.9 }}>
+            <CircleMarker
+              key={h.id}
+              center={[h.lat, h.lng]}
+              radius={7}
+              pathOptions={{ color: '#a855f7', fillColor: '#a855f7', fillOpacity: 0.9 }}
+            >
               <Popup>{h.label}</Popup>
             </CircleMarker>
           ))}
         </MapContainer>
       </div>
-      <ul aria-label={`Rotas: ${title}`} className="mt-2 grid grid-cols-1 gap-1 text-xs sm:grid-cols-2">
+      <ul
+        aria-label={`Rotas: ${title}`}
+        className="mt-2 grid grid-cols-1 gap-1 text-xs sm:grid-cols-2"
+      >
         {lines.map(({ route, from, to }) => (
           <li key={route.id}>{`${from.label} → ${to.label}: ${format(route.volume)}`}</li>
         ))}

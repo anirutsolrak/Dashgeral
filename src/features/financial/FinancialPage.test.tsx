@@ -8,7 +8,9 @@ import { FinancialPage } from './FinancialPage'
 vi.mock('react-leaflet', () => ({
   MapContainer: ({ children }: { children: ReactNode }) => <div>{children}</div>,
   TileLayer: () => null,
-  CircleMarker: ({ children }: { children: ReactNode }) => <div data-testid="marker">{children}</div>,
+  CircleMarker: ({ children }: { children: ReactNode }) => (
+    <div data-testid="marker">{children}</div>
+  ),
   Popup: ({ children }: { children: ReactNode }) => <div>{children}</div>,
 }))
 
@@ -19,18 +21,24 @@ describe('FinancialPage', () => {
 
   it('renders the heading, filters, KPIs, regional section and evolution', async () => {
     renderWithProviders(<FinancialPage />, { url })
-    expect(screen.getByRole('heading', { level: 1, name: 'Desempenho Financeiro' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Desempenho Financeiro' }),
+    ).toBeInTheDocument()
     expect(await screen.findAllByRole('article')).toHaveLength(4)
     expect(await screen.findByLabelText('Categoria')).toBeInTheDocument()
     expect(await screen.findAllByTestId('marker')).toHaveLength(5)
-    expect(await screen.findByRole('heading', { name: 'Evolução da Utilização Média (em R$ mil)' })).toBeInTheDocument()
+    expect(
+      await screen.findByRole('heading', { name: 'Evolução da Utilização Média (em R$ mil)' }),
+    ).toBeInTheDocument()
   })
 
   it('opens the details of a KPI in a dialog and closes it with Escape', async () => {
     renderWithProviders(<FinancialPage />, { url })
     await userEvent.click(await screen.findByRole('button', { name: /^Custos Logísticos/ }))
     const dialog = await screen.findByRole('dialog', { name: 'Detalhamento - Custos Logísticos' })
-    expect(await within(dialog).findByRole('table', { name: 'Custos por status' })).toBeInTheDocument()
+    expect(
+      await within(dialog).findByRole('table', { name: 'Custos por status' }),
+    ).toBeInTheDocument()
     await userEvent.keyboard('{Escape}')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
   })

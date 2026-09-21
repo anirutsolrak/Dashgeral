@@ -69,7 +69,11 @@ describe('LineChartCard', () => {
 
 describe('chart theme', () => {
   it('uses CSS variables instead of hard-coded colors', () => {
-    const values = [AXIS_TICK.fill, GRID_STROKE, ...Object.values(TOOLTIP_STYLE).filter((v) => v !== '1px solid var(--chart-tooltip-border)')]
+    const values = [
+      AXIS_TICK.fill,
+      GRID_STROKE,
+      ...Object.values(TOOLTIP_STYLE).filter((v) => v !== '1px solid var(--chart-tooltip-border)'),
+    ]
     values.forEach((v) => expect(v).toMatch(/^var\(--chart-/))
     expect(TOOLTIP_STYLE.border).toContain('var(--chart-tooltip-border)')
   })

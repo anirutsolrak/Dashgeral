@@ -13,9 +13,16 @@ describe('FlowPage', () => {
 
   it('renders the four examples as labelled figures', async () => {
     renderWithProviders(<FlowPage />, { url })
-    expect(screen.getByRole('heading', { level: 1, name: 'Fluxos (React Flow)' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Fluxos (React Flow)' }),
+    ).toBeInTheDocument()
     const titles = (await screen.findAllByRole('heading', { level: 2 })).map((h) => h.textContent)
-    expect(titles).toEqual(['Fluxograma', 'Organograma', 'Pipeline com status', 'Árvore de decisão'])
+    expect(titles).toEqual([
+      'Fluxograma',
+      'Organograma',
+      'Pipeline com status',
+      'Árvore de decisão',
+    ])
     expect(screen.getAllByRole('figure')).toHaveLength(4)
   })
 

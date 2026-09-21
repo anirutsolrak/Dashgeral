@@ -17,7 +17,9 @@ describe('seedFor', () => {
   it('is stable and depends on salt and agreement', () => {
     expect(seedFor(DEFAULT_FILTERS, 'a')).toBe(seedFor(DEFAULT_FILTERS, 'a'))
     expect(seedFor(DEFAULT_FILTERS, 'a')).not.toBe(seedFor(DEFAULT_FILTERS, 'b'))
-    expect(seedFor({ ...DEFAULT_FILTERS, agreement: 'x' }, 'a')).not.toBe(seedFor(DEFAULT_FILTERS, 'a'))
+    expect(seedFor({ ...DEFAULT_FILTERS, agreement: 'x' }, 'a')).not.toBe(
+      seedFor(DEFAULT_FILTERS, 'a'),
+    )
   })
 })
 
@@ -37,7 +39,9 @@ describe('splitByWeights', () => {
     expect(parts.every((p) => p.count >= 0)).toBe(true)
   })
   it('is deterministic for the same seed and handles zero', () => {
-    expect(splitByWeights(50, reasons, createRng(9))).toEqual(splitByWeights(50, reasons, createRng(9)))
+    expect(splitByWeights(50, reasons, createRng(9))).toEqual(
+      splitByWeights(50, reasons, createRng(9)),
+    )
     expect(splitByWeights(0, reasons, createRng(9)).every((p) => p.count === 0)).toBe(true)
   })
 })

@@ -17,7 +17,12 @@ export function FinancialPage() {
       <FinancialKpis onSelect={setSelected} />
       <UnlockByRegion />
       <UsageEvolution />
-      <Modal open={selected !== null} title={selected ? FIN_KPI_META[selected].detailsTitle : ''} onClose={close} wide>
+      <Modal
+        open={selected !== null}
+        title={selected ? FIN_KPI_META[selected].detailsTitle : ''}
+        onClose={close}
+        wide
+      >
         {selected && <FinancialDetails kpi={selected} />}
       </Modal>
     </section>

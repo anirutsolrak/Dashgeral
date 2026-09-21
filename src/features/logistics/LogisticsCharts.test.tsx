@@ -10,9 +10,15 @@ describe('LogisticsCharts', () => {
 
   it('renders the trend, the distribution and the type comparison', async () => {
     renderWithProviders(<LogisticsCharts />, { url })
-    expect(await screen.findByRole('heading', { name: 'Evolução de pendências logísticas' })).toBeInTheDocument()
-    expect(await screen.findByRole('heading', { name: 'Distribuição por status' })).toBeInTheDocument()
-    expect(await screen.findByRole('heading', { name: 'Flash vs. Terceiros por status' })).toBeInTheDocument()
+    expect(
+      await screen.findByRole('heading', { name: 'Evolução de pendências logísticas' }),
+    ).toBeInTheDocument()
+    expect(
+      await screen.findByRole('heading', { name: 'Distribuição por status' }),
+    ).toBeInTheDocument()
+    expect(
+      await screen.findByRole('heading', { name: 'Flash vs. Terceiros por status' }),
+    ).toBeInTheDocument()
     expect(screen.getByRole('img', { name: /Entregue: Flash .*Terceiros/ })).toBeInTheDocument()
   })
 

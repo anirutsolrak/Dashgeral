@@ -24,15 +24,29 @@ export function RechartsPage() {
               <LineChartCard title="Entregas por mês" data={d.trend} />
             </ExampleCard>
             <ExampleCard title="Barras agrupadas" description="Comparar categorias lado a lado.">
-              <GroupedBarChartCard title="Envios por canal (1º trimestre)" series={withColors(d.channels)} data={d.channelVolume.slice(0, 3)} />
+              <GroupedBarChartCard
+                title="Envios por canal (1º trimestre)"
+                series={withColors(d.channels)}
+                data={d.channelVolume.slice(0, 3)}
+              />
             </ExampleCard>
-            <ExampleCard title="Pizza" description="Participação de cada parte no total (poucas fatias).">
+            <ExampleCard
+              title="Pizza"
+              description="Participação de cada parte no total (poucas fatias)."
+            >
               <PieChartCard title="Objetos por status" data={d.statusShare} />
             </ExampleCard>
             <ExampleCard title="Área empilhada" description="Composição do total e sua evolução.">
-              <AreaChartCard title="Volume por canal em 12 meses" series={withColors(d.channels)} data={d.channelVolume} />
+              <AreaChartCard
+                title="Volume por canal em 12 meses"
+                series={withColors(d.channels)}
+                data={d.channelVolume}
+              />
             </ExampleCard>
-            <ExampleCard title="Composto (barras e linha)" description="Realizado contra meta na mesma escala.">
+            <ExampleCard
+              title="Composto (barras e linha)"
+              description="Realizado contra meta na mesma escala."
+            >
               <ComposedChartCard
                 title="Volume total contra a meta"
                 barSeries={[{ key: 'volume', label: 'Volume', color: ACCENT_HEX.purple }]}
@@ -40,8 +54,15 @@ export function RechartsPage() {
                 data={d.volumeVsTarget}
               />
             </ExampleCard>
-            <ExampleCard title="Radar" description="Perfil de várias dimensões para poucas entidades.">
-              <RadarChartCard title="Desempenho por unidade" series={withColors(d.units)} data={d.unitPerformance} />
+            <ExampleCard
+              title="Radar"
+              description="Perfil de várias dimensões para poucas entidades."
+            >
+              <RadarChartCard
+                title="Desempenho por unidade"
+                series={withColors(d.units)}
+                data={d.unitPerformance}
+              />
             </ExampleCard>
           </>
         )}

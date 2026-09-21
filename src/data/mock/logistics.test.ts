@@ -7,7 +7,12 @@ describe('buildLogistics', () => {
 
   it('is consistent: steps sum to groups, groups sum to total, percents sum to 100', () => {
     expect(overview.groups.map((g) => g.key)).toEqual([
-      'entregue', 'pendente', 'custodia', 'devolvido', 'reenviado', 'sinistrado',
+      'entregue',
+      'pendente',
+      'custodia',
+      'devolvido',
+      'reenviado',
+      'sinistrado',
     ])
     for (const group of overview.groups) {
       expect(group.count).toBe(group.steps.reduce((s, x) => s + x.count, 0))
@@ -41,7 +46,12 @@ describe('buildLogistics', () => {
   })
 
   it('never yields negative counts or NaN percents on tiny volumes', () => {
-    const tiny = buildLogistics({ ...DEFAULT_FILTERS, period: '7d', region: 'centro-oeste', logisticsType: 'terceiros' })
+    const tiny = buildLogistics({
+      ...DEFAULT_FILTERS,
+      period: '7d',
+      region: 'centro-oeste',
+      logisticsType: 'terceiros',
+    })
     for (const group of tiny.groups) {
       expect(group.count).toBeGreaterThanOrEqual(0)
       expect(Number.isFinite(group.percent)).toBe(true)

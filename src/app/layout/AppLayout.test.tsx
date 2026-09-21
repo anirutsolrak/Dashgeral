@@ -65,7 +65,9 @@ describe('AppLayout', () => {
 
   it('keeps the query string when redirecting from the index route', async () => {
     renderAt('/?period=30d')
-    expect(await screen.findByRole('heading', { level: 1, name: 'Processamento de Cartões' })).toBeInTheDocument()
+    expect(
+      await screen.findByRole('heading', { level: 1, name: 'Processamento de Cartões' }),
+    ).toBeInTheDocument()
     expect(screen.getByLabelText('Período')).toHaveValue('30d')
   })
 })

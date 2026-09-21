@@ -1,4 +1,8 @@
-import { buildAccountReasons, buildInsuranceBreakdown, buildIntegrationReasons } from '@/data/mock/breakdowns'
+import {
+  buildAccountReasons,
+  buildInsuranceBreakdown,
+  buildIntegrationReasons,
+} from '@/data/mock/breakdowns'
 import { buildOverview } from '@/data/mock/overview'
 import { buildTrend } from '@/data/mock/trend'
 import { simulate } from '@/data/mock/simulate'

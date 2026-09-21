@@ -37,7 +37,9 @@ describe('EchartsPage', () => {
     expect(titles).toEqual(['Mapa de calor', 'Funil', 'Gauge', 'Treemap', 'Sankey'])
     const types = screen.getAllByRole('img').map((c) => c.getAttribute('data-type'))
     expect(types).toEqual(['heatmap', 'funnel', 'gauge', 'treemap', 'sankey'])
-    expect(screen.getByRole('img', { name: /^SLA de entrega\. .*SLA de entrega \(%\): \d+ de 100/ })).toBeInTheDocument()
+    expect(
+      screen.getByRole('img', { name: /^SLA de entrega\. .*SLA de entrega \(%\): \d+ de 100/ }),
+    ).toBeInTheDocument()
   })
 
   it('uses the light palette by default', async () => {

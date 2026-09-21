@@ -13,7 +13,12 @@ export function InventoryPage() {
       <h1 className="text-xl font-semibold">Gestão de Estoque</h1>
       <InventoryKpis onSelect={setSelected} />
       <InventoryCharts />
-      <Modal open={selected !== null} title={selected ? INV_KPI_META[selected].detailsTitle : ''} onClose={close} wide>
+      <Modal
+        open={selected !== null}
+        title={selected ? INV_KPI_META[selected].detailsTitle : ''}
+        onClose={close}
+        wide
+      >
         {selected && <InventoryDetails kpi={selected} />}
       </Modal>
     </section>

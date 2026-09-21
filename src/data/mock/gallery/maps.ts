@@ -19,7 +19,14 @@ const HUBS = [
   { id: 'mao', label: 'Manaus', lat: -3.12, lng: -60.02 },
 ]
 const ROUTES: [string, string][] = [
-  ['sp', 'rj'], ['sp', 'bh'], ['sp', 'poa'], ['bh', 'bsb'], ['bsb', 'ssa'], ['ssa', 'rec'], ['bsb', 'mao'], ['rj', 'ssa'],
+  ['sp', 'rj'],
+  ['sp', 'bh'],
+  ['sp', 'poa'],
+  ['bh', 'bsb'],
+  ['bsb', 'ssa'],
+  ['ssa', 'rec'],
+  ['bsb', 'mao'],
+  ['rj', 'ssa'],
 ]
 const COVERAGE = [
   { id: 'sp', label: 'Grande São Paulo', lat: -23.55, lng: -46.63, base: 120 },
@@ -31,7 +38,10 @@ const COVERAGE = [
 
 export function buildMapsData(): MapsData {
   const rng = createRng(5003)
-  const score = (p: { id: string; label: string; lat: number; lng: number }, unit: string): GeoPoint => {
+  const score = (
+    p: { id: string; label: string; lat: number; lng: number },
+    unit: string,
+  ): GeoPoint => {
     const value = rng.int(68, 96)
     return { ...p, value, detail: `${rng.int(8, 60)} ${unit}` }
   }

@@ -42,7 +42,10 @@ export function layoutOrg(root: OrgNodeInput): Layout {
       edges.push({ id: `${node.id}-${child.id}`, source: node.id, target: child.id })
       return x
     })
-    const x = childXs.length === 0 ? nextLeaf++ * ORG_X_GAP : (Math.min(...childXs) + Math.max(...childXs)) / 2
+    const x =
+      childXs.length === 0
+        ? nextLeaf++ * ORG_X_GAP
+        : (Math.min(...childXs) + Math.max(...childXs)) / 2
     nodes.push({ id: node.id, label: node.name, role: node.role, x, y: depth * ORG_Y_GAP })
     return x
   }

@@ -14,7 +14,13 @@ const data: Row[] = [
 ]
 const columns: DataColumn<Row>[] = [
   { id: 'name', header: 'Nome', cell: (r) => r.name, sortValue: (r) => r.name },
-  { id: 'qty', header: 'Quantidade', cell: (r) => `${r.qty} un.`, sortValue: (r) => r.qty, align: 'right' },
+  {
+    id: 'qty',
+    header: 'Quantidade',
+    cell: (r) => `${r.qty} un.`,
+    sortValue: (r) => r.qty,
+    align: 'right',
+  },
   { id: 'note', header: 'Obs.', cell: () => '-' },
 ]
 

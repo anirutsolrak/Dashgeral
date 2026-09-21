@@ -15,10 +15,34 @@ function CostsTable({ rows, total }: { rows: CostByStatus[]; total: number }) {
   const columns = useMemo<DataColumn<CostByStatus>[]>(
     () => [
       { id: 'status', header: 'Status', cell: (r) => r.status, sortValue: (r) => r.status },
-      { id: 'count', header: 'Cartões', cell: (r) => formatNumber(r.count), sortValue: (r) => r.count, align: 'right' },
-      { id: 'amount', header: 'Valor total', cell: (r) => formatCurrency(r.amount), sortValue: (r) => r.amount, align: 'right' },
-      { id: 'cost', header: 'Custo por cartão', cell: (r) => formatCurrency(r.costPerCard), sortValue: (r) => r.costPerCard, align: 'right' },
-      { id: 'available', header: 'Disponível por cartão', cell: (r) => formatCurrency(r.availablePerCard), sortValue: (r) => r.availablePerCard, align: 'right' },
+      {
+        id: 'count',
+        header: 'Cartões',
+        cell: (r) => formatNumber(r.count),
+        sortValue: (r) => r.count,
+        align: 'right',
+      },
+      {
+        id: 'amount',
+        header: 'Valor total',
+        cell: (r) => formatCurrency(r.amount),
+        sortValue: (r) => r.amount,
+        align: 'right',
+      },
+      {
+        id: 'cost',
+        header: 'Custo por cartão',
+        cell: (r) => formatCurrency(r.costPerCard),
+        sortValue: (r) => r.costPerCard,
+        align: 'right',
+      },
+      {
+        id: 'available',
+        header: 'Disponível por cartão',
+        cell: (r) => formatCurrency(r.availablePerCard),
+        sortValue: (r) => r.availablePerCard,
+        align: 'right',
+      },
       {
         id: 'share',
         header: 'Percentual',
@@ -45,13 +69,21 @@ export function FinancialDetails({ kpi }: { kpi: FinancialKpi }) {
                 data={usageByRange.map((r) => ({ label: r.range, value: r.customers }))}
               />
               <div className="grid gap-3 sm:grid-cols-3">
-                <SummaryStat label="Limite utilizado" value={formatCurrency(limitUsage.usedAmount)} tone="blue" />
+                <SummaryStat
+                  label="Limite utilizado"
+                  value={formatCurrency(limitUsage.usedAmount)}
+                  tone="blue"
+                />
                 <SummaryStat
                   label="Limite disponível"
                   value={formatCurrency(limitUsage.totalAmount - limitUsage.usedAmount)}
                   tone="green"
                 />
-                <SummaryStat label="Limite total" value={formatCurrency(limitUsage.totalAmount)} tone="blue" />
+                <SummaryStat
+                  label="Limite total"
+                  value={formatCurrency(limitUsage.totalAmount)}
+                  tone="blue"
+                />
               </div>
             </div>
           )

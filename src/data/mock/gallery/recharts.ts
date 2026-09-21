@@ -18,7 +18,8 @@ export function buildRechartsData(): RechartsData {
   const rng = createRng(5001)
   const channelVolume = MONTHS.map((label, i) => {
     const row: SeriesRow = { label }
-    for (const c of CHANNELS) row[c.key] = Math.round(c.base * (1 + i * 0.04) * (0.9 + rng.next() * 0.2))
+    for (const c of CHANNELS)
+      row[c.key] = Math.round(c.base * (1 + i * 0.04) * (0.9 + rng.next() * 0.2))
     return row
   })
   const volumeVsTarget = channelVolume.map((row, i): SeriesRow => ({
@@ -27,7 +28,10 @@ export function buildRechartsData(): RechartsData {
     meta: Math.round(1900 * (1 + i * 0.04)),
   }))
   return {
-    trend: MONTHS.map((label, i) => ({ label, value: Math.round(1800 * (1 + i * 0.05) * (0.9 + rng.next() * 0.2)) })),
+    trend: MONTHS.map((label, i) => ({
+      label,
+      value: Math.round(1800 * (1 + i * 0.05) * (0.9 + rng.next() * 0.2)),
+    })),
     statusShare: [
       { label: 'Entregue', value: 6200 },
       { label: 'Em trânsito', value: 2100 },

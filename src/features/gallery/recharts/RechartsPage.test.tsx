@@ -12,9 +12,20 @@ describe('RechartsPage', () => {
     renderWithProviders(<RechartsPage />, { url })
     expect(screen.getByRole('heading', { level: 1, name: 'Recharts' })).toBeInTheDocument()
     const titles = (await screen.findAllByRole('heading', { level: 2 })).map((h) => h.textContent)
-    expect(titles).toEqual(['Linha', 'Barras agrupadas', 'Pizza', 'Área empilhada', 'Composto (barras e linha)', 'Radar'])
-    expect(await screen.findByRole('heading', { name: 'Volume por canal em 12 meses' })).toBeInTheDocument()
-    expect(screen.getAllByRole('img', { name: /Jan: Agência .*Digital .*Telefone/ }).length).toBeGreaterThan(0)
+    expect(titles).toEqual([
+      'Linha',
+      'Barras agrupadas',
+      'Pizza',
+      'Área empilhada',
+      'Composto (barras e linha)',
+      'Radar',
+    ])
+    expect(
+      await screen.findByRole('heading', { name: 'Volume por canal em 12 meses' }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getAllByRole('img', { name: /Jan: Agência .*Digital .*Telefone/ }).length,
+    ).toBeGreaterThan(0)
   })
 
   it('shows an error alert when the repository fails', async () => {

@@ -1,4 +1,8 @@
-import { buildFinancialOverview, buildUnlockByRegion, buildUsageEvolution } from '@/data/mock/financial'
+import {
+  buildFinancialOverview,
+  buildUnlockByRegion,
+  buildUsageEvolution,
+} from '@/data/mock/financial'
 import { simulate } from '@/data/mock/simulate'
 import type { FinancialRepository } from '@/data/repositories/financial'
 

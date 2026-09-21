@@ -7,7 +7,9 @@ import { AgreementFilters } from './AgreementFilters'
 
 const renderAt = (url: string) =>
   render(
-    <QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
+    <QueryClientProvider
+      client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}
+    >
       <MemoryRouter initialEntries={[url]}>
         <AgreementFilters />
       </MemoryRouter>

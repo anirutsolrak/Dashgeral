@@ -17,7 +17,10 @@ function AppShell() {
   const { theme, toggle } = useAppTheme()
   return (
     <div className="min-h-screen md:grid md:grid-cols-[16rem_1fr]">
-      <nav aria-label="Principal" className="flex gap-1 overflow-x-auto border-b border-slate-200 p-3 md:flex-col md:border-r md:border-b-0 dark:border-slate-800">
+      <nav
+        aria-label="Principal"
+        className="flex gap-1 overflow-x-auto border-b border-slate-200 p-3 md:flex-col md:border-r md:border-b-0 dark:border-slate-800"
+      >
         <span className="hidden px-3 py-2 text-lg font-bold md:block">Dashgeral</span>
         {NAV_ITEMS.map(({ to, label, icon: Icon }) => (
           <NavLink

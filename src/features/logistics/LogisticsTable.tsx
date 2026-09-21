@@ -11,8 +11,20 @@ function GroupTable({ groups }: { groups: GroupStat[] }) {
   const columns = useMemo<DataColumn<GroupStat>[]>(
     () => [
       { id: 'status', header: 'Status', cell: (g) => g.label, sortValue: (g) => g.label },
-      { id: 'count', header: 'Quantidade', cell: (g) => formatNumber(g.count), sortValue: (g) => g.count, align: 'right' },
-      { id: 'percent', header: 'Percentual', cell: (g) => formatPercentage(g.percent, 1), sortValue: (g) => g.percent, align: 'right' },
+      {
+        id: 'count',
+        header: 'Quantidade',
+        cell: (g) => formatNumber(g.count),
+        sortValue: (g) => g.count,
+        align: 'right',
+      },
+      {
+        id: 'percent',
+        header: 'Percentual',
+        cell: (g) => formatPercentage(g.percent, 1),
+        sortValue: (g) => g.percent,
+        align: 'right',
+      },
     ],
     [],
   )

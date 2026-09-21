@@ -34,7 +34,8 @@ interface DataTableProps<T> {
 }
 
 const ARIA_SORT = { asc: 'ascending', desc: 'descending' } as const
-const BUTTON = 'rounded-md border border-slate-300 px-2 py-1 disabled:opacity-40 dark:border-slate-700'
+const BUTTON =
+  'rounded-md border border-slate-300 px-2 py-1 disabled:opacity-40 dark:border-slate-700'
 
 export function DataTable<T>({
   columns,
@@ -74,7 +75,11 @@ export function DataTable<T>({
             onClick={row.getToggleExpandedHandler()}
             className="rounded p-1 hover:bg-slate-100 dark:hover:bg-slate-800"
           >
-            {row.getIsExpanded() ? <ChevronDown size={14} aria-hidden /> : <ChevronRight size={14} aria-hidden />}
+            {row.getIsExpanded() ? (
+              <ChevronDown size={14} aria-hidden />
+            ) : (
+              <ChevronRight size={14} aria-hidden />
+            )}
           </button>
         ),
       })
@@ -129,7 +134,10 @@ export function DataTable<T>({
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     ...(pageSize !== undefined
-      ? { getPaginationRowModel: getPaginationRowModel(), initialState: { pagination: { pageSize } } }
+      ? {
+          getPaginationRowModel: getPaginationRowModel(),
+          initialState: { pagination: { pageSize } },
+        }
       : {}),
   })
 
@@ -206,7 +214,10 @@ export function DataTable<T>({
           <tbody>
             {rows.length === 0 ? (
               <tr>
-                <td colSpan={colCount} className="px-3 py-4 text-center text-slate-500 dark:text-slate-400">
+                <td
+                  colSpan={colCount}
+                  className="px-3 py-4 text-center text-slate-500 dark:text-slate-400"
+                >
                   Sem dados
                 </td>
               </tr>
@@ -219,7 +230,10 @@ export function DataTable<T>({
                     }`}
                   >
                     {row.getVisibleCells().map((cell) => (
-                      <td key={cell.id} className={`px-3 py-2 tabular-nums ${alignClass(cell.column.id)}`}>
+                      <td
+                        key={cell.id}
+                        className={`px-3 py-2 tabular-nums ${alignClass(cell.column.id)}`}
+                      >
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                       </td>
                     ))}
@@ -238,14 +252,27 @@ export function DataTable<T>({
         </table>
       </div>
       {pageSize !== undefined && (
-        <nav aria-label="Paginação" className="mt-2 flex flex-wrap items-center justify-between gap-2 text-sm">
+        <nav
+          aria-label="Paginação"
+          className="mt-2 flex flex-wrap items-center justify-between gap-2 text-sm"
+        >
           <span>{`${total} ${total === 1 ? 'registro' : 'registros'}`}</span>
           <div className="flex items-center gap-2">
-            <button type="button" className={BUTTON} onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
+            <button
+              type="button"
+              className={BUTTON}
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+            >
               Anterior
             </button>
             <span>{`Página ${table.getState().pagination.pageIndex + 1} de ${Math.max(table.getPageCount(), 1)}`}</span>
-            <button type="button" className={BUTTON} onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
+            <button
+              type="button"
+              className={BUTTON}
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+            >
               Próxima
             </button>
           </div>

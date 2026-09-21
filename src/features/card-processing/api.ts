@@ -5,7 +5,8 @@ import type { WorkflowKpi } from '@/data/types/card-processing'
 
 const repo = repositories.cardProcessing
 
-export const useOverview = () => useDomainQuery('card-processing', 'overview', (f) => repo.getOverview(f))
+export const useOverview = () =>
+  useDomainQuery('card-processing', 'overview', (f) => repo.getOverview(f))
 export const useIntegrationTrend = () =>
   useDomainQuery('card-processing', 'trend', (f) => repo.getIntegrationTrend(f))
 export const useIntegrationReasons = () =>

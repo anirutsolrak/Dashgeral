@@ -17,7 +17,12 @@ const STOP_REASONS = [
 ] as const
 const NON_DIGITIZED = ['Saque realizado', 'Liquidado'] as const
 const CREATED = ['Conta nova', 'Conta portada', 'Conta reaproveitada'] as const
-const NOT_CREATED = ['Endereço errado', 'Documentação incompleta', 'Dados inválidos', 'Erro de sistema'] as const
+const NOT_CREATED = [
+  'Endereço errado',
+  'Documentação incompleta',
+  'Dados inválidos',
+  'Erro de sistema',
+] as const
 
 export function buildIntegrationReasons(f: GlobalFilters): IntegrationReasons {
   const o = buildOverview(f)

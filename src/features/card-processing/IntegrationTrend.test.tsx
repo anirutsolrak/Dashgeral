@@ -8,7 +8,9 @@ describe('IntegrationTrend', () => {
 
   it('renders a titled line chart with one point per month', async () => {
     renderWithProviders(<IntegrationTrend />, { url: '/?delay=0' })
-    expect(await screen.findByRole('heading', { name: 'Taxa de Integração ao longo do tempo' })).toBeInTheDocument()
+    expect(
+      await screen.findByRole('heading', { name: 'Taxa de Integração ao longo do tempo' }),
+    ).toBeInTheDocument()
     expect(screen.getByRole('img')).toHaveAccessibleName(/Jan: .*%.*Dez: /)
   })
 

@@ -21,7 +21,14 @@ const REGIONS = [
   { region: 'nordeste', label: 'Nordeste', unlocked: 2500, locked: 700, lat: -9, lng: -40 },
   { region: 'sudeste', label: 'Sudeste', unlocked: 5500, locked: 1000, lat: -20, lng: -45 },
   { region: 'sul', label: 'Sul', unlocked: 3000, locked: 400, lat: -27, lng: -51.5 },
-  { region: 'centro-oeste', label: 'Centro-Oeste', unlocked: 2000, locked: 500, lat: -15.5, lng: -54 },
+  {
+    region: 'centro-oeste',
+    label: 'Centro-Oeste',
+    unlocked: 2000,
+    locked: 500,
+    lat: -15.5,
+    lng: -54,
+  },
 ] as const
 
 export function buildFinancialOverview(f: GlobalFilters): FinancialOverview {

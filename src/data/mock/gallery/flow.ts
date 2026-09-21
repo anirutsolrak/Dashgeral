@@ -13,17 +13,23 @@ export function buildFlowData(): FlowData {
   return {
     steps: STEPS.map((label, i) => ({ id: `s${i}`, label })),
     org: {
-      id: 'dir', name: 'Diretor de Logística', role: 'Diretoria',
+      id: 'dir',
+      name: 'Diretor de Logística',
+      role: 'Diretoria',
       children: [
         {
-          id: 'transp', name: 'Coordenador de Transporte', role: 'Coordenação',
+          id: 'transp',
+          name: 'Coordenador de Transporte',
+          role: 'Coordenação',
           children: [
             { id: 'rotas', name: 'Analista de Rotas', role: 'Equipe', children: [] },
             { id: 'frota', name: 'Analista de Frota', role: 'Equipe', children: [] },
           ],
         },
         {
-          id: 'estq', name: 'Coordenador de Estoque', role: 'Coordenação',
+          id: 'estq',
+          name: 'Coordenador de Estoque',
+          role: 'Coordenação',
           children: [
             { id: 'conf', name: 'Conferente', role: 'Equipe', children: [] },
             { id: 'cust', name: 'Analista de Custódia', role: 'Equipe', children: [] },
@@ -32,7 +38,13 @@ export function buildFlowData(): FlowData {
       ],
     },
     pipeline: {
-      nodes: ids.map((id, i) => ({ id, label: id[0]!.toUpperCase() + id.slice(1), status: status(), x: i * 220, y: (i % 2) * 90 })),
+      nodes: ids.map((id, i) => ({
+        id,
+        label: id[0]!.toUpperCase() + id.slice(1),
+        status: status(),
+        x: i * 220,
+        y: (i % 2) * 90,
+      })),
       edges: chain(ids),
     },
     decision: {

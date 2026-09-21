@@ -3,8 +3,16 @@ import { chartPalette, themeBase } from './palette'
 
 describe('chartPalette', () => {
   it('mirrors the css chart variables for each theme', () => {
-    expect(chartPalette('light')).toMatchObject({ text: '#64748b', grid: '#e2e8f0', tooltipBg: '#ffffff' })
-    expect(chartPalette('dark')).toMatchObject({ text: '#94a3b8', grid: '#334155', tooltipBg: '#1e293b' })
+    expect(chartPalette('light')).toMatchObject({
+      text: '#64748b',
+      grid: '#e2e8f0',
+      tooltipBg: '#ffffff',
+    })
+    expect(chartPalette('dark')).toMatchObject({
+      text: '#94a3b8',
+      grid: '#334155',
+      tooltipBg: '#1e293b',
+    })
   })
   it('exposes the same series colours as the Recharts wrappers', () => {
     expect(chartPalette('light').series).toHaveLength(8)

@@ -7,7 +7,9 @@ import { UnlockByRegion } from './UnlockByRegion'
 vi.mock('react-leaflet', () => ({
   MapContainer: ({ children }: { children: ReactNode }) => <div>{children}</div>,
   TileLayer: () => null,
-  CircleMarker: ({ children }: { children: ReactNode }) => <div data-testid="marker">{children}</div>,
+  CircleMarker: ({ children }: { children: ReactNode }) => (
+    <div data-testid="marker">{children}</div>
+  ),
   Popup: ({ children }: { children: ReactNode }) => <div>{children}</div>,
 }))
 
@@ -16,11 +18,19 @@ describe('UnlockByRegion', () => {
 
   it('shows the map and the grouped comparison for the five regions', async () => {
     renderWithProviders(<UnlockByRegion />, { url: '/?delay=0' })
-    expect(await screen.findByRole('heading', { name: 'Taxa de Desbloqueio de Cartões por Região' })).toBeInTheDocument()
+    expect(
+      await screen.findByRole('heading', { name: 'Taxa de Desbloqueio de Cartões por Região' }),
+    ).toBeInTheDocument()
     expect(await screen.findAllByTestId('marker')).toHaveLength(5)
-    expect(screen.getByRole('heading', { name: 'Comparativo Desbloqueios vs. Bloqueios por Região' })).toBeInTheDocument()
-    expect(screen.getByRole('img', { name: /Norte: Desbloqueados .*Bloqueados/ })).toBeInTheDocument()
-    expect(screen.getByRole('list', { name: /Valores: Taxa de Desbloqueio/ })).toHaveTextContent(/Sudeste: \d+,\d%/)
+    expect(
+      screen.getByRole('heading', { name: 'Comparativo Desbloqueios vs. Bloqueios por Região' }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('img', { name: /Norte: Desbloqueados .*Bloqueados/ }),
+    ).toBeInTheDocument()
+    expect(screen.getByRole('list', { name: /Valores: Taxa de Desbloqueio/ })).toHaveTextContent(
+      /Sudeste: \d+,\d%/,
+    )
   })
 
   it('follows the region filter', async () => {

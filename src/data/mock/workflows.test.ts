@@ -22,7 +22,8 @@ describe('getWorkflowInfo', () => {
     }
   })
   it('sizes the team per kpi', () => {
-    const analysts = (k: WorkflowKpi) => flatten(getWorkflowInfo(k).org).filter((n) => n.role === 'Equipe')
+    const analysts = (k: WorkflowKpi) =>
+      flatten(getWorkflowInfo(k).org).filter((n) => n.role === 'Equipe')
     expect(analysts('cards')).toHaveLength(6)
     expect(analysts('accounts')).toHaveLength(2)
   })

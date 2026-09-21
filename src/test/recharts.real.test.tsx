@@ -9,7 +9,9 @@ describe('ResponsiveContainer real no jsdom', () => {
   it('monta o container, mas sem layout ele não dá dimensões ao gráfico', () => {
     const { container } = render(
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={[{ a: 1 }, { a: 2 }]}><Line dataKey="a" /></LineChart>
+        <LineChart data={[{ a: 1 }, { a: 2 }]}>
+          <Line dataKey="a" />
+        </LineChart>
       </ResponsiveContainer>,
     )
     expect(container.querySelector('.recharts-responsive-container')).not.toBeNull()

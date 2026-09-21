@@ -17,7 +17,9 @@ describe('LogisticsPage', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'Logística' })).toBeInTheDocument()
     expect(await screen.findByLabelText('Tipo')).toBeInTheDocument()
     expect(await screen.findAllByRole('article')).toHaveLength(4)
-    expect(await screen.findByRole('heading', { name: 'Evolução de pendências logísticas' })).toBeInTheDocument()
+    expect(
+      await screen.findByRole('heading', { name: 'Evolução de pendências logísticas' }),
+    ).toBeInTheDocument()
     expect(await screen.findByRole('table', { name: 'Objetos por status' })).toBeInTheDocument()
   })
 
@@ -25,7 +27,9 @@ describe('LogisticsPage', () => {
     renderWithProviders(<LogisticsPage />, { url })
     await userEvent.click(await screen.findByRole('button', { name: /^Custódia/ }))
     const dialog = await screen.findByRole('dialog', { name: 'Custódia - Detalhamento' })
-    expect(await within(dialog).findByRole('table', { name: 'Etapas de Custódia' })).toBeInTheDocument()
+    expect(
+      await within(dialog).findByRole('table', { name: 'Etapas de Custódia' }),
+    ).toBeInTheDocument()
     await userEvent.keyboard('{Escape}')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
   })

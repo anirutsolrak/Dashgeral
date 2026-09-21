@@ -8,8 +8,8 @@ export function GalleryIndexPage() {
       <div>
         <h1 className="text-xl font-semibold">Galeria de Componentes</h1>
         <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-          Um exemplo de cada tipo de visualização que dá para integrar a um dashboard. Os filtros globais não se
-          aplicam à Galeria: os dados são exemplos fixos.
+          Um exemplo de cada tipo de visualização que dá para integrar a um dashboard. Os filtros
+          globais não se aplicam à Galeria: os dados são exemplos fixos.
         </p>
       </div>
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">

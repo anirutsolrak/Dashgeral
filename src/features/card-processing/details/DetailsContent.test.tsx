@@ -18,7 +18,9 @@ describe('DetailsContent', () => {
     expect(await heading('Motivos de parada das propostas digitadas')).toBeInTheDocument()
     expect(await heading('Propostas não digitadas')).toBeInTheDocument()
     expect(
-      await screen.findByRole('img', { name: new RegExp(`Digitadas: ${formatNumber(o.integration.digitized)}`) }),
+      await screen.findByRole('img', {
+        name: new RegExp(`Digitadas: ${formatNumber(o.integration.digitized)}`),
+      }),
     ).toBeInTheDocument()
   })
 
@@ -33,7 +35,9 @@ describe('DetailsContent', () => {
     renderWithProviders(<DetailsContent kpi="cards" />, { url: '/?delay=0' })
     expect(await heading('Status dos cartões')).toBeInTheDocument()
     expect(
-      await screen.findByRole('img', { name: new RegExp(`Enviados: ${formatNumber(o.cards.sent)}`) }),
+      await screen.findByRole('img', {
+        name: new RegExp(`Enviados: ${formatNumber(o.cards.sent)}`),
+      }),
     ).toBeInTheDocument()
   })
 

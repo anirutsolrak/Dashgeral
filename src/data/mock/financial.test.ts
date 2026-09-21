@@ -15,18 +15,24 @@ describe('buildFinancialOverview', () => {
     expect(o.limitUsage.ratePercent).toBeGreaterThan(0)
     expect(o.limitUsage.ratePercent).toBeLessThan(100)
     expect(o.logistics.byStatus).toHaveLength(5)
-    expect(o.logistics.byStatus.reduce((s, c) => s + c.count, 0)).toBe(buildOverview(DEFAULT_FILTERS).cards.sent)
+    expect(o.logistics.byStatus.reduce((s, c) => s + c.count, 0)).toBe(
+      buildOverview(DEFAULT_FILTERS).cards.sent,
+    )
     expect(o.logistics.totalAmount).toBe(o.logistics.byStatus.reduce((s, c) => s + c.amount, 0))
     expect(o.logistics.unitTotal).toBe(40)
   })
   it('is deterministic and shrinks with the period', () => {
     expect(buildFinancialOverview(DEFAULT_FILTERS)).toEqual(o)
-    expect(buildFinancialOverview({ ...DEFAULT_FILTERS, period: '7d' }).limitUsage.customers).toBeLessThan(
-      o.limitUsage.customers,
-    )
+    expect(
+      buildFinancialOverview({ ...DEFAULT_FILTERS, period: '7d' }).limitUsage.customers,
+    ).toBeLessThan(o.limitUsage.customers)
   })
   it('never divides by zero on tiny volumes', () => {
-    const tiny = buildFinancialOverview({ ...DEFAULT_FILTERS, period: '7d', region: 'centro-oeste' })
+    const tiny = buildFinancialOverview({
+      ...DEFAULT_FILTERS,
+      period: '7d',
+      region: 'centro-oeste',
+    })
     expect(Number.isFinite(tiny.limitUsage.averageUsage)).toBe(true)
     expect(Number.isFinite(tiny.limitUsage.ratePercent)).toBe(true)
   })
@@ -35,9 +41,17 @@ describe('buildFinancialOverview', () => {
 describe('buildUnlockByRegion', () => {
   it('returns the five regions with coordinates, or only the selected one', () => {
     const all = buildUnlockByRegion(DEFAULT_FILTERS)
-    expect(all.map((r) => r.region)).toEqual(['norte', 'nordeste', 'sudeste', 'sul', 'centro-oeste'])
+    expect(all.map((r) => r.region)).toEqual([
+      'norte',
+      'nordeste',
+      'sudeste',
+      'sul',
+      'centro-oeste',
+    ])
     expect(all.every((r) => Number.isFinite(r.lat) && Number.isFinite(r.lng))).toBe(true)
-    expect(buildUnlockByRegion({ ...DEFAULT_FILTERS, region: 'sul' }).map((r) => r.region)).toEqual(['sul'])
+    expect(buildUnlockByRegion({ ...DEFAULT_FILTERS, region: 'sul' }).map((r) => r.region)).toEqual(
+      ['sul'],
+    )
   })
   it('shrinks with the period', () => {
     const week = buildUnlockByRegion({ ...DEFAULT_FILTERS, period: '7d' })

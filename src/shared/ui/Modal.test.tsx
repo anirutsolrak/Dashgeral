@@ -20,7 +20,10 @@ describe('Modal', () => {
   })
   it('renders an accessible dialog with title and content', () => {
     setup()
-    expect(screen.getByRole('dialog', { name: 'Detalhamento' })).toHaveAttribute('aria-modal', 'true')
+    expect(screen.getByRole('dialog', { name: 'Detalhamento' })).toHaveAttribute(
+      'aria-modal',
+      'true',
+    )
     expect(screen.getByText('Conteúdo')).toBeInTheDocument()
   })
   it('closes on Escape, on the close button and on backdrop click, but not on inner click', async () => {

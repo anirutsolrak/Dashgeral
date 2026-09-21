@@ -1,4 +1,13 @@
-import { BookOpen, CreditCard, FileText, Network, RefreshCw, UserPlus, Workflow, type LucideIcon } from 'lucide-react'
+import {
+  BookOpen,
+  CreditCard,
+  FileText,
+  Network,
+  RefreshCw,
+  UserPlus,
+  Workflow,
+  type LucideIcon,
+} from 'lucide-react'
 import type { ReactNode } from 'react'
 import type { CardProcessingOverview, WorkflowKpi } from '@/data/types/card-processing'
 import { formatNumber, formatPercentage } from '@/shared/lib/formatters'
@@ -25,42 +34,78 @@ interface KpiView {
 
 const KPIS: KpiView[] = [
   {
-    kpi: 'integration', hint: 'Das contas para digitar', icon: RefreshCw, accent: 'purple',
+    kpi: 'integration',
+    hint: 'Das contas para digitar',
+    icon: RefreshCw,
+    accent: 'purple',
     value: (o) => formatPercentage(o.integration.ratePercent),
     summary: (o) => (
       <>
-        <SummaryStat label="Propostas digitadas" value={formatNumber(o.integration.digitized)} tone="blue" />
-        <SummaryStat label="Propostas não digitadas" value={formatNumber(o.integration.notDigitized)} tone="red" />
+        <SummaryStat
+          label="Propostas digitadas"
+          value={formatNumber(o.integration.digitized)}
+          tone="blue"
+        />
+        <SummaryStat
+          label="Propostas não digitadas"
+          value={formatNumber(o.integration.notDigitized)}
+          tone="red"
+        />
       </>
     ),
   },
   {
-    kpi: 'accounts', hint: 'Das contas digitadas', icon: UserPlus, accent: 'teal',
+    kpi: 'accounts',
+    hint: 'Das contas digitadas',
+    icon: UserPlus,
+    accent: 'teal',
     value: (o) => formatPercentage(o.accounts.ratePercent),
     summary: (o) => (
       <>
         <SummaryStat label="Contas criadas" value={formatNumber(o.accounts.created)} tone="green" />
-        <SummaryStat label="Contas não criadas" value={formatNumber(o.accounts.notCreated)} tone="red" />
+        <SummaryStat
+          label="Contas não criadas"
+          value={formatNumber(o.accounts.notCreated)}
+          tone="red"
+        />
       </>
     ),
   },
   {
-    kpi: 'cards', hint: 'Cartões que saíram para entrega', icon: CreditCard, accent: 'orange',
+    kpi: 'cards',
+    hint: 'Cartões que saíram para entrega',
+    icon: CreditCard,
+    accent: 'orange',
     value: (o) => formatNumber(o.cards.sent),
     summary: (o) => (
       <>
-        <SummaryStat label="Total de cartões" value={formatNumber(o.cards.totalAccounts)} tone="blue" />
+        <SummaryStat
+          label="Total de cartões"
+          value={formatNumber(o.cards.totalAccounts)}
+          tone="blue"
+        />
         <SummaryStat label="Cartões enviados" value={formatNumber(o.cards.sent)} tone="green" />
       </>
     ),
   },
   {
-    kpi: 'insurance', hint: 'Das contas digitadas', icon: FileText, accent: 'pink',
+    kpi: 'insurance',
+    hint: 'Das contas digitadas',
+    icon: FileText,
+    accent: 'pink',
     value: (o) => formatNumber(o.insurance.withInsurance),
     summary: (o) => (
       <>
-        <SummaryStat label="Total de propostas" value={formatNumber(o.insurance.total)} tone="blue" />
-        <SummaryStat label="Propostas com seguro" value={formatNumber(o.insurance.withInsurance)} tone="green" />
+        <SummaryStat
+          label="Total de propostas"
+          value={formatNumber(o.insurance.total)}
+          tone="blue"
+        />
+        <SummaryStat
+          label="Propostas com seguro"
+          value={formatNumber(o.insurance.withInsurance)}
+          tone="green"
+        />
       </>
     ),
   },

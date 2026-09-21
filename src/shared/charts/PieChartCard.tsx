@@ -23,14 +23,24 @@ export function PieChartCard({ title, data, footnote }: PieChartCardProps) {
                 <Cell key={d.label} fill={color(i)} />
               ))}
             </Pie>
-            <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(value) => formatNumber(Number(value))} />
+            <Tooltip
+              contentStyle={TOOLTIP_STYLE}
+              formatter={(value) => formatNumber(Number(value))}
+            />
           </PieChart>
         </ResponsiveContainer>
       </div>
-      <ul aria-label={`Legenda de ${title}`} className="mt-2 grid grid-cols-1 gap-1 text-xs sm:grid-cols-2">
+      <ul
+        aria-label={`Legenda de ${title}`}
+        className="mt-2 grid grid-cols-1 gap-1 text-xs sm:grid-cols-2"
+      >
         {toPercentages(data).map((d, i) => (
           <li key={d.label} className="flex items-center gap-2">
-            <span aria-hidden className="size-3 shrink-0 rounded-full" style={{ backgroundColor: color(i) }} />
+            <span
+              aria-hidden
+              className="size-3 shrink-0 rounded-full"
+              style={{ backgroundColor: color(i) }}
+            />
             {`${d.label}: ${formatPercentage(d.percent, 1)}`}
           </li>
         ))}

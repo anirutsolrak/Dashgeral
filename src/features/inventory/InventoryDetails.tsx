@@ -27,7 +27,13 @@ function ItemDetails({ item }: { item: StockItem }) {
   const columns = useMemo<DataColumn<StatusRow>[]>(
     () => [
       { id: 'status', header: 'Status', cell: (r) => r.status, sortValue: (r) => r.status },
-      { id: 'quantity', header: 'Quantidade', cell: (r) => formatNumber(r.quantity), sortValue: (r) => r.quantity, align: 'right' },
+      {
+        id: 'quantity',
+        header: 'Quantidade',
+        cell: (r) => formatNumber(r.quantity),
+        sortValue: (r) => r.quantity,
+        align: 'right',
+      },
       {
         id: 'share',
         header: 'Percentual',
@@ -40,7 +46,10 @@ function ItemDetails({ item }: { item: StockItem }) {
   )
   return (
     <div className="space-y-4">
-      <PieChartCard title={`Distribuição de ${item.label}`} data={rows.map((r) => ({ label: r.status, value: r.quantity }))} />
+      <PieChartCard
+        title={`Distribuição de ${item.label}`}
+        data={rows.map((r) => ({ label: r.status, value: r.quantity }))}
+      />
       <DataTable caption={`Status de ${item.label}`} columns={columns} data={rows} />
     </div>
   )

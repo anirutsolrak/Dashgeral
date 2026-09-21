@@ -17,12 +17,16 @@ describe('buildInventory', () => {
   })
   it('is deterministic and shrinks with the period', () => {
     expect(buildInventory(DEFAULT_FILTERS)).toEqual(inv)
-    expect(buildInventory({ ...DEFAULT_FILTERS, period: '7d' }).items[0]!.total).toBeLessThan(inv.items[0]!.total)
+    expect(buildInventory({ ...DEFAULT_FILTERS, period: '7d' }).items[0]!.total).toBeLessThan(
+      inv.items[0]!.total,
+    )
   })
   it('never yields negative quantities on tiny volumes', () => {
     const tiny = buildInventory({ ...DEFAULT_FILTERS, period: '7d', region: 'centro-oeste' })
     for (const item of tiny.items) {
-      expect(Math.min(item.total, item.available, item.inTransit, item.lost)).toBeGreaterThanOrEqual(0)
+      expect(
+        Math.min(item.total, item.available, item.inTransit, item.lost),
+      ).toBeGreaterThanOrEqual(0)
     }
   })
 })

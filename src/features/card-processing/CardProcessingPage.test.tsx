@@ -13,9 +13,13 @@ describe('CardProcessingPage', () => {
 
   it('renders the heading, agreement filters, four KPIs and the trend', async () => {
     renderWithProviders(<CardProcessingPage />, { url })
-    expect(screen.getByRole('heading', { level: 1, name: 'Processamento de Cartões' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Processamento de Cartões' }),
+    ).toBeInTheDocument()
     expect(await screen.findAllByRole('article')).toHaveLength(4)
-    expect(await screen.findByRole('heading', { name: 'Taxa de Integração ao longo do tempo' })).toBeInTheDocument()
+    expect(
+      await screen.findByRole('heading', { name: 'Taxa de Integração ao longo do tempo' }),
+    ).toBeInTheDocument()
     expect(await screen.findByLabelText('Categoria')).toBeInTheDocument()
   })
 
@@ -23,14 +27,18 @@ describe('CardProcessingPage', () => {
     renderWithProviders(<CardProcessingPage />, { url })
     await userEvent.click(await screen.findByRole('button', { name: /^Cartões Enviados/ }))
     const dialog = await screen.findByRole('dialog', { name: 'Cartões Enviados - Detalhamento' })
-    expect(await within(dialog).findByRole('heading', { name: 'Status dos cartões' })).toBeInTheDocument()
+    expect(
+      await within(dialog).findByRole('heading', { name: 'Status dos cartões' }),
+    ).toBeInTheDocument()
     await userEvent.keyboard('{Escape}')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
   })
 
   it('opens a workflow view, loading it lazily', async () => {
     renderWithProviders(<CardProcessingPage />, { url })
-    await userEvent.click(await screen.findByRole('button', { name: 'Fluxograma: Taxa de Integração' }))
+    await userEvent.click(
+      await screen.findByRole('button', { name: 'Fluxograma: Taxa de Integração' }),
+    )
     const dialog = await screen.findByRole('dialog', { name: 'Fluxograma - Operações' })
     expect(await within(dialog).findByText('Proposta recebida')).toBeInTheDocument()
   })
@@ -46,7 +54,9 @@ describe('CardProcessingPage', () => {
       initialEntries: [url],
     })
     render(
-      <QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
+      <QueryClientProvider
+        client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}
+      >
         <RouterProvider router={router} />
       </QueryClientProvider>,
     )

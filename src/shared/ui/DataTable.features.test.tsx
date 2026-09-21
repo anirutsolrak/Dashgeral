@@ -7,7 +7,10 @@ interface Row {
   name: string
   qty: number
 }
-const rows: Row[] = Array.from({ length: 25 }, (_, i) => ({ name: `Item ${String(i + 1).padStart(2, '0')}`, qty: i + 1 }))
+const rows: Row[] = Array.from({ length: 25 }, (_, i) => ({
+  name: `Item ${String(i + 1).padStart(2, '0')}`,
+  qty: i + 1,
+}))
 const columns: DataColumn<Row>[] = [
   { id: 'name', header: 'Nome', cell: (r) => r.name, sortValue: (r) => r.name },
   { id: 'qty', header: 'Qtd', cell: (r) => String(r.qty), sortValue: (r) => r.qty, align: 'right' },
@@ -60,7 +63,15 @@ describe('DataTable search', () => {
 describe('DataTable selection', () => {
   it('selects rows, counts them and reports the selected data', async () => {
     const onSelectionChange = vi.fn()
-    render(<DataTable caption="Itens" columns={columns} data={small} selectable onSelectionChange={onSelectionChange} />)
+    render(
+      <DataTable
+        caption="Itens"
+        columns={columns}
+        data={small}
+        selectable
+        onSelectionChange={onSelectionChange}
+      />,
+    )
     expect(screen.getByRole('status')).toHaveTextContent('0 selecionadas')
     await userEvent.click(screen.getByRole('checkbox', { name: 'Selecionar linha 2' }))
     expect(screen.getByRole('status')).toHaveTextContent('1 selecionada')
@@ -72,7 +83,15 @@ describe('DataTable selection', () => {
 
   it('keeps the selection tied to the row when the table is sorted', async () => {
     const onSelectionChange = vi.fn()
-    render(<DataTable caption="Itens" columns={columns} data={small} selectable onSelectionChange={onSelectionChange} />)
+    render(
+      <DataTable
+        caption="Itens"
+        columns={columns}
+        data={small}
+        selectable
+        onSelectionChange={onSelectionChange}
+      />,
+    )
     await userEvent.click(screen.getByRole('button', { name: /Nome/ }))
     await userEvent.click(screen.getByRole('button', { name: /Nome/ }))
     await userEvent.click(screen.getByRole('checkbox', { name: 'Selecionar linha 1' }))
@@ -84,12 +103,22 @@ describe('DataTable selection', () => {
 
 describe('DataTable expandable rows', () => {
   it('toggles a detail row with aria-expanded', async () => {
-    render(<DataTable caption="Itens" columns={columns} data={small} renderDetail={(r) => <p>Detalhe de {r.name}</p>} />)
+    render(
+      <DataTable
+        caption="Itens"
+        columns={columns}
+        data={small}
+        renderDetail={(r) => <p>Detalhe de {r.name}</p>}
+      />,
+    )
     const [first] = screen.getAllByRole('button', { name: 'Expandir detalhes' })
     expect(first).toHaveAttribute('aria-expanded', 'false')
     await userEvent.click(first!)
     expect(screen.getByText('Detalhe de Item 01')).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Recolher detalhes' })).toHaveAttribute('aria-expanded', 'true')
+    expect(screen.getByRole('button', { name: 'Recolher detalhes' })).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    )
     await userEvent.click(screen.getByRole('button', { name: 'Recolher detalhes' }))
     expect(screen.queryByText('Detalhe de Item 01')).not.toBeInTheDocument()
   })

@@ -28,7 +28,18 @@ describe('KPICard', () => {
     const onSelect = vi.fn()
     const onAction = vi.fn()
     const { container } = render(
-      <KPICard label="Contas" value="10" icon={CreditCard} accent="teal" onSelect={onSelect} actions={<button type="button" onClick={onAction}>Fluxograma</button>}>
+      <KPICard
+        label="Contas"
+        value="10"
+        icon={CreditCard}
+        accent="teal"
+        onSelect={onSelect}
+        actions={
+          <button type="button" onClick={onAction}>
+            Fluxograma
+          </button>
+        }
+      >
         <p>Resumo</p>
       </KPICard>,
     )

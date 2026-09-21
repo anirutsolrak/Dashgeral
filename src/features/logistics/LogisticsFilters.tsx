@@ -9,7 +9,11 @@ export function LogisticsFilters() {
   const catalog = useLogisticsCatalog()
 
   if (catalog.isError) {
-    return <p role="status" className="text-sm text-slate-500">Filtros de logística indisponíveis</p>
+    return (
+      <p role="status" className="text-sm text-slate-500">
+        Filtros de logística indisponíveis
+      </p>
+    )
   }
 
   const types = catalog.data?.types ?? []
@@ -27,7 +31,9 @@ export function LogisticsFilters() {
         >
           <option value="all">Todos</option>
           {types.map((t) => (
-            <option key={t.id} value={t.id}>{t.label}</option>
+            <option key={t.id} value={t.id}>
+              {t.label}
+            </option>
           ))}
         </select>
       </label>
@@ -43,7 +49,9 @@ export function LogisticsFilters() {
           {groups.map((g) => (
             <optgroup key={g.key} label={g.label}>
               {g.steps.map((s) => (
-                <option key={s.id} value={s.id}>{s.label}</option>
+                <option key={s.id} value={s.id}>
+                  {s.label}
+                </option>
               ))}
             </optgroup>
           ))}

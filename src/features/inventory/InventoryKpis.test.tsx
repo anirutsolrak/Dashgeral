@@ -20,7 +20,9 @@ describe('InventoryKpis', () => {
     const cardsItem = inv.items[0]!
     expect(within(cards[0]!).getByText('Cartões')).toBeInTheDocument()
     expect(within(cards[0]!).getByText(formatNumber(cardsItem.total))).toBeInTheDocument()
-    expect(within(cards[0]!).getByText(`${formatNumber(cardsItem.available)} disponíveis`)).toBeInTheDocument()
+    expect(
+      within(cards[0]!).getByText(`${formatNumber(cardsItem.available)} disponíveis`),
+    ).toBeInTheDocument()
     expect(within(cards[2]!).getByText('Cartas Berço')).toBeInTheDocument()
     expect(within(cards[3]!).getByText(formatNumber(inv.totalLost))).toBeInTheDocument()
     expect(within(cards[3]!).getByText('Total de itens extraviados')).toBeInTheDocument()

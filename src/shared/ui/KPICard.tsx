@@ -22,7 +22,16 @@ interface KPICardProps {
   actions?: ReactNode
 }
 
-export function KPICard({ label, value, hint, icon: Icon, accent = 'blue', onSelect, children, actions }: KPICardProps) {
+export function KPICard({
+  label,
+  value,
+  hint,
+  icon: Icon,
+  accent = 'blue',
+  onSelect,
+  children,
+  actions,
+}: KPICardProps) {
   const head = (
     <div className="flex items-start justify-between gap-3">
       <div>
@@ -46,7 +55,9 @@ export function KPICard({ label, value, hint, icon: Icon, accent = 'blue', onSel
       ) : (
         head
       )}
-      {children && <div className="mt-3 border-t border-slate-100 pt-3 dark:border-slate-800">{children}</div>}
+      {children && (
+        <div className="mt-3 border-t border-slate-100 pt-3 dark:border-slate-800">{children}</div>
+      )}
       {actions && <div className="mt-3 flex flex-wrap gap-2">{actions}</div>}
     </article>
   )

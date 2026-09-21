@@ -11,13 +11,24 @@ export interface EChartPalette {
 }
 
 const LIGHT: EChartPalette = {
-  text: '#64748b', grid: '#e2e8f0', tooltipBg: '#ffffff', tooltipBorder: '#e2e8f0', tooltipText: '#0f172a', series: CHART_COLORS,
+  text: '#64748b',
+  grid: '#e2e8f0',
+  tooltipBg: '#ffffff',
+  tooltipBorder: '#e2e8f0',
+  tooltipText: '#0f172a',
+  series: CHART_COLORS,
 }
 const DARK: EChartPalette = {
-  text: '#94a3b8', grid: '#334155', tooltipBg: '#1e293b', tooltipBorder: '#334155', tooltipText: '#f1f5f9', series: CHART_COLORS,
+  text: '#94a3b8',
+  grid: '#334155',
+  tooltipBg: '#1e293b',
+  tooltipBorder: '#334155',
+  tooltipText: '#f1f5f9',
+  series: CHART_COLORS,
 }
 
-export const chartPalette = (theme: 'light' | 'dark'): EChartPalette => (theme === 'dark' ? DARK : LIGHT)
+export const chartPalette = (theme: 'light' | 'dark'): EChartPalette =>
+  theme === 'dark' ? DARK : LIGHT
 
 export const tooltipStyle = (p: EChartPalette) => ({
   backgroundColor: p.tooltipBg,

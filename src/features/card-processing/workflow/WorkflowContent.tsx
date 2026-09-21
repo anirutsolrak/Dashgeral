@@ -20,7 +20,8 @@ export function WorkflowContent({ kpi, view }: WorkflowContentProps) {
   return (
     <QueryBoundary query={query} skeleton={<Skeleton className="h-80" />}>
       {(info) => {
-        if (view === 'flowchart') return <FlowDiagram steps={info.flow} label={label} theme={theme} />
+        if (view === 'flowchart')
+          return <FlowDiagram steps={info.flow} label={label} theme={theme} />
         if (view === 'orgchart') return <OrgChart root={info.org} label={label} theme={theme} />
         return <DocsList docs={info.docs} />
       }}
