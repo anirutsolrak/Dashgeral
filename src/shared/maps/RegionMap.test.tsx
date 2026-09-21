@@ -1,7 +1,8 @@
 import { render, screen, within } from '@testing-library/react'
 import type { ReactNode } from 'react'
 import { describe, expect, it, vi } from 'vitest'
-import { RegionMap, defaultColorFor, type MapPoint } from './RegionMap'
+import { defaultColorFor } from './colors'
+import { RegionMap, type MapPoint } from './RegionMap'
 
 vi.mock('react-leaflet', () => ({
   MapContainer: ({ children }: { children: ReactNode }) => <div data-testid="map">{children}</div>,

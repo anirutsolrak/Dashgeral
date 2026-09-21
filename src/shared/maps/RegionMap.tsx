@@ -1,6 +1,7 @@
 import 'leaflet/dist/leaflet.css'
 import { CircleMarker, MapContainer, Popup, TileLayer } from 'react-leaflet'
 import { CHART_CARD_CLASS } from '@/shared/charts/chartTheme'
+import { defaultColorFor } from './colors'
 
 export interface MapPoint {
   id: string
@@ -19,9 +20,6 @@ interface RegionMapProps {
   height?: number
 }
 
-export const defaultColorFor = (value: number): string =>
-  value >= 85 ? '#10b981' : value >= 75 ? '#f59e0b' : '#ef4444'
-
 const BRAZIL_CENTER: [number, number] = [-14.2, -51.9]
 
 export function RegionMap({
@@ -37,8 +35,8 @@ export function RegionMap({
       <div role="region" aria-label={`Mapa: ${title}`} style={{ height }} className="overflow-hidden rounded-lg">
         <MapContainer center={BRAZIL_CENTER} zoom={4} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
           <TileLayer
-            attribution="&copy; OpenStreetMap contributors"
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {points.map((p) => (
             <CircleMarker
