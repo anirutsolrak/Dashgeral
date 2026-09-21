@@ -16,4 +16,20 @@ describe('mockLogisticsRepository', () => {
     window.history.replaceState({}, '', '/?delay=0&error=1')
     await expect(repo.getOverview(DEFAULT_FILTERS)).rejects.toThrow('Falha simulada')
   })
+
+  it('getCatalog returns copies, not references', async () => {
+    const catalog1 = await repo.getCatalog()
+    const catalog2 = await repo.getCatalog()
+
+    expect(catalog1).toEqual(catalog2)
+    expect(catalog1).not.toBe(catalog2)
+
+    // Mutate the first catalog
+    if (catalog1.types && catalog1.types.length > 0) {
+      catalog1.types[0]!.label = 'MUTATED'
+    }
+
+    // Second catalog should not be affected
+    expect(catalog2).not.toEqual(catalog1)
+  })
 })

@@ -7,5 +7,5 @@ export const mockLogisticsRepository: LogisticsRepository = {
   getOverview: (filters) => simulate(() => buildLogistics(filters)),
   getTrend: (filters) => simulate(() => buildLogisticsTrend(filters)),
   getTypeComparison: (filters) => simulate(() => buildTypeComparison(filters)),
-  getCatalog: () => simulate(() => LOGISTICS_CATALOG),
+  getCatalog: () => simulate(() => structuredClone(LOGISTICS_CATALOG)),
 }
