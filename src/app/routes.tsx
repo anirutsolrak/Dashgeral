@@ -1,5 +1,6 @@
-import { Navigate, type RouteObject } from 'react-router-dom'
+import { type RouteObject } from 'react-router-dom'
 import { ComingSoon } from '@/shared/ui/ComingSoon'
+import { IndexRedirect } from './IndexRedirect'
 import { AppLayout } from './layout/AppLayout'
 
 export const routes: RouteObject[] = [
@@ -7,7 +8,7 @@ export const routes: RouteObject[] = [
     path: '/',
     element: <AppLayout />,
     children: [
-      { index: true, element: <Navigate to="/card-processing" replace /> },
+      { index: true, element: <IndexRedirect /> },
       {
         path: 'card-processing',
         lazy: async () => ({

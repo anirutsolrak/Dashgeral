@@ -16,6 +16,7 @@ describe('AppLayout', () => {
   beforeEach(() => {
     window.history.replaceState({}, '', '/?delay=0')
     document.documentElement.classList.remove('dark')
+    localStorage.clear()
   })
 
   it('keeps active filters in navigation links', async () => {
@@ -38,6 +39,12 @@ describe('AppLayout', () => {
   it('lets the user change the period filter', async () => {
     renderAt('/financial')
     await userEvent.selectOptions(await screen.findByLabelText('Período'), '30d')
+    expect(screen.getByLabelText('Período')).toHaveValue('30d')
+  })
+
+  it('keeps the query string when redirecting from the index route', async () => {
+    renderAt('/?period=30d')
+    expect(await screen.findByText('Total de propostas')).toBeInTheDocument()
     expect(screen.getByLabelText('Período')).toHaveValue('30d')
   })
 })
