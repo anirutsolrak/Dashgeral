@@ -1,6 +1,6 @@
 import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { formatNumber } from '@/shared/lib/formatters'
-import { CHART_CARD_CLASS, CHART_COLORS, describeData } from './chartTheme'
+import { AXIS_TICK, CHART_CARD_CLASS, CHART_COLORS, GRID_STROKE, TOOLTIP_STYLE, describeData } from './chartTheme'
 import type { ChartDatum } from './types'
 
 interface BarChartCardProps {
@@ -16,10 +16,10 @@ export function BarChartCard({ title, data, height = 240 }: BarChartCardProps) {
       <div role="img" aria-label={describeData(data)} style={{ height }}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} />
-            <XAxis dataKey="label" />
-            <YAxis tickFormatter={(v) => formatNumber(Number(v))} />
-            <Tooltip formatter={(value) => formatNumber(Number(value))} />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={GRID_STROKE} />
+            <XAxis dataKey="label" tick={AXIS_TICK} />
+            <YAxis tick={AXIS_TICK} tickFormatter={(v) => formatNumber(Number(v))} />
+            <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(value) => formatNumber(Number(value))} />
             <Bar dataKey="value" radius={[4, 4, 0, 0]}>
               {data.map((d, i) => (
                 <Cell key={d.label} fill={d.color ?? CHART_COLORS[i % CHART_COLORS.length]} />

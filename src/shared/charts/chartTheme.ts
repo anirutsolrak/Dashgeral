@@ -6,8 +6,16 @@ export const ACCENT_HEX = {
   green: '#10b981',
   pink: '#ec4899',
   red: '#ef4444',
-  blue: '#3b82f6',
   purple: '#a855f7',
+} as const
+
+// Cores dependem do tema via variáveis CSS definidas em index.css (:root e .dark).
+export const AXIS_TICK = { fill: 'var(--chart-text)' } as const
+export const GRID_STROKE = 'var(--chart-grid)'
+export const TOOLTIP_STYLE = {
+  backgroundColor: 'var(--chart-tooltip-bg)',
+  border: '1px solid var(--chart-tooltip-border)',
+  color: 'var(--chart-tooltip-text)',
 } as const
 
 export const CHART_CARD_CLASS =

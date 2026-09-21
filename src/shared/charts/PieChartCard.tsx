@@ -1,6 +1,6 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts'
 import { formatNumber, formatPercentage } from '@/shared/lib/formatters'
-import { CHART_CARD_CLASS, CHART_COLORS } from './chartTheme'
+import { CHART_CARD_CLASS, CHART_COLORS, TOOLTIP_STYLE } from './chartTheme'
 import { toPercentages } from './percent'
 import type { ChartDatum } from './types'
 
@@ -23,7 +23,7 @@ export function PieChartCard({ title, data, footnote }: PieChartCardProps) {
                 <Cell key={d.label} fill={color(i)} />
               ))}
             </Pie>
-            <Tooltip formatter={(value) => formatNumber(Number(value))} />
+            <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(value) => formatNumber(Number(value))} />
           </PieChart>
         </ResponsiveContainer>
       </div>

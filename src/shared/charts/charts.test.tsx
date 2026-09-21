@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { BarChartCard } from './BarChartCard'
 import { LineChartCard } from './LineChartCard'
 import { PieChartCard } from './PieChartCard'
+import { AXIS_TICK, GRID_STROKE, TOOLTIP_STYLE } from './chartTheme'
 
 afterEach(() => vi.restoreAllMocks())
 
@@ -63,5 +64,13 @@ describe('LineChartCard', () => {
     expect(screen.getByRole('heading', { name: 'Tendência' })).toBeInTheDocument()
     expect(container.querySelector('svg')).not.toBeNull()
     expect(screen.getByRole('img')).toHaveAccessibleName(/Jan: 75/)
+  })
+})
+
+describe('chart theme', () => {
+  it('uses CSS variables instead of hard-coded colors', () => {
+    const values = [AXIS_TICK.fill, GRID_STROKE, ...Object.values(TOOLTIP_STYLE).filter((v) => v !== '1px solid var(--chart-tooltip-border)')]
+    values.forEach((v) => expect(v).toMatch(/^var\(--chart-/))
+    expect(TOOLTIP_STYLE.border).toContain('var(--chart-tooltip-border)')
   })
 })
