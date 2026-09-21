@@ -2,11 +2,19 @@ import { Moon, Sun } from 'lucide-react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { GlobalFiltersBar } from '@/app/filters/GlobalFiltersBar'
 import { NAV_ITEMS } from '@/app/nav'
-import { useTheme } from './useTheme'
+import { ThemeProvider, useAppTheme } from './ThemeContext'
 
 export function AppLayout() {
+  return (
+    <ThemeProvider>
+      <AppShell />
+    </ThemeProvider>
+  )
+}
+
+function AppShell() {
   const { search } = useLocation()
-  const { theme, toggle } = useTheme()
+  const { theme, toggle } = useAppTheme()
   return (
     <div className="min-h-screen md:grid md:grid-cols-[16rem_1fr]">
       <nav aria-label="Principal" className="flex gap-1 overflow-x-auto border-b border-slate-200 p-3 md:flex-col md:border-r md:border-b-0 dark:border-slate-800">

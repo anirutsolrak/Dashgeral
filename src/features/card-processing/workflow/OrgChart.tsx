@@ -1,11 +1,13 @@
 import { Background, Controls, ReactFlow } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { useMemo } from 'react'
+import { useAppTheme } from '@/app/layout/ThemeContext'
 import type { OrgNode } from '@/data/types/card-processing'
 import { toEdge, toNode } from './flowUtils'
 import { layoutOrg } from './layout'
 
 export function OrgChart({ root, label }: { root: OrgNode; label: string }) {
+  const { theme } = useAppTheme()
   const { nodes, edges } = useMemo(() => {
     const layout = layoutOrg(root)
     return { nodes: layout.nodes.map((n) => toNode(n, 'vertical')), edges: layout.edges.map(toEdge) }
@@ -19,7 +21,7 @@ export function OrgChart({ root, label }: { root: OrgNode; label: string }) {
         nodesDraggable={false}
         nodesConnectable={false}
         elementsSelectable={false}
-        colorMode="system"
+        colorMode={theme}
       >
         <Background />
         <Controls showInteractive={false} />
