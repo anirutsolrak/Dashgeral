@@ -40,10 +40,7 @@ e uma revisão final do plano inteiro. Não escrever arquivos com mais de ~150 l
 
 ## Estado
 
-- Prontos: Plano 1 (fundação), Plano 2 (Card Processing), Plano 3 (Financial + Inventory).
-- Faltam: **Plano 4** Logística (`/logistics`, filtros de tipo e etapa, tipo `logisticsType`/`logisticsStep` já existem no schema de filtros),
-  **Plano 5** Galeria (`/gallery`, uma rota por lib: Recharts, ECharts, mapas, tabelas, fluxos; ECharts ainda não instalado),
-  **Plano 6** limpeza (remover `legacy/`, `public/vite.svg` e imagens antigas, `.gitattributes` com `eol=lf`, Prettier nos arquivos pendentes, README final).
-- Pendências conhecidas: tiles do mapa ficam claros no tema escuro e exigem internet; o mock global de `recharts`
-  vale revisar antes da Galeria; foco visível nos botões de ação dos KPIs; o `.env` local antigo (chave anon do Supabase,
-  ainda no histórico do git) deve ser apagado e a chave rotacionada.
+- Prontos: Plano 1 (fundação), Plano 2 (Card Processing), Plano 3 (Financial + Inventory), Plano 4 (Logística: `/logistics`, filtros de tipo e etapa aplicados nos geradores).
+- Faltam (planos já escritos em `docs/superpowers/plans/`): **Plano 5** Galeria (`/gallery`, uma rota por lib; ECharts ainda não instalado) e **Plano 6** limpeza (remover `legacy/`, `public/vite.svg` e imagens antigas, `.gitattributes` com `eol=lf`, Prettier, README final).
+- Pendências conhecidas: tiles do mapa ficam claros no tema escuro e exigem internet; o mock global de `recharts` vale revisar antes da Galeria (Plano 5, Task 1); foco visível nos botões de ação dos KPIs; o `.env` local antigo (chave anon do Supabase, ainda no histórico do git) deve ser apagado e a chave rotacionada.
+- Backlog de consistência entre planos (achados na revisão do Plano 4): `selectClass` repetido em 3 filtros (extrair para `shared`); mensagens de status dos filtros sem variante `dark:` (corrigir em `AgreementFilters` e `LogisticsFilters` juntos); Inventory e Logistics não têm o filtro de convênio embora o `seedFor` dependa dele; os params `logisticsType`/`logisticsStep` vazam para as outras rotas e entram nas chaves de query; as barras Flash vs. Terceiros têm a mesma forma (fator 60/40); rótulos de etapa repetidos entre grupos (`optgroup` desambigua só com o select aberto).
