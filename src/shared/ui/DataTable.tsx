@@ -100,7 +100,7 @@ export function DataTable<T>({ columns, data, caption }: DataTableProps<T>) {
         <tbody>
           {rows.length === 0 ? (
             <tr>
-              <td colSpan={columns.length} className="px-3 py-4 text-center text-slate-500">
+              <td colSpan={columns.length} className="px-3 py-4 text-center text-slate-500 dark:text-slate-400">
                 Sem dados
               </td>
             </tr>

@@ -1,6 +1,6 @@
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { formatNumber } from '@/shared/lib/formatters'
-import { AXIS_TICK, CHART_CARD_CLASS, GRID_STROKE, TOOLTIP_STYLE } from './chartTheme'
+import { AXIS_TICK, CHART_CARD_CLASS, GRID_STROKE, LEGEND_LABEL_STYLE, TOOLTIP_STYLE } from './chartTheme'
 
 export interface GroupedSeries {
   key: string
@@ -39,7 +39,7 @@ export function GroupedBarChartCard({ title, series, data, height = 280 }: Group
             <XAxis dataKey="label" tick={AXIS_TICK} />
             <YAxis tick={AXIS_TICK} tickFormatter={(v) => formatNumber(Number(v))} />
             <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(value) => formatNumber(Number(value))} />
-            <Legend />
+            <Legend labelStyle={LEGEND_LABEL_STYLE} />
             {series.map((s) => (
               <Bar key={s.key} dataKey={s.key} name={s.label} fill={s.color} radius={[4, 4, 0, 0]} />
             ))}

@@ -31,4 +31,13 @@ describe('GroupedBarChartCard', () => {
     render(<GroupedBarChartCard series={series} data={data} />)
     expect(screen.queryByRole('heading')).not.toBeInTheDocument()
   })
+
+  it('renders legend labels for every series in the theme text colour, not the series colour', () => {
+    const { container } = render(<GroupedBarChartCard series={series} data={data} />)
+    const labels = Array.from(container.querySelectorAll<HTMLElement>('.recharts-legend-item-text'))
+    expect(labels.map((l) => l.textContent).sort()).toEqual(['Bloqueados', 'Desbloqueados'])
+    for (const label of labels) {
+      expect(label.getAttribute('style')).toContain('var(--chart-text)')
+    }
+  })
 })

@@ -11,6 +11,7 @@ export const ACCENT_HEX = {
 
 // Cores dependem do tema via variáveis CSS definidas em index.css (:root e .dark).
 export const AXIS_TICK = { fill: 'var(--chart-text)' } as const
+export const LEGEND_LABEL_STYLE = { color: 'var(--chart-text)' } as const
 export const GRID_STROKE = 'var(--chart-grid)'
 export const TOOLTIP_STYLE = {
   backgroundColor: 'var(--chart-tooltip-bg)',
