@@ -18,6 +18,18 @@ describe.each([
   })
 })
 
+describe('nested freshness', () => {
+  it('does not share nested arrays between calls', () => {
+    expect(buildRechartsData().units).not.toBe(buildRechartsData().units)
+    expect(buildRechartsData().units[0]).not.toBe(buildRechartsData().units[0])
+    expect(buildRechartsData().channels).not.toBe(buildRechartsData().channels)
+    expect(buildEchartsData().heatmap.days).not.toBe(buildEchartsData().heatmap.days)
+    expect(buildEchartsData().heatmap.hours).not.toBe(buildEchartsData().heatmap.hours)
+    expect(buildMapsData().hubs).not.toBe(buildMapsData().hubs)
+    expect(buildTablesData().shipments[0]!.events).not.toBe(buildTablesData().shipments[0]!.events)
+  })
+})
+
 describe('buildRechartsData', () => {
   const d = buildRechartsData()
   it('has twelve months and consistent totals', () => {

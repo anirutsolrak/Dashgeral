@@ -12,8 +12,8 @@ export function buildEchartsData(): EchartsData {
   let stage = 1000
   return {
     heatmap: {
-      days: DAYS,
-      hours: HOURS,
+      days: [...DAYS],
+      hours: [...HOURS],
       cells: DAYS.flatMap((_, y) =>
         HOURS.map((_, x): [number, number, number] => {
           const peak = Math.max(0, 1 - Math.abs(x - 3) / 6) + Math.max(0, 1 - Math.abs(x - 8) / 6)

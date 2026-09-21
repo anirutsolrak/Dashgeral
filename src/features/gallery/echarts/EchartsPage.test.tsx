@@ -10,9 +10,12 @@ interface StubProps {
 
 vi.mock('@/shared/echarts/EChart', () => ({
   EChart: ({ title, description, option }: StubProps) => (
-    <figure aria-label={title} data-type={option.series[0]!.type} data-text={option.textStyle.color}>
-      {description}
-    </figure>
+    <div
+      role="img"
+      aria-label={`${title}. ${description}`}
+      data-type={option.series[0]!.type}
+      data-text={option.textStyle.color}
+    />
   ),
 }))
 
@@ -32,15 +35,15 @@ describe('EchartsPage', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'Apache ECharts' })).toBeInTheDocument()
     const titles = (await screen.findAllByRole('heading', { level: 2 })).map((h) => h.textContent)
     expect(titles).toEqual(['Mapa de calor', 'Funil', 'Gauge', 'Treemap', 'Sankey'])
-    const types = screen.getAllByRole('figure').map((f) => f.getAttribute('data-type'))
+    const types = screen.getAllByRole('img').map((c) => c.getAttribute('data-type'))
     expect(types).toEqual(['heatmap', 'funnel', 'gauge', 'treemap', 'sankey'])
-    expect(screen.getByRole('figure', { name: 'SLA de entrega' })).toHaveTextContent(/SLA de entrega \(%\): \d+ de 100/)
+    expect(screen.getByRole('img', { name: /^SLA de entrega\. .*SLA de entrega \(%\): \d+ de 100/ })).toBeInTheDocument()
   })
 
   it('uses the light palette by default', async () => {
     renderWithProviders(<EchartsPage />, { url })
-    const figures = await screen.findAllByRole('figure')
-    expect(figures.every((f) => f.getAttribute('data-text') === '#64748b')).toBe(true)
+    const charts = await screen.findAllByRole('img')
+    expect(charts.every((c) => c.getAttribute('data-text') === '#64748b')).toBe(true)
   })
 
   it('shows an error alert when the repository fails', async () => {

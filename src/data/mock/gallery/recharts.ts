@@ -37,7 +37,7 @@ export function buildRechartsData(): RechartsData {
     channels: CHANNELS.map(({ key, label }) => ({ key, label })),
     channelVolume,
     volumeVsTarget,
-    units: UNITS,
+    units: UNITS.map((u) => ({ ...u })),
     unitPerformance: AXES.map((label) => {
       const row: SeriesRow = { label }
       for (const u of UNITS) row[u.key] = rng.int(55, 98)

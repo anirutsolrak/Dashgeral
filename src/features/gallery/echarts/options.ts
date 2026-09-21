@@ -10,7 +10,7 @@ export const heatmapOption = (d: HeatmapData, p: EChartPalette): EChartsOption =
   yAxis: { type: 'category', data: d.days, inverse: true, splitArea: { show: true } },
   visualMap: {
     min: 0,
-    max: Math.max(...d.cells.map((c) => c[2])),
+    max: Math.max(0, ...d.cells.map((c) => c[2])),
     calculable: true,
     orient: 'horizontal',
     left: 'center',

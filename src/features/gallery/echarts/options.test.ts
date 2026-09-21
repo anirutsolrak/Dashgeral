@@ -35,6 +35,11 @@ describe('ECharts option builders', () => {
     expect(loose(heatmapOption(d.heatmap, light)).visualMap!.max).toBe(max)
   })
 
+  it('keeps the heatmap colour range finite for an empty grid', () => {
+    const empty = { days: [], hours: [], cells: [] }
+    expect(loose(heatmapOption(empty, light)).visualMap!.max).toBe(0)
+  })
+
   it('follow the palette of the theme', () => {
     expect(loose(funnelOption(d.funnel, light)).textStyle.color).toBe(light.text)
     expect(loose(funnelOption(d.funnel, dark)).textStyle.color).toBe(dark.text)
