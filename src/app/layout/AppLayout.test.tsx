@@ -27,7 +27,7 @@ describe('AppLayout', () => {
     expect(link).toHaveAttribute('href', expect.stringContaining('period=30d'))
   })
 
-  it('shows the placeholder for routes not built yet', async () => {
+  it('renders the gallery index', async () => {
     renderAt('/gallery')
     expect(
       await screen.findByRole('heading', { name: 'Galeria de Componentes' }),

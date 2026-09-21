@@ -1,5 +1,4 @@
 import { type RouteObject } from 'react-router-dom'
-import { ComingSoon } from '@/shared/ui/ComingSoon'
 import { IndexRedirect } from './IndexRedirect'
 import { AppLayout } from './layout/AppLayout'
 
@@ -34,7 +33,17 @@ export const routes: RouteObject[] = [
           Component: (await import('@/features/logistics/LogisticsPage')).LogisticsPage,
         }),
       },
-      { path: 'gallery', element: <ComingSoon title="Galeria de Componentes" /> },
+      {
+        path: 'gallery',
+        children: [
+          {
+            index: true,
+            lazy: async () => ({
+              Component: (await import('@/features/gallery/GalleryIndexPage')).GalleryIndexPage,
+            }),
+          },
+        ],
+      },
     ],
   },
 ]
