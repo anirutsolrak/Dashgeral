@@ -27,7 +27,9 @@ describe('AppLayout', () => {
 
   it('shows the placeholder for routes not built yet', async () => {
     renderAt('/financial')
-    expect(await screen.findByRole('heading', { name: 'Desempenho Financeiro' })).toBeInTheDocument()
+    expect(
+      await screen.findByRole('heading', { name: 'Desempenho Financeiro' }),
+    ).toBeInTheDocument()
   })
 
   it('toggles the dark theme class', async () => {

@@ -6,7 +6,9 @@ import { CardProcessingPage } from './CardProcessingPage'
 
 const renderPage = () =>
   render(
-    <QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
+    <QueryClientProvider
+      client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}
+    >
       <MemoryRouter>
         <CardProcessingPage />
       </MemoryRouter>
@@ -35,7 +37,9 @@ describe('CardProcessingPage', () => {
       initialEntries: ['/?delay=0'],
     })
     render(
-      <QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
+      <QueryClientProvider
+        client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}
+      >
         <RouterProvider router={router} />
       </QueryClientProvider>,
     )

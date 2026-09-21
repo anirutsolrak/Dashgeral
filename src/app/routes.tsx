@@ -12,7 +12,8 @@ export const routes: RouteObject[] = [
       {
         path: 'card-processing',
         lazy: async () => ({
-          Component: (await import('@/features/card-processing/CardProcessingPage')).CardProcessingPage,
+          Component: (await import('@/features/card-processing/CardProcessingPage'))
+            .CardProcessingPage,
         }),
       },
       { path: 'financial', element: <ComingSoon title="Desempenho Financeiro" /> },
