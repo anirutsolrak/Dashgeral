@@ -16,7 +16,6 @@ Flags de demonstração na URL: `?delay=0` remove a latência simulada; `?error=
 - `src/features`: uma pasta por domínio.
 - `src/data`: tipos, interfaces de repositório e implementações mock (seed fixa).
 - `src/shared`: UI, formatters e utilitários.
-- `legacy/`: código antigo (JS + Supabase), mantido só como referência até o Plano 6.
 
 ## Páginas
 

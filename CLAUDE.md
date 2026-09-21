@@ -21,7 +21,6 @@ react-leaflet 5, Apache ECharts 6 (SVG, registro manual em `src/shared/echarts/c
 - `src/features/<domínio>`: páginas, hooks (`api.ts`), KPIs, detalhes. Domínios prontos: card-processing, financial, inventory, logistics. `src/features/gallery`: uma página por biblioteca (Recharts, ECharts, mapas, tabelas, fluxo) sobre dados de `data/mock/gallery`, sem filtros globais. `src/shared/echarts` (núcleo, tema, componente `EChart`) e `src/shared/flow` (nós e helpers do React Flow) são compartilhados.
 - `src/data`: tipos, interfaces de repositório e implementações mock (`repositories/mock`). Geradores em `data/mock` com seed fixa (`seedFor`); período e região só escalam volumes.
 - `src/shared`: UI, gráficos, mapa, formatters. **`shared` não importa de `app`, `data` nem de `features`.**
-- `legacy/`: código antigo (JS + Supabase), só referência de leitura. Será removido no Plano 6.
 
 ## Convenções que já pegaram bugs
 
@@ -37,6 +36,7 @@ react-leaflet 5, Apache ECharts 6 (SVG, registro manual em `src/shared/echarts/c
 Spec e planos ficam em `docs/superpowers/` (spec em `specs/`, planos em `plans/`). Cada plano é escrito
 com tarefas pequenas em TDD e executado tarefa a tarefa, com um implementador e um revisor por tarefa
 e uma revisão final do plano inteiro. Não escrever arquivos com mais de ~150 linhas numa única chamada.
+Os planos citam caminhos de legacy/ (removido no Plano 6). Para ler o código antigo: git show 1a8b218:legacy/src/pages/Logistics.jsx.
 
 ## Estado
 
