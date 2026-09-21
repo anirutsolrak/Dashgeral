@@ -2,6 +2,9 @@ import { X } from 'lucide-react'
 import { useEffect, useId, useRef, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 
+const FOCUSABLE =
+  'button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+
 interface ModalProps {
   open: boolean
   title: string
@@ -13,6 +16,7 @@ interface ModalProps {
 export function Modal({ open, title, onClose, children, wide = false }: ModalProps) {
   const titleId = useId()
   const closeRef = useRef<HTMLButtonElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
   const onCloseRef = useRef(onClose)
 
   useEffect(() => {
@@ -26,7 +30,25 @@ export function Modal({ open, title, onClose, children, wide = false }: ModalPro
     document.body.style.overflow = 'hidden'
     closeRef.current?.focus()
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onCloseRef.current()
+      if (e.key === 'Escape') {
+        onCloseRef.current()
+        return
+      }
+      if (e.key !== 'Tab' || !panelRef.current) return
+      const items = Array.from(panelRef.current.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
+        (el) => !el.hasAttribute('disabled'),
+      )
+      const first = items[0]
+      const last = items[items.length - 1]
+      if (!first || !last) return
+      const active = document.activeElement
+      if (e.shiftKey && (active === first || !panelRef.current.contains(active))) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && (active === last || !panelRef.current.contains(active))) {
+        e.preventDefault()
+        first.focus()
+      }
     }
     document.addEventListener('keydown', onKeyDown)
     return () => {
@@ -47,6 +69,7 @@ export function Modal({ open, title, onClose, children, wide = false }: ModalPro
       }}
     >
       <div
+        ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}

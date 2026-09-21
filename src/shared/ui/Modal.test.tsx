@@ -40,4 +40,43 @@ describe('Modal', () => {
     unmount()
     expect(document.body.style.overflow).toBe('')
   })
+  describe('focus management', () => {
+    const renderWithButtons = () =>
+      render(
+        <Modal open title="Detalhamento" onClose={vi.fn()}>
+          <button type="button">Primeiro</button>
+          <button type="button">Último</button>
+        </Modal>,
+      )
+
+    it('wraps Tab from the last focusable element to the first', async () => {
+      renderWithButtons()
+      screen.getByRole('button', { name: 'Último' }).focus()
+      await userEvent.tab()
+      expect(screen.getByRole('button', { name: 'Fechar' })).toHaveFocus()
+    })
+    it('wraps Shift+Tab from the first focusable element to the last', async () => {
+      renderWithButtons()
+      expect(screen.getByRole('button', { name: 'Fechar' })).toHaveFocus()
+      await userEvent.tab({ shift: true })
+      expect(screen.getByRole('button', { name: 'Último' })).toHaveFocus()
+    })
+    it('restores focus to the previously focused element after closing', () => {
+      const ui = (open: boolean) => (
+        <>
+          <button type="button">Abrir</button>
+          <Modal open={open} title="Detalhamento" onClose={vi.fn()}>
+            <p>Conteúdo</p>
+          </Modal>
+        </>
+      )
+      const { rerender } = render(ui(false))
+      const trigger = screen.getByRole('button', { name: 'Abrir' })
+      trigger.focus()
+      rerender(ui(true))
+      expect(screen.getByRole('button', { name: 'Fechar' })).toHaveFocus()
+      rerender(ui(false))
+      expect(trigger).toHaveFocus()
+    })
+  })
 })
