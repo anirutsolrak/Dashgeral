@@ -1,13 +1,11 @@
 import { Background, Controls, ReactFlow } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { useMemo } from 'react'
-import { useAppTheme } from '@/app/layout/ThemeContext'
-import type { FlowStep } from '@/data/types/card-processing'
+import type { FlowStepInput, FlowTheme } from './types'
 import { toEdge, toNode } from './flowUtils'
 import { layoutFlow } from './layout'
 
-export function FlowDiagram({ steps, label }: { steps: FlowStep[]; label: string }) {
-  const { theme } = useAppTheme()
+export function FlowDiagram({ steps, label, theme }: { steps: FlowStepInput[]; label: string; theme: FlowTheme }) {
   const { nodes, edges } = useMemo(() => {
     const layout = layoutFlow(steps)
     return { nodes: layout.nodes.map((n) => toNode(n, 'horizontal')), edges: layout.edges.map(toEdge) }

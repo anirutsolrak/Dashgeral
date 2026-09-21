@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import type { OrgNode } from '@/data/types/card-processing'
+import type { OrgNodeInput } from './types'
 import { layoutFlow, layoutOrg } from './layout'
 
-const leaf = (id: string): OrgNode => ({ id, name: id, role: 'Equipe', children: [] })
-const tree: OrgNode = {
+const leaf = (id: string): OrgNodeInput => ({ id, name: id, role: 'Equipe', children: [] })
+const tree: OrgNodeInput = {
   id: 'r', name: 'r', role: 'Gestão',
   children: [{ id: 's', name: 's', role: 'Supervisão', children: [leaf('a1'), leaf('a2'), leaf('a3')] }],
 }

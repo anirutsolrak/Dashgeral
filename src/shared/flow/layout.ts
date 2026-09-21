@@ -1,4 +1,4 @@
-import type { FlowStep, OrgNode } from '@/data/types/card-processing'
+import type { FlowStepInput, OrgNodeInput } from './types'
 
 export interface LaidOutNode {
   id: string
@@ -21,7 +21,7 @@ const FLOW_X_GAP = 240
 const ORG_X_GAP = 200
 const ORG_Y_GAP = 140
 
-export function layoutFlow(steps: readonly FlowStep[]): Layout {
+export function layoutFlow(steps: readonly FlowStepInput[]): Layout {
   return {
     nodes: steps.map((s, i) => ({ id: s.id, label: s.label, x: i * FLOW_X_GAP, y: 0 })),
     edges: steps.flatMap((s, i) => {
@@ -31,12 +31,12 @@ export function layoutFlow(steps: readonly FlowStep[]): Layout {
   }
 }
 
-export function layoutOrg(root: OrgNode): Layout {
+export function layoutOrg(root: OrgNodeInput): Layout {
   const nodes: LaidOutNode[] = []
   const edges: LaidOutEdge[] = []
   let nextLeaf = 0
 
-  const place = (node: OrgNode, depth: number): number => {
+  const place = (node: OrgNodeInput, depth: number): number => {
     const childXs = node.children.map((child) => {
       const x = place(child, depth + 1)
       edges.push({ id: `${node.id}-${child.id}`, source: node.id, target: child.id })
