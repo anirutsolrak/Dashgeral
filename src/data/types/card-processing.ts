@@ -1,10 +1,3 @@
-export interface CardProcessingKpis {
-  integrationRate: number
-  accountsCreated: number
-  cardsSent: number
-  totalProposals: number
-}
-
 export interface IntegrationStats {
   ratePercent: number
   digitized: number

@@ -18,6 +18,13 @@ Flags de demonstração na URL: `?delay=0` remove a latência simulada; `?error=
 - `src/shared`: UI, formatters e utilitários.
 - `legacy/`: código antigo (JS + Supabase), mantido só como referência até o Plano 6.
 
+## Páginas
+
+- `/card-processing`: KPIs com resumo, tendência de integração, detalhamento por KPI (barras e pizzas)
+  e workflows (fluxograma e organograma em React Flow, lista de POPs). Filtros de período, região,
+  categoria e convênio.
+- `/financial`, `/inventory`, `/logistics`, `/gallery`: em migração.
+
 ## Trocando mock por API real
 
 Implemente as interfaces de `src/data/repositories/*.ts` e troque as implementações em
