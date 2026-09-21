@@ -22,7 +22,12 @@ export const routes: RouteObject[] = [
           Component: (await import('@/features/financial/FinancialPage')).FinancialPage,
         }),
       },
-      { path: 'inventory', element: <ComingSoon title="Gestão de Estoque" /> },
+      {
+        path: 'inventory',
+        lazy: async () => ({
+          Component: (await import('@/features/inventory/InventoryPage')).InventoryPage,
+        }),
+      },
       { path: 'logistics', element: <ComingSoon title="Logística" /> },
       { path: 'gallery', element: <ComingSoon title="Galeria de Componentes" /> },
     ],

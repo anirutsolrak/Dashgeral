@@ -23,7 +23,10 @@ Flags de demonstração na URL: `?delay=0` remove a latência simulada; `?error=
 - `/card-processing`: KPIs com resumo, tendência de integração, detalhamento por KPI (barras e pizzas)
   e workflows (fluxograma e organograma em React Flow, lista de POPs). Filtros de período, região,
   categoria e convênio.
-- `/financial`, `/inventory`, `/logistics`, `/gallery`: em migração.
+- `/financial`: KPIs de limite e custos logísticos, mapa de desbloqueio por região (react-leaflet),
+  comparativo por região e evolução da utilização, com detalhamento por KPI (tabela ordenável em TanStack Table).
+- `/inventory`: estoque de cartões, envelopes e cartas berço, perdas e detalhamento por item.
+- `/logistics`, `/gallery`: em migração.
 
 ## Trocando mock por API real
 
