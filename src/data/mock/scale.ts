@@ -18,7 +18,9 @@ const REGION_FACTOR: Record<GlobalFilters['region'], number> = {
   'centro-oeste': 0.07,
 }
 
-export const volumeFactor = (f: GlobalFilters): number => PERIOD_FACTOR[f.period] * REGION_FACTOR[f.region]
+export const periodFactor = (f: GlobalFilters): number => PERIOD_FACTOR[f.period]
+
+export const volumeFactor = (f: GlobalFilters): number => periodFactor(f) * REGION_FACTOR[f.region]
 
 const hash = (text: string): number =>
   [...text].reduce((acc, ch) => (Math.imul(acc, 31) + ch.charCodeAt(0)) >>> 0, 7)

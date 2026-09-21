@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { DEFAULT_FILTERS } from '@/data/types/filters'
 import { createRng } from './random'
-import { pct, seedFor, splitByWeights, volumeFactor } from './scale'
+import { pct, periodFactor, seedFor, splitByWeights, volumeFactor } from './scale'
 
 describe('volumeFactor', () => {
   it('is 1 for default filters and shrinks with period and region', () => {
@@ -39,5 +39,13 @@ describe('splitByWeights', () => {
   it('is deterministic for the same seed and handles zero', () => {
     expect(splitByWeights(50, reasons, createRng(9))).toEqual(splitByWeights(50, reasons, createRng(9)))
     expect(splitByWeights(0, reasons, createRng(9)).every((p) => p.count === 0)).toBe(true)
+  })
+})
+
+describe('periodFactor', () => {
+  it('depends only on the period', () => {
+    expect(periodFactor(DEFAULT_FILTERS)).toBe(1)
+    expect(periodFactor({ ...DEFAULT_FILTERS, period: '7d' })).toBe(0.03)
+    expect(periodFactor({ ...DEFAULT_FILTERS, region: 'sul' })).toBe(1)
   })
 })
