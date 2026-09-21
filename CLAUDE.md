@@ -13,12 +13,12 @@ Idioma da interface e do código de domínio: pt-BR.
 
 Vite 7, React 19, TypeScript estrito (sem `any`), Tailwind 4, React Router 7, TanStack Query,
 TanStack Table **v8** (fixado: o `@latest` é a v9, com API diferente), Recharts 3, `@xyflow/react`,
-react-leaflet 5, Zod, Vitest + Testing Library.
+react-leaflet 5, Apache ECharts 6 (SVG, registro manual em `src/shared/echarts/core.ts`; só carrega na rota `/gallery/echarts`), Zod, Vitest + Testing Library.
 
 ## Arquitetura
 
 - `src/app`: providers, rotas (lazy), layout, tema, filtros globais na URL (`useGlobalFilters`), `useDomainQuery`.
-- `src/features/<domínio>`: páginas, hooks (`api.ts`), KPIs, detalhes. Domínios prontos: card-processing, financial, inventory.
+- `src/features/<domínio>`: páginas, hooks (`api.ts`), KPIs, detalhes. Domínios prontos: card-processing, financial, inventory, logistics. `src/features/gallery`: uma página por biblioteca (Recharts, ECharts, mapas, tabelas, fluxo) sobre dados de `data/mock/gallery`, sem filtros globais. `src/shared/echarts` (núcleo, tema, componente `EChart`) e `src/shared/flow` (nós e helpers do React Flow) são compartilhados.
 - `src/data`: tipos, interfaces de repositório e implementações mock (`repositories/mock`). Geradores em `data/mock` com seed fixa (`seedFor`); período e região só escalam volumes.
 - `src/shared`: UI, gráficos, mapa, formatters. **`shared` não importa de `app`, `data` nem de `features`.**
 - `legacy/`: código antigo (JS + Supabase), só referência de leitura. Será removido no Plano 6.
@@ -40,7 +40,7 @@ e uma revisão final do plano inteiro. Não escrever arquivos com mais de ~150 l
 
 ## Estado
 
-- Prontos: Plano 1 (fundação), Plano 2 (Card Processing), Plano 3 (Financial + Inventory), Plano 4 (Logística: `/logistics`, filtros de tipo e etapa aplicados nos geradores).
-- Faltam (planos já escritos em `docs/superpowers/plans/`): **Plano 5** Galeria (`/gallery`, uma rota por lib; ECharts ainda não instalado) e **Plano 6** limpeza (remover `legacy/`, `public/vite.svg` e imagens antigas, `.gitattributes` com `eol=lf`, Prettier, README final).
-- Pendências conhecidas: tiles do mapa ficam claros no tema escuro e exigem internet; o mock global de `recharts` vale revisar antes da Galeria (Plano 5, Task 1); foco visível nos botões de ação dos KPIs; o `.env` local antigo (chave anon do Supabase, ainda no histórico do git) deve ser apagado e a chave rotacionada.
+- Prontos: Plano 1 (fundação), Plano 2 (Card Processing), Plano 3 (Financial + Inventory), Plano 4 (Logística: `/logistics`, filtros de tipo e etapa aplicados nos geradores), Plano 5 (Galeria: `/gallery` com `/recharts`, `/echarts`, `/maps`, `/tables`, `/flow`; ECharts em chunk lazy).
+- Faltam (planos já escritos em `docs/superpowers/plans/`): **Plano 6** limpeza (remover `legacy/`, `public/vite.svg` e imagens antigas, `.gitattributes` com `eol=lf`, Prettier, README final).
+- Pendências conhecidas: tiles do mapa ficam claros no tema escuro e exigem internet; foco visível nos botões de ação dos KPIs; o `.env` local antigo (chave anon do Supabase, ainda no histórico do git) deve ser apagado e a chave rotacionada.
 - Backlog de consistência entre planos (achados na revisão do Plano 4): `selectClass` repetido em 3 filtros (extrair para `shared`); mensagens de status dos filtros sem variante `dark:` (corrigir em `AgreementFilters` e `LogisticsFilters` juntos); Inventory e Logistics não têm o filtro de convênio embora o `seedFor` dependa dele; os params `logisticsType`/`logisticsStep` vazam para as outras rotas e entram nas chaves de query; as barras Flash vs. Terceiros têm a mesma forma (fator 60/40); rótulos de etapa repetidos entre grupos (`optgroup` desambigua só com o select aberto).
