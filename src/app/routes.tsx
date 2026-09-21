@@ -48,6 +48,12 @@ export const routes: RouteObject[] = [
               Component: (await import('@/features/gallery/recharts/RechartsPage')).RechartsPage,
             }),
           },
+          {
+            path: 'echarts',
+            lazy: async () => ({
+              Component: (await import('@/features/gallery/echarts/EchartsPage')).EchartsPage,
+            }),
+          },
         ],
       },
     ],
