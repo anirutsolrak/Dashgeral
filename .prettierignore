@@ -3,3 +3,4 @@ docs
 .superpowers
 package-lock.json
 coverage
+.claude
