@@ -2,6 +2,7 @@ import 'leaflet/dist/leaflet.css'
 import { CircleMarker, MapContainer, Popup, TileLayer } from 'react-leaflet'
 import { CHART_CARD_CLASS } from '@/shared/charts/chartTheme'
 import { defaultColorFor } from './colors'
+import { BRAZIL_CENTER, OSM_ATTRIBUTION, OSM_TILE_URL } from './geo'
 
 export interface MapPoint {
   id: string
@@ -20,8 +21,6 @@ interface RegionMapProps {
   height?: number
 }
 
-const BRAZIL_CENTER: [number, number] = [-14.2, -51.9]
-
 export function RegionMap({
   title,
   points,
@@ -34,10 +33,7 @@ export function RegionMap({
       <h3 className="mb-2 text-base font-semibold">{title}</h3>
       <div role="region" aria-label={`Mapa: ${title}`} style={{ height }} className="overflow-hidden rounded-lg">
         <MapContainer center={BRAZIL_CENTER} zoom={4} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+          <TileLayer attribution={OSM_ATTRIBUTION} url={OSM_TILE_URL} />
           {points.map((p) => (
             <CircleMarker
               key={p.id}
