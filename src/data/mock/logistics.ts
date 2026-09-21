@@ -4,6 +4,7 @@ import type {
   GroupStat,
   LogisticsGroupKey,
   LogisticsOverview,
+  LogisticsTypeId,
   StepCount,
   TypeComparisonRow,
 } from '@/data/types/logistics'
@@ -20,7 +21,12 @@ const GROUP_BASE: Record<LogisticsGroupKey, number> = {
   reenviado: 220,
   sinistrado: 90,
 }
-const TYPE_FACTOR: Record<string, number> = { all: 1, flash: 0.6, terceiros: 0.4 }
+// f.logisticsType vem da URL (string arbitrária): o lookup usa Record<string, number> e cai em 1.
+const TYPE_FACTOR: Record<LogisticsTypeId | 'all', number> & Record<string, number> = {
+  all: 1,
+  flash: 0.6,
+  terceiros: 0.4,
+}
 
 export function buildLogistics(f: GlobalFilters): LogisticsOverview {
   // A seed ignora tipo e etapa: eles só escalam ou recortam os mesmos números.

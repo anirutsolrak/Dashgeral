@@ -15,8 +15,11 @@ export interface CatalogGroup {
   label: string
   steps: CatalogStep[]
 }
+/** Ids dos tipos de logística; também são as chaves flash/terceiros de TypeComparisonRow. */
+export type LogisticsTypeId = 'flash' | 'terceiros'
+
 export interface LogisticsTypeOption {
-  id: string
+  id: LogisticsTypeId
   label: string
 }
 export interface LogisticsCatalog {

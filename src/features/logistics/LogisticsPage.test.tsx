@@ -1,9 +1,9 @@
-import { screen, within } from '@testing-library/react'
+import { screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { buildLogistics } from '@/data/mock/logistics'
 import { DEFAULT_FILTERS } from '@/data/types/filters'
-import { formatNumber } from '@/shared/lib/formatters'
+import { formatNumber, formatPercentage } from '@/shared/lib/formatters'
 import { renderWithProviders } from '@/test/renderWithProviders'
 import { LogisticsPage } from './LogisticsPage'
 
@@ -37,6 +37,14 @@ describe('LogisticsPage', () => {
     expect(await screen.findByText(`${formatNumber(all)} objetos`)).toBeInTheDocument()
     await userEvent.selectOptions(await screen.findByLabelText('Tipo'), 'flash')
     expect(await screen.findByText(`${formatNumber(flash)} objetos`)).toBeInTheDocument()
+  })
+
+  it('applies the step filter to the KPIs', async () => {
+    renderWithProviders(<LogisticsPage />, { url })
+    await waitFor(() => expect(screen.getByLabelText('Etapa')).toBeEnabled())
+    await userEvent.selectOptions(screen.getByLabelText('Etapa'), 'custodia-devolvido')
+    const kpi = await screen.findByRole('button', { name: /^Custódia/ })
+    await waitFor(() => expect(kpi).toHaveTextContent(formatPercentage(100, 1)))
   })
 
   it('shows error alerts when the repository fails', async () => {

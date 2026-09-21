@@ -16,7 +16,6 @@ export function LogisticsCharts() {
         {(points) => (
           <LineChartCard
             title="Evolução de pendências logísticas"
-            suffix=" pendências"
             color={ACCENT_HEX.pink}
             data={points.map((p) => ({ label: p.label, value: p.value }))}
           />

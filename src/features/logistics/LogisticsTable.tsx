@@ -1,12 +1,11 @@
 import { useMemo } from 'react'
 import type { GroupStat } from '@/data/types/logistics'
+import { CHART_CARD_CLASS } from '@/shared/charts/chartTheme'
 import { formatNumber, formatPercentage } from '@/shared/lib/formatters'
 import { DataTable, type DataColumn } from '@/shared/ui/DataTable'
 import { QueryBoundary } from '@/shared/ui/QueryBoundary'
 import { Skeleton } from '@/shared/ui/Skeleton'
 import { useLogistics } from './api'
-
-const CARD = 'rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900'
 
 function GroupTable({ groups }: { groups: GroupStat[] }) {
   const columns = useMemo<DataColumn<GroupStat>[]>(
@@ -23,7 +22,7 @@ function GroupTable({ groups }: { groups: GroupStat[] }) {
 export function LogisticsTable() {
   const query = useLogistics()
   return (
-    <section className={CARD}>
+    <section className={CHART_CARD_CLASS}>
       <QueryBoundary query={query} skeleton={<Skeleton className="h-64" />}>
         {({ groups }) => <GroupTable groups={groups} />}
       </QueryBoundary>
