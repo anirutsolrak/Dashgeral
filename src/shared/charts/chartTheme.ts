@@ -1,3 +1,6 @@
+import { formatNumber } from '@/shared/lib/formatters'
+import type { GroupedDatum, GroupedSeries } from './GroupedBarChartCard'
+
 export const CHART_COLORS = [
   '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#a855f7', '#14b8a6', '#f97316', '#ec4899',
 ] as const
@@ -26,3 +29,11 @@ export const describeData = (data: readonly { label: string; value: number }[], 
   data
     .map((d) => `${d.label}: ${d.value.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}${suffix}`)
     .join(', ')
+
+export const describeSeries = (series: GroupedSeries[], data: GroupedDatum[]): string =>
+  data
+    .map((row) => {
+      const values = series.map((s) => `${s.label} ${formatNumber(Number(row[s.key] ?? 0))}`)
+      return `${row.label}: ${values.join(', ')}`
+    })
+    .join('; ')
