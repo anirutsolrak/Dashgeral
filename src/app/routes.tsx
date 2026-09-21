@@ -66,6 +66,12 @@ export const routes: RouteObject[] = [
               Component: (await import('@/features/gallery/tables/TablesPage')).TablesPage,
             }),
           },
+          {
+            path: 'flow',
+            lazy: async () => ({
+              Component: (await import('@/features/gallery/flow/FlowPage')).FlowPage,
+            }),
+          },
         ],
       },
     ],
