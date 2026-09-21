@@ -29,7 +29,7 @@ react-leaflet 5, Zod, Vitest + Testing Library.
 - Números e moedas via `@/shared/lib/formatters` (Intl usa espaço não separável U+00A0; nos testes normalize com ` `).
 - Repositórios mock devolvem cópias (nunca constantes do módulo por referência).
 - Gráficos: cores por variáveis `--chart-*` (`src/index.css`) para funcionar nos dois temas. Legenda do Recharts precisa de `labelStyle`.
-- Testes: `ResponsiveContainer` do Recharts e stubs do React Flow são globais (`src/test/setup.ts`); `react-leaflet` é mockado **só** nos arquivos que renderizam mapa (o jsdom não roda o renderizador do Leaflet). `asyncUtilTimeout` global de 5 s cobre os chunks lazy.
+- Testes: `ResponsiveContainer` do Recharts e stubs do React Flow são globais (`src/test/setup.ts`); `react-leaflet` é mockado **só** nos arquivos que renderizam mapa (o jsdom não roda o renderizador do Leaflet). `asyncUtilTimeout` global de 5 s cobre os chunks lazy. Para exercitar o ResponsiveContainer real use vi.unmock('recharts') no topo do arquivo (sem layout o jsdom não renderiza o svg; ver src/test/recharts.real.test.tsx). Só faça isso quando o teste for sobre o container em si.
 - `@latest` de dependência pode trazer major incompatível: confira a API instalada antes de usar o código do plano.
 
 ## Fluxo de trabalho usado
