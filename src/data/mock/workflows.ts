@@ -52,6 +52,6 @@ export function getWorkflowInfo(kpi: WorkflowKpi): WorkflowInfo {
   return {
     flow: FLOWS[kpi].map((label, i) => ({ id: `step-${i + 1}`, label })),
     org: buildOrg(kpi),
-    docs: DOCS[kpi],
+    docs: DOCS[kpi].map((d) => ({ ...d })),
   }
 }

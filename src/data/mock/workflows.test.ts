@@ -26,4 +26,18 @@ describe('getWorkflowInfo', () => {
     expect(analysts('cards')).toHaveLength(6)
     expect(analysts('accounts')).toHaveLength(2)
   })
+  it('docs array is copied (not shared by reference)', () => {
+    const info1 = getWorkflowInfo('cards')
+    const originalLength = info1.docs.length
+    const originalFirstTitle = info1.docs[0]?.title
+
+    info1.docs.push({ id: 'test', title: 'Test', description: 'Test desc' })
+    if (info1.docs[0]) {
+      info1.docs[0].title = 'Mutated Title'
+    }
+
+    const info2 = getWorkflowInfo('cards')
+    expect(info2.docs).toHaveLength(originalLength)
+    expect(info2.docs[0]?.title).toBe(originalFirstTitle)
+  })
 })
