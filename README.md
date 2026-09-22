@@ -58,7 +58,7 @@ O passo a passo, com um exemplo que compila, está em `src/data/README.md`.
 ## Integração contínua
 
 O workflow `.github/workflows/ci.yml` roda `format:check`, `lint`, `typecheck`, `test` e `build` a
-cada push e pull request.
+cada push nas branches `main` e `modernize/**` e em todo pull request.
 
 ## Histórico do git
 

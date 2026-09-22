@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { RouterProvider, createMemoryRouter, type RouteObject } from 'react-router-dom'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeAll, beforeEach, describe, expect, it } from 'vitest'
 import { routes } from '@/app/routes'
 import { AppLayout } from './AppLayout'
 import { useAppTheme } from './ThemeContext'
@@ -15,6 +15,10 @@ const renderAt = (url: string) =>
   )
 
 describe('AppLayout', () => {
+  beforeAll(async () => {
+    await import('@/features/card-processing/CardProcessingPage')
+  })
+
   beforeEach(() => {
     window.history.replaceState({}, '', '/?delay=0')
     document.documentElement.classList.remove('dark')
