@@ -9,10 +9,10 @@ import { LOG_KPI_META, type LogisticsKpi } from './kpis'
 const GRID = 'grid gap-4 sm:grid-cols-2 xl:grid-cols-4'
 
 const ITEMS: { key: LogisticsKpi; icon: LucideIcon; accent: KPIAccent }[] = [
-  { key: 'entregue', icon: PackageCheck, accent: 'teal' },
-  { key: 'pendente', icon: Truck, accent: 'blue' },
-  { key: 'custodia', icon: Archive, accent: 'orange' },
-  { key: 'devolvido', icon: Undo2, accent: 'purple' },
+  { key: 'entregue', icon: PackageCheck, accent: 'secondary' },
+  { key: 'pendente', icon: Truck, accent: 'primary' },
+  { key: 'custodia', icon: Archive, accent: 'warning' },
+  { key: 'devolvido', icon: Undo2, accent: 'critical' },
 ]
 
 export function LogisticsKpis({ onSelect }: { onSelect: (kpi: LogisticsKpi) => void }) {

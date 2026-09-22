@@ -1,14 +1,14 @@
 import type { LucideIcon } from 'lucide-react'
 import type { ReactNode } from 'react'
 
-export type KPIAccent = 'blue' | 'purple' | 'teal' | 'orange' | 'pink'
+export type KPIAccent = 'primary' | 'secondary' | 'warning' | 'critical' | 'neutral'
 
 const ACCENT_CLASSES: Record<KPIAccent, string> = {
-  blue: 'bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300',
-  purple: 'bg-purple-50 text-purple-600 dark:bg-purple-950 dark:text-purple-300',
-  teal: 'bg-teal-50 text-teal-600 dark:bg-teal-950 dark:text-teal-300',
-  orange: 'bg-orange-50 text-orange-600 dark:bg-orange-950 dark:text-orange-300',
-  pink: 'bg-pink-50 text-pink-600 dark:bg-pink-950 dark:text-pink-300',
+  primary: 'bg-brand-50 text-brand-600 dark:bg-brand-950 dark:text-brand-300',
+  secondary: 'bg-accent-50 text-accent-600 dark:bg-accent-950 dark:text-accent-300',
+  warning: 'bg-amber-50 text-amber-600 dark:bg-amber-950 dark:text-amber-300',
+  critical: 'bg-red-50 text-red-600 dark:bg-red-950 dark:text-red-300',
+  neutral: 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300',
 }
 
 interface KPICardProps {
@@ -27,7 +27,7 @@ export function KPICard({
   value,
   hint,
   icon: Icon,
-  accent = 'blue',
+  accent = 'primary',
   onSelect,
   children,
   actions,
