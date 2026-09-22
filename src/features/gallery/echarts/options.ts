@@ -15,7 +15,7 @@ export const heatmapOption = (d: HeatmapData, p: EChartPalette): EChartsOption =
     orient: 'horizontal',
     left: 'center',
     bottom: 8,
-    inRange: { color: ['#dbeafe', '#3b82f6', '#1e3a8a'] },
+    inRange: { color: ['#dbe7fb', '#2a78d6', '#142f5e'] },
     textStyle: { color: p.text },
   },
   series: [{ type: 'heatmap', data: d.cells, label: { show: false } }],
