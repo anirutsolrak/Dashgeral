@@ -26,7 +26,7 @@ function IntegrationDetails() {
             title="Digitadas x Não digitadas"
             data={[
               { label: 'Digitadas', value: o.integration.digitized, color: ACCENT_HEX.green },
-              { label: 'Não digitadas', value: o.integration.notDigitized, color: ACCENT_HEX.pink },
+              { label: 'Não digitadas', value: o.integration.notDigitized, color: ACCENT_HEX.red },
             ]}
           />
           <QueryBoundary query={reasons}>

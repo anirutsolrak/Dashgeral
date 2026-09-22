@@ -29,7 +29,7 @@ export function LineChartCard({
   title,
   data,
   suffix = '',
-  color = ACCENT_HEX.purple,
+  color = ACCENT_HEX.blue,
   height = 260,
 }: LineChartCardProps) {
   return (

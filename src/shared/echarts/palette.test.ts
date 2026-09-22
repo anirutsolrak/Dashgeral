@@ -15,8 +15,8 @@ describe('chartPalette', () => {
     })
   })
   it('exposes the same series colours as the Recharts wrappers', () => {
-    expect(chartPalette('light').series).toHaveLength(8)
-    expect(chartPalette('light').series[0]).toBe('#3b82f6')
+    expect(chartPalette('light').series).toHaveLength(5)
+    expect(chartPalette('light').series[0]).toBe('var(--chart-series-1)')
   })
 })
 

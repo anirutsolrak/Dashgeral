@@ -2,21 +2,18 @@ import { formatNumber } from '@/shared/lib/formatters'
 import type { GroupedDatum, GroupedSeries } from './GroupedBarChartCard'
 
 export const CHART_COLORS = [
-  '#3b82f6',
-  '#10b981',
-  '#f59e0b',
-  '#ef4444',
-  '#a855f7',
-  '#14b8a6',
-  '#f97316',
-  '#ec4899',
+  'var(--chart-series-1)',
+  'var(--chart-series-2)',
+  'var(--chart-series-3)',
+  'var(--chart-series-4)',
+  'var(--chart-series-5)',
 ] as const
 
 export const ACCENT_HEX = {
-  green: '#10b981',
-  pink: '#ec4899',
-  red: '#ef4444',
-  purple: '#a855f7',
+  blue: 'var(--chart-series-1)',
+  green: 'var(--chart-series-2)',
+  amber: 'var(--chart-series-3)',
+  red: 'var(--chart-series-4)',
 } as const
 
 // Cores dependem do tema via variáveis CSS definidas em index.css (:root e .dark).

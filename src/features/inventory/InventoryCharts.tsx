@@ -16,7 +16,7 @@ export function InventoryCharts() {
             title="Estoque por item"
             series={[
               { key: 'available', label: 'Disponíveis', color: ACCENT_HEX.green },
-              { key: 'inTransit', label: 'Em trânsito', color: ACCENT_HEX.purple },
+              { key: 'inTransit', label: 'Em trânsito', color: ACCENT_HEX.blue },
               { key: 'lost', label: 'Perdidos', color: ACCENT_HEX.red },
             ]}
             data={items.map((i) => ({
