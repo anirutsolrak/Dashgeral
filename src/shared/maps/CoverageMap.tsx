@@ -40,7 +40,7 @@ export function CoverageMap({ title, areas, height = 320 }: CoverageMapProps) {
               key={a.id}
               center={[a.lat, a.lng]}
               radius={a.radiusKm * 1000}
-              pathOptions={{ color: '#14b8a6', fillColor: '#14b8a6', fillOpacity: 0.25 }}
+              pathOptions={{ color: '#1baf7a', fillColor: '#1baf7a', fillOpacity: 0.25 }}
             >
               <Popup>
                 <strong>{a.label}</strong>

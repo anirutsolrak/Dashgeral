@@ -61,7 +61,7 @@ export function RouteMap({
                 [from.lat, from.lng],
                 [to.lat, to.lng],
               ]}
-              pathOptions={{ color: '#3b82f6', weight: 2 + (route.volume / max) * 6, opacity: 0.7 }}
+              pathOptions={{ color: '#2a78d6', weight: 2 + (route.volume / max) * 6, opacity: 0.7 }}
             />
           ))}
           {hubs.map((h) => (
@@ -69,7 +69,7 @@ export function RouteMap({
               key={h.id}
               center={[h.lat, h.lng]}
               radius={7}
-              pathOptions={{ color: '#a855f7', fillColor: '#a855f7', fillOpacity: 0.9 }}
+              pathOptions={{ color: '#1baf7a', fillColor: '#1baf7a', fillOpacity: 0.9 }}
             >
               <Popup>{h.label}</Popup>
             </CircleMarker>

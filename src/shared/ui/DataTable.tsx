@@ -226,7 +226,7 @@ export function DataTable<T>({
                 <Fragment key={row.id}>
                   <tr
                     className={`border-b border-slate-100 last:border-0 dark:border-slate-800 ${
-                      row.getIsSelected() ? 'bg-blue-50 dark:bg-blue-950/40' : ''
+                      row.getIsSelected() ? 'bg-brand-50 dark:bg-brand-950/40' : ''
                     }`}
                   >
                     {row.getVisibleCells().map((cell) => (

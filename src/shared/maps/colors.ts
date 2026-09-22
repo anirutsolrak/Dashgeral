@@ -1,2 +1,2 @@
 export const defaultColorFor = (value: number): string =>
-  value >= 85 ? '#10b981' : value >= 75 ? '#f59e0b' : '#ef4444'
+  value >= 85 ? '#1baf7a' : value >= 75 ? '#eda100' : '#d03b3b'
