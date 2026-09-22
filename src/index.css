@@ -1,6 +1,28 @@
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --color-brand-50: #eef4fd;
+  --color-brand-100: #dbe7fb;
+  --color-brand-200: #b8d0f7;
+  --color-brand-300: #8ab3f1;
+  --color-brand-400: #5590e8;
+  --color-brand-500: #2a78d6;
+  --color-brand-600: #2158b3;
+  --color-brand-700: #1a4590;
+  --color-brand-800: #163a76;
+  --color-brand-900: #142f5e;
+  --color-brand-950: #0d2140;
+
+  --color-accent-50: #e6f7f1;
+  --color-accent-100: #c3ecdf;
+  --color-accent-300: #5ecda3;
+  --color-accent-500: #1baf7a;
+  --color-accent-600: #158f63;
+  --color-accent-700: #0f6f4c;
+  --color-accent-950: #06251a;
+}
+
 body {
   @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
 }
@@ -11,6 +33,17 @@ body {
   --chart-tooltip-bg: #ffffff;
   --chart-tooltip-border: #e2e8f0;
   --chart-tooltip-text: #0f172a;
+
+  --chart-series-1: #2a78d6;
+  --chart-series-2: #1baf7a;
+  --chart-series-3: #eda100;
+  --chart-series-4: #d03b3b;
+  --chart-series-5: #94a3b8;
+
+  /* Valores "vivos" das rampas de marca no tema claro (para código que precisa do hex
+     resolvido em vez do nome da classe Tailwind, ex.: mapas e ECharts). */
+  --color-brand-live: var(--color-brand-500);
+  --color-accent-live: var(--color-accent-500);
 }
 
 .dark {
@@ -19,4 +52,15 @@ body {
   --chart-tooltip-bg: #1e293b;
   --chart-tooltip-border: #334155;
   --chart-tooltip-text: #f1f5f9;
+
+  --chart-series-1: #3987e5;
+  --chart-series-2: #199e70;
+  --chart-series-3: #a88500;
+  --chart-series-4: #e66767;
+  --chart-series-5: #64748b;
+
+  --color-brand-500: #3987e5;
+  --color-brand-600: #2f6fd6;
+  --color-accent-500: #199e70;
+  --color-accent-600: #158f63;
 }
