@@ -15,7 +15,7 @@ export function LibraryPage({
     <div className="space-y-6">
       <Link
         to={{ pathname: '/gallery', search }}
-        className="inline-flex items-center gap-1 text-sm text-blue-600 hover:underline dark:text-blue-400"
+        className="inline-flex items-center gap-1 text-sm text-brand-600 hover:underline dark:text-brand-400"
       >
         <ArrowLeft size={14} aria-hidden />
         Galeria

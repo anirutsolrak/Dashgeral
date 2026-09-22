@@ -39,11 +39,6 @@ body {
   --chart-series-3: #eda100;
   --chart-series-4: #d03b3b;
   --chart-series-5: #94a3b8;
-
-  /* Valores "vivos" das rampas de marca no tema claro (para código que precisa do hex
-     resolvido em vez do nome da classe Tailwind, ex.: mapas e ECharts). */
-  --color-brand-live: var(--color-brand-500);
-  --color-accent-live: var(--color-accent-500);
 }
 
 .dark {
