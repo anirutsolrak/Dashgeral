@@ -30,7 +30,7 @@ export function FinancialKpis({ onSelect }: { onSelect: (kpi: FinancialKpi) => v
               value={formatPercentage(limitUsage.ratePercent)}
               hint={formatCurrency(limitUsage.usedAmount)}
               icon={Percent}
-              accent="teal"
+              accent="secondary"
               onSelect={() => onSelect('usage')}
             />
             <KPICard
@@ -38,7 +38,7 @@ export function FinancialKpis({ onSelect }: { onSelect: (kpi: FinancialKpi) => v
               value={formatCurrency(limitUsage.usedAmount)}
               hint={`${formatNumber(topRange?.customers ?? 0)} clientes acima de 75%`}
               icon={Banknote}
-              accent="purple"
+              accent="primary"
               onSelect={() => onSelect('total')}
             />
             <KPICard
@@ -46,7 +46,7 @@ export function FinancialKpis({ onSelect }: { onSelect: (kpi: FinancialKpi) => v
               value={formatCurrency(limitUsage.averageUsage)}
               hint="Por cliente"
               icon={Calculator}
-              accent="orange"
+              accent="primary"
               onSelect={() => onSelect('average')}
             />
             <KPICard
@@ -54,7 +54,7 @@ export function FinancialKpis({ onSelect }: { onSelect: (kpi: FinancialKpi) => v
               value={formatCurrency(logistics.totalAmount)}
               hint={`${formatCurrency(logistics.unitTotal)} por cartão`}
               icon={Truck}
-              accent="pink"
+              accent="primary"
               onSelect={() => onSelect('logistics')}
             />
           </div>

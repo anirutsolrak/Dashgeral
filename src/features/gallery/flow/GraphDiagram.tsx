@@ -19,7 +19,7 @@ type StatusNodeData = { label: string; status?: GraphNode['status'] }
 type StatusFlowNode = Node<StatusNodeData, 'status'>
 
 const TONES = {
-  ok: 'border-green-500 bg-green-50 text-green-900 dark:bg-green-950 dark:text-green-200',
+  ok: 'border-accent-500 bg-accent-50 text-accent-700 dark:bg-accent-950 dark:text-accent-200',
   warning: 'border-amber-500 bg-amber-50 text-amber-900 dark:bg-amber-950 dark:text-amber-200',
   error: 'border-red-500 bg-red-50 text-red-900 dark:bg-red-950 dark:text-red-200',
   none: 'border-slate-300 bg-white text-slate-900 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100',

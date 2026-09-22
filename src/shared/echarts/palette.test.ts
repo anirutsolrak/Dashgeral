@@ -14,9 +14,10 @@ describe('chartPalette', () => {
       tooltipBg: '#1e293b',
     })
   })
-  it('exposes the same series colours as the Recharts wrappers', () => {
-    expect(chartPalette('light').series).toHaveLength(8)
-    expect(chartPalette('light').series[0]).toBe('#3b82f6')
+  it('exposes literal hex series colours (ECharts cannot resolve CSS vars)', () => {
+    expect(chartPalette('light').series).toHaveLength(5)
+    expect(chartPalette('light').series[0]).toBe('#2a78d6')
+    expect(chartPalette('dark').series[0]).toBe('#3987e5')
   })
 })
 

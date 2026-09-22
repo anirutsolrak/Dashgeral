@@ -58,8 +58,8 @@ describe('RegionMap', () => {
 
 describe('defaultColorFor', () => {
   it('maps value bands to colors', () => {
-    expect(defaultColorFor(90)).toBe('#10b981')
-    expect(defaultColorFor(80)).toBe('#f59e0b')
-    expect(defaultColorFor(50)).toBe('#ef4444')
+    expect(defaultColorFor(90)).toBe('#1baf7a')
+    expect(defaultColorFor(80)).toBe('#eda100')
+    expect(defaultColorFor(50)).toBe('#d03b3b')
   })
 })

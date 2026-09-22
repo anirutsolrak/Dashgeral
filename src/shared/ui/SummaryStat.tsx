@@ -1,6 +1,6 @@
 const TONES = {
-  blue: 'bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300',
-  green: 'bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300',
+  blue: 'bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300',
+  green: 'bg-accent-50 text-accent-700 dark:bg-accent-950 dark:text-accent-300',
   red: 'bg-red-50 text-red-700 dark:bg-red-950 dark:text-red-300',
 } as const
 

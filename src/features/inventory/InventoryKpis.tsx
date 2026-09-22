@@ -10,9 +10,9 @@ import { INV_KPI_META, type InventoryKpi } from './kpis'
 const GRID = 'grid gap-4 sm:grid-cols-2 xl:grid-cols-4'
 
 const ITEMS: { key: StockItemKey; icon: LucideIcon; accent: KPIAccent }[] = [
-  { key: 'cards', icon: CreditCard, accent: 'blue' },
-  { key: 'envelopes', icon: Mail, accent: 'teal' },
-  { key: 'letters', icon: ScrollText, accent: 'purple' },
+  { key: 'cards', icon: CreditCard, accent: 'primary' },
+  { key: 'envelopes', icon: Mail, accent: 'primary' },
+  { key: 'letters', icon: ScrollText, accent: 'primary' },
 ]
 
 export function InventoryKpis({ onSelect }: { onSelect: (kpi: InventoryKpi) => void }) {
@@ -49,7 +49,7 @@ export function InventoryKpis({ onSelect }: { onSelect: (kpi: InventoryKpi) => v
             value={formatNumber(totalLost)}
             hint="Total de itens extraviados"
             icon={PackageX}
-            accent="orange"
+            accent="critical"
             onSelect={() => onSelect('losses')}
           />
         </div>

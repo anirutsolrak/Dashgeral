@@ -37,7 +37,7 @@ const KPIS: KpiView[] = [
     kpi: 'integration',
     hint: 'Das contas para digitar',
     icon: RefreshCw,
-    accent: 'purple',
+    accent: 'primary',
     value: (o) => formatPercentage(o.integration.ratePercent),
     summary: (o) => (
       <>
@@ -58,7 +58,7 @@ const KPIS: KpiView[] = [
     kpi: 'accounts',
     hint: 'Das contas digitadas',
     icon: UserPlus,
-    accent: 'teal',
+    accent: 'primary',
     value: (o) => formatPercentage(o.accounts.ratePercent),
     summary: (o) => (
       <>
@@ -75,7 +75,7 @@ const KPIS: KpiView[] = [
     kpi: 'cards',
     hint: 'Cartões que saíram para entrega',
     icon: CreditCard,
-    accent: 'orange',
+    accent: 'primary',
     value: (o) => formatNumber(o.cards.sent),
     summary: (o) => (
       <>
@@ -92,7 +92,7 @@ const KPIS: KpiView[] = [
     kpi: 'insurance',
     hint: 'Das contas digitadas',
     icon: FileText,
-    accent: 'pink',
+    accent: 'secondary',
     value: (o) => formatNumber(o.insurance.withInsurance),
     summary: (o) => (
       <>

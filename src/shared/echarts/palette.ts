@@ -1,4 +1,3 @@
-import { CHART_COLORS } from '@/shared/charts/chartTheme'
 import type { EChartsOption } from './core'
 
 export interface EChartPalette {
@@ -10,13 +9,16 @@ export interface EChartPalette {
   series: readonly string[]
 }
 
+const LIGHT_SERIES = ['#2a78d6', '#1baf7a', '#eda100', '#d03b3b', '#94a3b8'] as const
+const DARK_SERIES = ['#3987e5', '#199e70', '#a88500', '#e66767', '#64748b'] as const
+
 const LIGHT: EChartPalette = {
   text: '#64748b',
   grid: '#e2e8f0',
   tooltipBg: '#ffffff',
   tooltipBorder: '#e2e8f0',
   tooltipText: '#0f172a',
-  series: CHART_COLORS,
+  series: LIGHT_SERIES,
 }
 const DARK: EChartPalette = {
   text: '#94a3b8',
@@ -24,7 +26,7 @@ const DARK: EChartPalette = {
   tooltipBg: '#1e293b',
   tooltipBorder: '#334155',
   tooltipText: '#f1f5f9',
-  series: CHART_COLORS,
+  series: DARK_SERIES,
 }
 
 export const chartPalette = (theme: 'light' | 'dark'): EChartPalette =>

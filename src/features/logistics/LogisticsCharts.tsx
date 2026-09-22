@@ -16,7 +16,7 @@ export function LogisticsCharts() {
         {(points) => (
           <LineChartCard
             title="Evolução de pendências logísticas"
-            color={ACCENT_HEX.pink}
+            color={ACCENT_HEX.blue}
             data={points.map((p) => ({ label: p.label, value: p.value }))}
           />
         )}
@@ -35,7 +35,7 @@ export function LogisticsCharts() {
             <GroupedBarChartCard
               title="Flash vs. Terceiros por status"
               series={[
-                { key: 'flash', label: 'Flash', color: ACCENT_HEX.purple },
+                { key: 'flash', label: 'Flash', color: ACCENT_HEX.blue },
                 { key: 'terceiros', label: 'Terceiros', color: ACCENT_HEX.green },
               ]}
               data={rows.map((r) => ({ label: r.label, flash: r.flash, terceiros: r.terceiros }))}

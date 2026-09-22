@@ -32,7 +32,7 @@ describe('KPICard', () => {
         label="Contas"
         value="10"
         icon={CreditCard}
-        accent="teal"
+        accent="secondary"
         onSelect={onSelect}
         actions={
           <button type="button" onClick={onAction}>

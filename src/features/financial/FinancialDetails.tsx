@@ -101,7 +101,7 @@ export function FinancialDetails({ kpi }: { kpi: FinancialKpi }) {
             <GroupedBarChartCard
               title="Uso médio por faixa"
               series={[
-                { key: 'average', label: 'Uso médio', color: ACCENT_HEX.purple },
+                { key: 'average', label: 'Uso médio', color: ACCENT_HEX.blue },
                 { key: 'available', label: 'Disponível médio', color: ACCENT_HEX.green },
               ]}
               data={usageByRange.map((r) => ({

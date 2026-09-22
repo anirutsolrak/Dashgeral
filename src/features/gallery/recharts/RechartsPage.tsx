@@ -49,8 +49,8 @@ export function RechartsPage() {
             >
               <ComposedChartCard
                 title="Volume total contra a meta"
-                barSeries={[{ key: 'volume', label: 'Volume', color: ACCENT_HEX.purple }]}
-                lineSeries={[{ key: 'meta', label: 'Meta', color: ACCENT_HEX.pink }]}
+                barSeries={[{ key: 'volume', label: 'Volume', color: ACCENT_HEX.blue }]}
+                lineSeries={[{ key: 'meta', label: 'Meta', color: ACCENT_HEX.green }]}
                 data={d.volumeVsTarget}
               />
             </ExampleCard>
