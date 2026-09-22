@@ -37,7 +37,7 @@ react-leaflet 5, Apache ECharts 6 (SVG, registro manual em `src/shared/echarts/c
 Spec e planos ficam em `docs/superpowers/` (spec em `specs/`, planos em `plans/`). Cada plano é escrito
 com tarefas pequenas em TDD e executado tarefa a tarefa, com um implementador e um revisor por tarefa
 e uma revisão final do plano inteiro. Não escrever arquivos com mais de ~150 linhas numa única chamada.
-Os planos citam caminhos de legacy/ (removido no Plano 6). Para ler o código antigo: `git show 1a8b218:legacy/src/pages/Logistics.jsx`.
+Os planos citam caminhos de legacy/ (removido no Plano 6). Para ler o código antigo: `git show legacy-snapshot:legacy/src/pages/Logistics.jsx` (tag `legacy-snapshot`, que aponta pro último commit com a pasta).
 
 ## Estado
 
