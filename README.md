@@ -29,6 +29,7 @@ Flags de demonstração na URL: `?delay=0` remove a latência simulada; `?error=
 - `/financial`: mapa de desbloqueio (react-leaflet), comparativos (Recharts) e tabela ordenável (TanStack Table).
 - `/inventory`: estoque e perdas de cartões, envelopes e cartas berço, com detalhamento por item.
 - `/logistics`: status de entrega, com filtros de tipo e etapa.
+- `/contact-center`: central que liga para confirmar o endereço de entrega (resultado das ligações, volume por hora, taxa por região e desempenho por operador).
 - `/gallery`: índice de exemplos, cada um com a nota "quando usar": `/gallery/recharts`,
   `/gallery/echarts` (Apache ECharts), `/gallery/maps` (Leaflet), `/gallery/tables` (TanStack Table)
   e `/gallery/flow` (React Flow).
