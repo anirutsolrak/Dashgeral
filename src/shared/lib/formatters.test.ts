@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest'
-import { formatCompact, formatCurrency, formatNumber, formatPercentage } from './formatters'
+import {
+  formatCompact,
+  formatDuration,
+  formatCurrency,
+  formatNumber,
+  formatPercentage,
+} from './formatters'
 
 // eslint-disable-next-line no-irregular-whitespace
 const nbsp = (s: string) => s.replace(/ /g, ' ')
@@ -22,5 +28,13 @@ describe('formatters', () => {
     expect(formatPercentage(undefined)).toBe('N/A')
     expect(formatPercentage(null)).toBe('N/A')
     expect(formatPercentage(Number.NaN)).toBe('N/A')
+  })
+})
+
+describe('formatDuration', () => {
+  it('mostra minutos e segundos, e horas quando passa de 60 min', () => {
+    expect(formatDuration(0)).toBe('0:00')
+    expect(formatDuration(185)).toBe('3:05')
+    expect(formatDuration(3725)).toBe('1:02:05')
   })
 })

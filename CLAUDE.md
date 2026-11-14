@@ -18,7 +18,7 @@ react-leaflet 5, Apache ECharts 6 (SVG, registro manual em `src/shared/echarts/c
 ## Arquitetura
 
 - `src/app`: providers, rotas (lazy), layout, tema, filtros globais na URL (`useGlobalFilters`), `useDomainQuery`.
-- `src/features/<domínio>`: páginas, hooks (`api.ts`), KPIs, detalhes. Domínios prontos: card-processing, financial, inventory, logistics. `src/features/gallery`: uma página por biblioteca (Recharts, ECharts, mapas, tabelas, fluxo) sobre dados de `data/mock/gallery`, sem filtros globais. `src/shared/echarts` (núcleo, tema, componente `EChart`) e `src/shared/flow` (nós e helpers do React Flow) são compartilhados.
+- `src/features/<domínio>`: páginas, hooks (`api.ts`), KPIs, detalhes. Domínios prontos: card-processing, financial, inventory, logistics, contact-center. `src/features/gallery`: uma página por biblioteca (Recharts, ECharts, mapas, tabelas, fluxo) sobre dados de `data/mock/gallery`, sem filtros globais. `src/shared/echarts` (núcleo, tema, componente `EChart`) e `src/shared/flow` (nós e helpers do React Flow) são compartilhados.
 - `src/data`: tipos, interfaces de repositório e implementações mock (`repositories/mock`). Geradores em `data/mock` com seed fixa (`seedFor`); período e região só escalam volumes. `src/data/README.md` é a referência para plugar uma API real.
 - `src/shared`: UI, gráficos, mapa, formatters. **`shared` não importa de `app`, `data` nem de `features`.**
 

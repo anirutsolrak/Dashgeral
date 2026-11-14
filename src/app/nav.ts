@@ -1,4 +1,12 @@
-import { CreditCard, LayoutGrid, Package, TrendingUp, Truck, type LucideIcon } from 'lucide-react'
+import {
+  CreditCard,
+  Headset,
+  LayoutGrid,
+  Package,
+  TrendingUp,
+  Truck,
+  type LucideIcon,
+} from 'lucide-react'
 
 export interface NavItem {
   to: string
@@ -11,5 +19,6 @@ export const NAV_ITEMS: NavItem[] = [
   { to: '/financial', label: 'Desempenho Financeiro', icon: TrendingUp },
   { to: '/inventory', label: 'Gestão de Estoque', icon: Package },
   { to: '/logistics', label: 'Logística', icon: Truck },
+  { to: '/contact-center', label: 'Central de Confirmação', icon: Headset },
   { to: '/gallery', label: 'Galeria de Componentes', icon: LayoutGrid },
 ]

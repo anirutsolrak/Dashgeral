@@ -34,6 +34,13 @@ export const routes: RouteObject[] = [
         }),
       },
       {
+        path: 'contact-center',
+        lazy: async () => ({
+          Component: (await import('@/features/contact-center/ContactCenterPage'))
+            .ContactCenterPage,
+        }),
+      },
+      {
         path: 'gallery',
         children: [
           {
